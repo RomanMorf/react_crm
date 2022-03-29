@@ -1,0 +1,40 @@
+.todoitem {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+
+  &_checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+    
+    &:checked ~ .todoitem_text {
+      text-decoration: line-through;
+    } 
+  }
+
+  &_text {
+    margin-right: 10px;
+
+    &::first-letter{
+      text-transform: uppercase;
+    }
+  }
+
+  &_btn {
+    margin-left: auto;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  &:nth-child(even) {
+    background-color: rgb(221, 221, 221);
+  }
+
+  &:hover {
+    background-color: rgb(151, 151, 151);
+  }
+
+}

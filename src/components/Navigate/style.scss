@@ -1,0 +1,21 @@
+.nav {
+  &_list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  // &_item {}
+
+  &_link {
+    text-decoration: none;
+    color: black;
+
+    &.active {
+      border-bottom: 1px solid #000;
+    }
+  }
+}

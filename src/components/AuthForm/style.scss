@@ -1,0 +1,49 @@
+.form {
+  margin: 20px;
+  padding: 5px;
+  min-width: 400px;
+  max-width: 8000px;
+  background-color: #fff;
+  border-radius: 5px;
+
+  &_slot {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  &_input {
+    width: 100%;
+    outline: transparent;
+    border: none;
+    border-bottom: 1px solid rgb(102, 102, 102);
+    margin: 10px 0;
+    padding: 10px;
+
+    &:not(:placeholder-shown)~ .form_placeholder,
+    &:focus ~ .form_placeholder {
+      transition: all ease .2s;
+      top: 0px;
+      left: 5px;
+      font-size: 10px;
+    }
+  }
+
+  &_placeholder {
+    transition: all ease .2s;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    color: rgb(102, 102, 102);
+  }
+
+  &_helper {
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+  }
+
+  &_bottom {
+    display: flex;
+    justify-content: space-around;
+  }
+}
