@@ -11,7 +11,6 @@
     margin-bottom: 5px;
     cursor: pointer;
 
-
     &:nth-child(even) {
       background-color: $bg_secondary;
     }
@@ -19,5 +18,12 @@
     &:hover {
       background-color: $hover_prymary;
     }
+  }
+}
+
+details {
+  &[open] {
+    background-color: white;
+    border: 1px solid $hover_prymary;
   }
 }

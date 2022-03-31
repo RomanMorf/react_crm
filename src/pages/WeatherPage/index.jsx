@@ -29,10 +29,10 @@ function Weather() {
       </div>}
 
       {(weather && !loading) && <div>
-        <p>feels_like { weather.feels_like }</p>
-        <p>humidity { weather.humidity }</p>
-        <p>pressure { weather.pressure }</p>
-        <p>temp { weather.temp }</p>
+        <p>feels_like { (weather.feels_like -273.15).toFixed(0) }  C°</p>
+        <p>humidity { weather.humidity } %</p>
+        <p>pressure { weather.pressure } </p>
+        <p>temp { weather.temp }  C°</p>
       </div>}
 
       {(weather && !loading) && <WeatherMapper weather={ weather } />}

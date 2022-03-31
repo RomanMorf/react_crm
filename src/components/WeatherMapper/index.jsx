@@ -15,6 +15,14 @@ function WeatherMapper({weather}) {
             <p>Min temp: { (el.main.temp_min -273.15).toFixed(0) } C°</p>
             <p>Max temp: { (el.main.temp_max -273.15).toFixed(0) } C°</p>
             <p>Visibility: { el.visibility } m</p>
+            <p>
+              { el.weather[0].main }
+              <img 
+                src={ 'http://openweathermap.org/img/wn/' + el.weather[0].icon + '.png' } 
+                alt={ el.weather[0].main }
+              />
+            </p>
+
           </details> 
         </li>
         )}
