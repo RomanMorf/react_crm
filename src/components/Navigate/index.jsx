@@ -15,7 +15,7 @@ function Navigate() {
       <ul className='nav_list'>
         {links.map(link => {
           return (
-            <li className='nav_item'>
+            <li className='nav_item' key={link.path}>
               <NavLink 
                 className="nav_link"
                 to={link.path}

@@ -1,0 +1,23 @@
+@import '../../assets/style/variables.scss';
+
+.weather {
+  &_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &_item {
+    margin-bottom: 5px;
+    cursor: pointer;
+
+
+    &:nth-child(even) {
+      background-color: $bg_secondary;
+    }
+
+    &:hover {
+      background-color: $hover_prymary;
+    }
+  }
+}

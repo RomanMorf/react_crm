@@ -1,3 +1,5 @@
+@import '../..//../assets//style/variables.scss';
+
 .todoitem {
   list-style: none;
   display: flex;
@@ -30,11 +32,11 @@
   }
 
   &:nth-child(even) {
-    background-color: rgb(221, 221, 221);
+    background-color: $bg_secondary;
   }
 
   &:hover {
-    background-color: rgb(151, 151, 151);
+    background-color: $hover_prymary;
   }
 
 }
