@@ -6,6 +6,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px;
+  border: 1px solid $hover_prymary;
+  border-radius: 3px;
+  margin-bottom: 3px;
 
   &_checkbox {
     margin-right: 10px;
@@ -31,12 +34,12 @@
     border: none;
   }
 
-  &:nth-child(even) {
-    background-color: $bg_secondary;
-  }
+  // &:nth-child(even) {
+  //   background-color: $bg_secondary;
+  // }
 
-  &:hover {
-    background-color: $hover_prymary;
-  }
+  // &:hover {
+  //   background-color: $hover_prymary;
+  // }
 
 }
