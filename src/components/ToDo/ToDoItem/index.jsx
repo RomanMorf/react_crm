@@ -7,7 +7,7 @@ import { Reorder } from 'framer-motion'
 const variants = {
   initial: {},
   animate: {},
-  exit: {}
+  exit: {},
 }
 
 function ToDoItem({todo}) {
@@ -25,8 +25,12 @@ function ToDoItem({todo}) {
     <Reorder.Item 
       value={todo} 
       className='todoitem'
+      whileHover={{
+        cursor: 'grab',
+      }}
       whileDrag={{
-        scale: 1.05
+        scale: 1.05,
+        cursor: 'grabbing',
       }}
       {...variants}
     >

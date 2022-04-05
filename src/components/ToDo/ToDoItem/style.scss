@@ -34,12 +34,8 @@
     border: none;
   }
 
-  // &:nth-child(even) {
-  //   background-color: $bg_secondary;
-  // }
-
-  // &:hover {
-  //   background-color: $hover_prymary;
-  // }
+  &:hover {
+    cursor: grab;
+  }
 
 }
