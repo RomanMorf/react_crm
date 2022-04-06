@@ -7,7 +7,6 @@ function Navigate() {
     { name: 'Weather', path: '/weather'},
     { name: 'Contacts', path: '/contacts'},
     { name: 'Todo', path: '/todo'},
-    { name: 'Auth test', path: '/test'},
   ]
 
   return (

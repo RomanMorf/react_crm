@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import store from './store'
+import { Provider } from 'react-redux';
+import store from './store';
 import App from './App';
+import './firebase-config'
+
 import './assets/style/index.scss'
 
 ReactDOM.render(
@@ -13,4 +15,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-

@@ -1,31 +1,41 @@
 import './style.scss'
+import React, { useRef } from 'react';
+
 
 function InputField({
-    text, 
+    value, 
+    name,
     handleInput, 
-    handleSubmit, 
-    submitName,
+    handleEnter,
     placeholder
   }) {
+
+  const inputEl = useRef()
   
-  const submitOnEnter = e => {
-    if (e.code === "Enter" || e.code === "NumpadEnter") {
-      handleSubmit(e.target.value)
+  const inputSelect = () => {
+    inputEl.current.focus()
+  }
+  
+  const enterAction = e => {
+    if (handleEnter) {
+      if (e.code === "Enter" || e.code === "NumpadEnter") {
+        handleEnter(e)
+      }
     }
   }
 
   return (
     <div className='inputfield_wrapper'>
       <input 
+        ref={inputEl}
         className='inputfield'
         placeholder=' '
-        value={text}
+        value={value}
+        name={name}
         onChange={e => handleInput(e.target.value)} 
-        onKeyUp={submitOnEnter} 
-        
+        onKeyUp={enterAction} 
         />
-      <span className='inputfield_placeholder'>{placeholder}</span>
-      <button className='inputfield_btn' onClick={handleSubmit}>{submitName}</button>
+      <label onClick={inputSelect} htmlFor={name} className='inputfield_placeholder'>{placeholder}</label>
     </div>
   )
 }

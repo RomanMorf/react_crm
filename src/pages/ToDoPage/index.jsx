@@ -9,7 +9,7 @@ function ToDo() {
   const [text, setText] = useState('')
   const dispatch = useDispatch()
 
-  const addTask = async () => {
+  const addTask = async (e) => {
     if (text.trim().length) {
       dispatch(addTodo({text}))
       setText('')
@@ -21,12 +21,14 @@ function ToDo() {
       <h1>ToDo page</h1>
       <div className='todo_input'>
         <InputField 
-          text={text} 
+          value={text} 
           handleInput={setText}
-          handleSubmit={addTask} 
-          submitName='Add task'
+          handleEnter={addTask}
           placeholder='Enter taskname'
         />
+        <button onClick={addTask}>
+          Add task
+        </button>
       </div>
 
       <ToDoList />

@@ -1,7 +1,7 @@
 import './style.scss';
 import { Outlet } from "react-router-dom";
 
-function EmptyLayout(props) {
+function EmptyLayout() {
 
   return (
     <div className="empty">
