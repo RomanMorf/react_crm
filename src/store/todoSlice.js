@@ -3,13 +3,7 @@ import {createSlice} from '@reduxjs/toolkit'
 const todoSlice = createSlice({
   name: 'todos',
   initialState: {
-    todos: [
-      {id: 1, text: 'some todo text 1', completed: false},
-      {id: 2, text: 'some todo text 2', completed: false},
-      {id: 3, text: 'some todo text 3', completed: true},
-      {id: 4, text: 'some todo text 4', completed: false},
-      {id: 5, text: 'some todo text 5', completed: true},
-    ]
+    todos: []
   },
   reducers: {
     addTodo (state, action) {
@@ -38,10 +32,14 @@ const todoSlice = createSlice({
         const parceTodos = JSON.parse(todos)
         state.todos = parceTodos
       }
+    },
+    updateTodos (state, actions) {
+      state.todos = actions.payload.todos
+      localStorage.setItem('todos', JSON.stringify(state.todos))
     }
   }
 })
 
-export const {addTodo, removeTodo, toggleTodoCompleted, getTodos} = todoSlice.actions;
+export const {addTodo, removeTodo, toggleTodoCompleted, getTodos, updateTodos} = todoSlice.actions;
 
 export default todoSlice.reducer;

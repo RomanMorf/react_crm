@@ -2,7 +2,13 @@ import React from 'react';
 import './style.scss';
 import { useDispatch } from 'react-redux';
 import {removeTodo, toggleTodoCompleted} from '../../../store/todoSlice'
+import { Reorder } from 'framer-motion'
 
+const variants = {
+  initial: {},
+  animate: {},
+  exit: {},
+}
 
 function ToDoItem({todo}) {
   const dispatch = useDispatch()
@@ -16,7 +22,18 @@ function ToDoItem({todo}) {
   }
 
   return (
-    <li className='todoitem'>
+    <Reorder.Item 
+      value={todo} 
+      className='todoitem'
+      whileHover={{
+        cursor: 'grab',
+      }}
+      whileDrag={{
+        scale: 1.05,
+        cursor: 'grabbing',
+      }}
+      {...variants}
+    >
       <input 
         className='todoitem_checkbox'
         type="checkbox" 
@@ -26,7 +43,7 @@ function ToDoItem({todo}) {
       <button className='todoitem_btn' onClick={deleteTodo}>
       <span className="material-icons">delete</span>
       </button>
-    </li>
+    </Reorder.Item>
   )
 }
 
