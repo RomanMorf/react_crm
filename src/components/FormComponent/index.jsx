@@ -2,18 +2,12 @@ import React, {useState, useRef} from 'react';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 
-
-function AuthForm({children}) {
-  const [formData, setFormData] = useState({})
+function Form({children, submitHandle, resetHandle}) {
+  const [ formData, setFormData ] = useState({})
   const formEl = useRef(null)
   const navigate = useNavigate()
   const wrongLogin = true
   const wrongPassword = true
-
-  function submitHandle(e) {
-    e.preventDefault();
-    return
-  }
 
   function inputHandle(e) {
     const name = e.target.name
@@ -22,16 +16,6 @@ function AuthForm({children}) {
       ...formData,
       [name]: value
     })
-  }
-
-  function resetForm() {
-    formEl.current.reset()
-  }
-
-  function submitForm() {
-    console.log('ready for upload data');
-    console.log(formData);
-    navigate('/')
   }
 
   return (
@@ -48,7 +32,7 @@ function AuthForm({children}) {
           type='text' 
           name='login' 
           placeholder=' ' 
-          onChange={(e) => inputHandle(e)} 
+          onChange={e => inputHandle(e)} 
         />
         <label htmlFor='login' className='form_placeholder'>Login</label>
         {wrongLogin && <small className='form_helper'>Enter your login</small>}
@@ -60,17 +44,17 @@ function AuthForm({children}) {
           type='password' 
           name='password' 
           placeholder=' '
-          onChange={(e) => inputHandle(e)} 
+          onChange={e => inputHandle(e)} 
         />
         <label htmlFor='pass' className='form_placeholder'>Password</label>
         {wrongPassword && <small className='form_helper'>Enter your password</small>}
       </div>
       <div className='form_bottom'>
-        <button onClick={() => submitForm()}>Submit</button>
-        <button onClick={() => resetForm()}>Clear form</button>
+        <button onClick={(e) => submitHandle(e)}>Submit</button>
+        <button onClick={() => resetHandle()}>Reset form</button>
       </div>
     </form>
   )
 }
 
-export default AuthForm;
+export default Form;
