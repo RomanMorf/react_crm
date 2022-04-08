@@ -3,13 +3,21 @@ import Navigate from '../Navigate'
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { singOutUser } from '../../store/authSlice'
+import { signOutUser } from '../../store/authSlice'
 
 function Header() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const auth = useSelector(state => state.auth.auth)
-  console.log(auth, 'auth from Header');
+
+  const logIn = () => {
+    navigate('/auth/login')
+  }
+
+  const logOut = () => {
+    dispatch(signOutUser())
+    navigate('/auth/login')
+  }
 
   return (
     <div className='header'>
@@ -18,8 +26,8 @@ function Header() {
           Logo
         </div>
         <div>
-          {!auth &&<button onClick={() => navigate('/auth/login')}>Log in</button>}
-          {auth && <button onClick={() => dispatch(singOutUser())}>Log out</button>}
+          {!auth &&<button onClick={logIn}>Log in</button>}
+          {auth && <button onClick={logOut}>Log out</button>}
         </div>
       </div>
       <div className="container">

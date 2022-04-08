@@ -1,4 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { db } from '../firebase'
+import { ref, set } from "firebase/database";
+import { getUid } from 'src/helpers/getUid'
 
 const todoSlice = createSlice({
   name: 'todos',
@@ -12,34 +15,36 @@ const todoSlice = createSlice({
         text: action.payload.text,
         completed: false
       })
-      localStorage.setItem('todos', JSON.stringify(state.todos))
+      const uid = getUid()
+      if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },
     removeTodo (state, action) {
       const idx = state.todos.findIndex(todo => todo.id === action.payload.id)
       state.todos.splice(idx, 1)
-      localStorage.setItem('todos', JSON.stringify(state.todos))
+      const uid = getUid()
+      if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },
     toggleTodoCompleted (state, action) {
       const idx = state.todos.findIndex(todo => todo.id === action.payload.id)
       state.todos[idx].completed = !state.todos[idx].completed
-      localStorage.setItem('todos', JSON.stringify(state.todos))
+      const uid = getUid()
+      if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },
-    getTodos (state, action) {
-      const todos = localStorage.getItem('todos')
-      if (!todos) {
-        state.todos = []
-      } else {
-        const parceTodos = JSON.parse(todos)
-        state.todos = parceTodos
-      }
+    updateTodos (state, action) {
+      state.todos = action.payload.todos
+      const uid = getUid()
+      if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },
-    updateTodos (state, actions) {
-      state.todos = actions.payload.todos
-      localStorage.setItem('todos', JSON.stringify(state.todos))
-    }
+    uploadTodos (state, action) {
+      const uid = getUid()
+      if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
+    },
+    setTodos (state, action) {
+      state.todos = action.payload
+    },
   }
 })
 
-export const {addTodo, removeTodo, toggleTodoCompleted, getTodos, updateTodos} = todoSlice.actions;
+export const { addTodo, removeTodo, toggleTodoCompleted, updateTodos, setTodos, uploadTodos } = todoSlice.actions;
 
 export default todoSlice.reducer;
