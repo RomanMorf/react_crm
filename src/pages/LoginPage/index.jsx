@@ -17,7 +17,7 @@ const provider = new GoogleAuthProvider();
 function Login() {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
-  const [loading, setloading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const auth = getAuth()
 
@@ -27,7 +27,7 @@ function Login() {
   const singInHandle = async () => {
     if (email.trim() || pass.trim()) {
       try {
-        setloading(true)
+        setLoading(true)
         await signInWithEmailAndPassword(auth, email, pass)
         .then((userCredential) => {
           const user = userCredential.user;
@@ -37,10 +37,10 @@ function Login() {
             token: user.accessToken
           }))
         })
-        setloading(false)
+        setLoading(false)
         navigate('/')
       } catch (e) {
-        setloading(false)
+        setLoading(false)
         throw e
       }
     }
@@ -48,7 +48,7 @@ function Login() {
   const singInWithGoogleHandle = async () => {
 
     try {
-      setloading(true)
+      setLoading(true)
       await signInWithPopup(auth, provider)
         .then((userCredential) => {
           const user = userCredential.user;
@@ -62,9 +62,9 @@ function Login() {
           throw e
         });
         navigate('/')
-      setloading(false)
+      setLoading(false)
     } catch (e) {
-      setloading(false)
+      setLoading(false)
       throw e
     }
   }
@@ -87,7 +87,7 @@ function Login() {
             placeholder='Enter your email'
           />
         </div>
-        <div className="form_clot">
+        <div className="form_slot">
           <InputField 
             name='pass'
             value={pass}
@@ -100,7 +100,10 @@ function Login() {
           <button onClick={singInWithGoogleHandle}>Sign in with google</button>
         </div>       
         <div className="form_bottom">
-          <p>If you don't have an accaunt yet, <a onClick={() => navigate('/auth/register')}> Register new</a> </p>
+          <p>
+            <span>If you don't have an accaunt yet, </span>
+            <a onClick={() => navigate('/auth/register')}>Register now</a>
+          </p>
         </div>       
       </form>
     </div>

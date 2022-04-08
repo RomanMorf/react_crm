@@ -22,7 +22,7 @@ function ToDo() {
       <div className='todo_input'>
         <InputField 
           value={text} 
-          handleInput={setText}
+          handleInput={(e) => setText(e.target.value)}
           handleEnter={addTask}
           placeholder='Enter taskname'
         />

@@ -7,6 +7,7 @@ function InputField({
     name,
     handleInput, 
     handleEnter,
+    handleBlur,
     placeholder
   }) {
 
@@ -26,13 +27,14 @@ function InputField({
 
   return (
     <div className='inputfield_wrapper'>
-      <input 
+      <input
         ref={inputEl}
         className='inputfield'
         placeholder=' '
         value={value}
         name={name}
-        onChange={e => handleInput(e.target.value)} 
+        onBlur={handleBlur}
+        onChange={e => handleInput(e)} 
         onKeyUp={enterAction} 
         />
       <label onClick={inputSelect} htmlFor={name} className='inputfield_placeholder'>{placeholder}</label>

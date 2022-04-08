@@ -27,3 +27,18 @@ button {
 .center {
   text-align: center;
 }
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mb {
+  &-10 {
+    margin-bottom: 10px;
+  }
+  &-20 {
+    margin-bottom: 20px;
+  }
+}

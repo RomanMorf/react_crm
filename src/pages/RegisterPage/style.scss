@@ -19,4 +19,12 @@
     display: flex;
     justify-content: space-around;
   }
+
+  &_helper {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+  }
 }
