@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import firebase from '../firebase-config'
+import firebase from '../firebase'
 import { 
   getAuth,
   signOut,
@@ -28,6 +28,7 @@ const authSlice = createSlice({
       state.auth.uid = uid
       state.auth.email = email
       state.auth.token = token
+      console.log('Sign-in - successful');
     },
     async singOutUser (state, action) {
       console.log('logOut');
