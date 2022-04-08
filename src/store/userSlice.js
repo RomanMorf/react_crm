@@ -13,9 +13,6 @@ const userSlice = createSlice({
         surname: action.payload.surname,
       })
     },
-    createNewUser (state, action) {
-      
-    }
   }
 })
 

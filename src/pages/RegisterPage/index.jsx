@@ -141,6 +141,7 @@ function Register() {
       await createUserWithEmailAndPassword(auth, form.email, form.pass)
         .then(userCredential => {
           const user = userCredential.user;
+          console.log(user, 'registerNewUser');
           dispatch(setAuth({
             email: user.email,
             uid: user.uid,
@@ -148,7 +149,7 @@ function Register() {
           }))
       })
       setLoading(false)
-      navigate('/')
+      navigate('/auth/login')
     } catch (e) {
       console.log(e);
       setLoading(false)

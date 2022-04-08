@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './style.scss';
-import { useDispatch } from 'react-redux'
 import InputField from '../../components/InputField';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader'
@@ -10,7 +9,6 @@ import {
   signInWithPopup, 
   GoogleAuthProvider 
 } from 'firebase/auth'
-import { setAuth } from '../../store/authSlice'
 
 const provider = new GoogleAuthProvider();
 
@@ -21,7 +19,6 @@ function Login() {
 
   const auth = getAuth()
 
-  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const singInHandle = async () => {
@@ -29,14 +26,6 @@ function Login() {
       try {
         setLoading(true)
         await signInWithEmailAndPassword(auth, email, pass)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          dispatch(setAuth({
-            email: user.email,
-            uid: user.uid,
-            token: user.accessToken
-          }))
-        })
         setLoading(false)
         navigate('/')
       } catch (e) {
@@ -45,23 +34,12 @@ function Login() {
       }
     }
   }
-  const singInWithGoogleHandle = async () => {
 
+  const singInWithGoogleHandle = async () => {
     try {
       setLoading(true)
       await signInWithPopup(auth, provider)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user.uid, 'uid');
-          dispatch(setAuth({
-            email: user.email,
-            uid: user.uid,
-            token: user.accessToken
-          }))
-        }).catch(e => {
-          throw e
-        });
-        navigate('/')
+      navigate('/')
       setLoading(false)
     } catch (e) {
       setLoading(false)
@@ -83,7 +61,7 @@ function Login() {
           <InputField 
             name='email' 
             value={email}
-            handleInput={setEmail}
+            handleInput={e => setEmail(e.target.value)}
             placeholder='Enter your email'
           />
         </div>
@@ -91,7 +69,7 @@ function Login() {
           <InputField 
             name='pass'
             value={pass}
-            handleInput={setPass}
+            handleInput={e => setPass(e.target.value)}
             placeholder='Enter your pass'
           />
         </div>
