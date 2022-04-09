@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import './style.scss';
-import InputField from '../../components/InputField';
 import { useNavigate } from 'react-router-dom';
-import Loader from '../../components/Loader'
+import { useDispatch } from 'react-redux';
 import { 
   getAuth,
   signInWithEmailAndPassword, 
   signInWithPopup, 
   GoogleAuthProvider 
-} from 'firebase/auth'
+} from 'firebase/auth';
+import { createUser } from 'src/store/userSlice';
+import { checkOnExists } from 'src/helpers/firebase/checkOnExists';
+
+
+import InputField from '../../components/InputField';
+import Loader from '../../components/Loader'
 
 const provider = new GoogleAuthProvider();
 
@@ -20,6 +25,7 @@ function Login() {
   const auth = getAuth()
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const singInHandle = async () => {
     if (email.trim() || pass.trim()) {
@@ -39,6 +45,13 @@ function Login() {
     try {
       setLoading(true)
       await signInWithPopup(auth, provider)
+        .then( async (userCredential) => {
+          const user = userCredential.user;
+          const userExist = await checkOnExists(user.uid)
+          if (!userExist) {
+            dispatch(createUser({...user}))
+          }
+        })
       navigate('/')
       setLoading(false)
     } catch (e) {

@@ -1,27 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.scss';
 import ToDoItem from 'src/components/ToDo/ToDoItem';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateTodos, setTodos } from 'src/store/todoSlice';
+import { useDispatch } from 'react-redux';
+import { updateTodos } from 'src/store/todoSlice';
 import { Reorder, AnimatePresence } from 'framer-motion'
-import {fetchFromFirebase} from 'src/helpers/fetchFromFirebase'
-import Loader from 'src/components/Loader';
-import { getUid } from 'src/helpers/getUid'
 
-function ToDoList() {
+function ToDoList({todos}) {
   const dispatch = useDispatch()
-  const todos = useSelector(state => state.todos.todos)
-
-  useEffect(() => {
-    async function fetchTodos() {
-      const uid = getUid()
-      if (uid) {
-        const todos = await fetchFromFirebase(`${uid}/todos`)
-        if (todos) dispatch(setTodos(todos))
-      }
-    }
-    fetchTodos()
-  }, []);
 
   const reorderHandle = todos => dispatch(updateTodos({todos}))
 
