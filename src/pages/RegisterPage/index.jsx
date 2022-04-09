@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
-import { useDispatch } from 'react-redux'
-import InputField from '../../components/InputField';
+
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Loader from '../../components/Loader'
 import { 
   getAuth,
   createUserWithEmailAndPassword, 
-} from 'firebase/auth'
-import { setAuth } from '../../store/authSlice'
+} from 'firebase/auth';
+import { createUser } from 'src/store/userSlice';
 
+import Loader from 'src/components/Loader';
+import InputField from 'src/components/InputField';
 
 function Register() {
   const dispatch = useDispatch()
@@ -141,15 +142,10 @@ function Register() {
       await createUserWithEmailAndPassword(auth, form.email, form.pass)
         .then(userCredential => {
           const user = userCredential.user;
-          console.log(user, 'registerNewUser');
-          dispatch(setAuth({
-            email: user.email,
-            uid: user.uid,
-            token: user.accessToken
-          }))
+          dispatch(createUser({...user, name: form.name}))
       })
       setLoading(false)
-      navigate('/auth/login')
+      navigate('/')
     } catch (e) {
       console.log(e);
       setLoading(false)
@@ -157,7 +153,6 @@ function Register() {
     }
     console.log('registerNewUser');
   }
-
 
   useEffect(() => {
     checkValid()

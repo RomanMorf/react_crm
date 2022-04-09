@@ -1,4 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { db } from 'src/firebase'
+import { ref, set } from "firebase/database";
 
 const userSlice = createSlice({
   name: 'users',
@@ -6,16 +8,20 @@ const userSlice = createSlice({
     users: []
   },
   reducers: {
-    addUser (state, action) {
-      state.users.push({
-        id: new Date().toString(),
-        name: action.payload.name,
-        surname: action.payload.surname,
-      })
+    createUser (state, action) {
+      const {uid, name, displayName, email} = action.payload
+
+      const newUser = {
+        name: name || displayName || 'none',
+        email: email,
+        uid: uid
+      }
+      
+      if (uid) set(ref(db, `users/${uid}/userInfo`), {...newUser})
     },
   }
 })
 
-export const {addUser} = userSlice.actions;
+export const { createUser, fetchUsers } = userSlice.actions;
 
 export default userSlice.reducer;

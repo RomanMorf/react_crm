@@ -2,7 +2,7 @@ import { getAuth } from 'firebase/auth'
 
 const useAuth = () => {
   const auth = getAuth()
-  return auth ? auth.currentUser : null
+  return auth.currentUser
 }
 
 export { useAuth };
