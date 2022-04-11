@@ -48,7 +48,6 @@ function Register() {
   }
 
   const validHandle = (e) => {
-
     switch (e.target.name) {
       case 'email':
         const validateEmail = (email) => {
@@ -112,6 +111,7 @@ function Register() {
         break;
 
         default:
+          checkValid()
         break;
     }
   }
@@ -168,7 +168,7 @@ function Register() {
             name='email' 
             value={form.email}
             handleBlur={validHandle}
-            handleInput={inputHandle}
+            onChange={inputHandle}
             placeholder='Enter your email'
           />
           {!formValid.email && <span className='form_helper'>Etner the correct email</span>}
@@ -178,7 +178,7 @@ function Register() {
             name='pass'
             value={form.pass}
             handleBlur={validHandle}
-            handleInput={inputHandle}
+            onChange={inputHandle}
             placeholder='Enter your pass'
           />
           {!formValid.pass && <span className='form_helper'>Password must be more then 5 symbol</span>}
@@ -188,7 +188,7 @@ function Register() {
             name='pass2'
             value={form.pass2}
             handleBlur={validHandle}
-            handleInput={inputHandle}
+            onChange={inputHandle}
             placeholder='Repeat your pass'
           />
         {!formValid.checkPass && <span className='form_helper'>Passwords must be the same</span>}
@@ -198,7 +198,7 @@ function Register() {
             name='name'
             value={form.name}
             handleBlur={validHandle}
-            handleInput={inputHandle}
+            onChange={inputHandle}
             placeholder='Enter you name'
           />
           {!formValid.name && <span className='form_helper'>Name must be longer then 3 symbol</span>}

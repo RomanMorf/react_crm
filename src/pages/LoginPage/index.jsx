@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -12,8 +12,10 @@ import { createUser } from 'src/store/userSlice';
 import { checkOnExists } from 'src/helpers/firebase/checkOnExists';
 
 
-import InputField from '../../components/InputField';
-import Loader from '../../components/Loader'
+import InputField from 'src/components/InputField';
+import Loader from 'src/components/Loader'
+
+import { useInput } from 'src/hooks/useInput'
 
 const provider = new GoogleAuthProvider();
 
@@ -74,7 +76,7 @@ function Login() {
           <InputField 
             name='email' 
             value={email}
-            handleInput={e => setEmail(e.target.value)}
+            handleInput={setEmail}
             placeholder='Enter your email'
           />
         </div>
@@ -82,7 +84,7 @@ function Login() {
           <InputField 
             name='pass'
             value={pass}
-            handleInput={e => setPass(e.target.value)}
+            handleInput={setPass}
             placeholder='Enter your pass'
           />
         </div>

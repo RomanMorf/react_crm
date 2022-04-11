@@ -37,8 +37,8 @@ function ToDoItem({todo}) {
       <input 
         className='todoitem_checkbox'
         type="checkbox" 
-        checked={todo.completed} 
-        onChange={toggleTodo} />
+        checked={ todo.completed } 
+        onChange={ toggleTodo } />
       <span className='todoitem_text'>{todo.text}</span>
       <button className='todoitem_btn' onClick={deleteTodo}>
       <span className="material-icons">delete</span>

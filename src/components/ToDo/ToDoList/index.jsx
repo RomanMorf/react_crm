@@ -17,7 +17,7 @@ function ToDoList({todos}) {
         as='ul' 
         axis='y' 
         values={ todos } 
-        onReorder={reorderHandle}
+        onReorder={ reorderHandle }
       >
         {todos.length 
         ? <AnimatePresence initial={false}> 

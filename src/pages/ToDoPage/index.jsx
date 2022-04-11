@@ -46,7 +46,7 @@ function ToDo() {
         {loading && <Loader/>}
         <InputField 
           value={text} 
-          handleInput={(e) => setText(e.target.value)}
+          handleInput={setText}
           handleEnter={addTask}
           placeholder='Enter taskname'
         />
