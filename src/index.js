@@ -6,6 +6,7 @@ import App from './App';
 import './firebase'
 
 import './assets/style/index.scss'
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>

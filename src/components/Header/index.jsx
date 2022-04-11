@@ -25,9 +25,8 @@ function Header() {
         <div>
           Logo
         </div>
-        <div>
-          {!auth &&<button onClick={logIn}>Log in</button>}
-          {auth && <button onClick={logOut}>Log out</button>}
+        <div className='header_btn'>
+          <button onClick={logOut}>Log out</button>
         </div>
       </div>
       <div className="container">

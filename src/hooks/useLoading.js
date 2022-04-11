@@ -4,7 +4,6 @@ const useLoading = () => {
   const [loading, setLoading] = useState(true)
 
   const toggleLoading = () => setLoading(!loading)
-
   const turnOnLoading = () => setLoading(true)
   const turnOffLoading = () => setLoading(false)
 

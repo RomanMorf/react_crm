@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -10,12 +10,11 @@ import {
 } from 'firebase/auth';
 import { createUser } from 'src/store/userSlice';
 import { checkOnExists } from 'src/helpers/firebase/checkOnExists';
-
+import { errorHandle } from 'src/helpers/errors/errorHandle';
 
 import InputField from 'src/components/InputField';
 import Loader from 'src/components/Loader'
 
-import { useInput } from 'src/hooks/useInput'
 
 const provider = new GoogleAuthProvider();
 
@@ -38,6 +37,7 @@ function Login() {
         navigate('/')
       } catch (e) {
         setLoading(false)
+        errorHandle(e)
         throw e
       }
     }
@@ -58,6 +58,7 @@ function Login() {
       setLoading(false)
     } catch (e) {
       setLoading(false)
+      errorHandle(e)
       throw e
     }
   }

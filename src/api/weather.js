@@ -38,12 +38,12 @@ export const getForecast = async (city = 'kiev') => {
   }
 }
 
-export const fetchWeather = async (city = 'kiev') => {
+export const fetchWeatherByCityName = async (city = 'kiev') => {
   var fullWeather = {}
 
   try {
-    const daily = await (await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`)).json()
-    const info = await (await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}`)).json()
+    const daily = await (await fetch(`${baseURL}weather?q=${city}&appid=${key}`)).json()
+    const info = await (await fetch(`${baseURL}forecast?q=${city}&appid=${key}`)).json()
 
     if (info.cod === "404" || daily.cod === "404 ") {
       fullWeather = {
@@ -59,11 +59,19 @@ export const fetchWeather = async (city = 'kiev') => {
         ...info,
       }  
     }
-
+    console.log(fullWeather, 'fetchWeatherByCityName');
     return fullWeather
 
   } catch (e) {
     console.log(e)
     throw e
   }
+}
+
+export const getWeatherByCoords = async (coords, part = 'current') => {
+  // const partArr = ['current', 'minutely', 'hourly', 'daily', 'alerts']
+
+  const weather = await (await fetch(`${baseURL}onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=${part}&appid=${key}`)).json()
+
+  return weather
 }

@@ -8,6 +8,8 @@ import {
   createUserWithEmailAndPassword, 
 } from 'firebase/auth';
 import { createUser } from 'src/store/userSlice';
+import { useToast } from 'src/hooks/useToast';
+import { errorHandle } from 'src/helpers/errors/errorHandle';
 
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/InputField';
@@ -15,6 +17,7 @@ import InputField from 'src/components/InputField';
 function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const {toastInfo, toastError , toastSuccess} = useToast()
 
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
@@ -146,9 +149,10 @@ function Register() {
       })
       setLoading(false)
       navigate('/')
+      toastSuccess('Account successfuly created')
     } catch (e) {
-      console.log(e);
       setLoading(false)
+      errorHandle(e)
       throw e
     }
     console.log('registerNewUser');

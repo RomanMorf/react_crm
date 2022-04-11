@@ -7,15 +7,17 @@ import { setTodos } from 'src/store/todoSlice';
 import { getFromDatabase } from 'src/helpers/firebase/getFromDatabase';
 import { getUid } from 'src/helpers/getUid';
 import { useLoading } from 'src/hooks/useLoading';
+import { useToast } from 'src/hooks/useToast';
 
 import ToDoList from 'src/components/ToDo/ToDoList';
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/InputField';
 
 function ToDo() {
+  const dispatch = useDispatch()
   const [text, setText] = useState('')
   const {loading, toggleLoading, turnOffLoading, turnOnLoading} = useLoading()
-  const dispatch = useDispatch()
+  const {toastInfo, toastSuccess} = useToast()
 
   const todos = useSelector(state => state.todos.todos)
 
@@ -36,6 +38,7 @@ function ToDo() {
     if (text.trim().length) {
       dispatch(addTodo({text}))
       setText('')
+      toastSuccess('New task created')
     }
   }
 
