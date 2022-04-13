@@ -14,7 +14,7 @@ const useLocation = () => {
       lat: pos.coords.latitude,
       lon: pos.coords.longitude
     }
-    console.log(position, 'position');    
+    // console.log(position, 'position');    
     setCoords(position)
   }
   

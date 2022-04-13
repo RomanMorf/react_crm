@@ -19,11 +19,10 @@ function InputField({
   }
 
   const inputAction = (e) => {
-    if (onChange )onChange(e)
+    if (onChange) onChange(e)
     if (handleInput) handleInput(e.target.value)
   }
 
-  
   const enterAction = e => {
     if (handleEnter) {
       if (e.code === "Enter" || e.code === "NumpadEnter") {
@@ -35,14 +34,14 @@ function InputField({
   return (
     <div className='inputfield_wrapper'>
       <input
-        ref={inputEl}
         className='inputfield'
+        ref={inputEl}
         placeholder=' '
         value={value}
         name={name}
         onBlur={handleBlur}
         onChange={e => inputAction(e)} 
-        onKeyUp={enterAction} 
+        onKeyUp={enterAction}
         />
       <label onClick={inputSelect} htmlFor={name} className='inputfield_placeholder'>{placeholder}</label>
     </div>

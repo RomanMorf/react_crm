@@ -5,8 +5,6 @@ function Contacts() {
   const text = useInput('')
   const {showModal, setShowModal, ModalComponent} = useModal()
 
-
-
   return (
     <div>
       <h1>Contacts page</h1>

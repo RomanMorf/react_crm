@@ -13,6 +13,8 @@ import ToDoList from 'src/components/ToDo/ToDoList';
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/InputField';
 
+import { fetchCollections } from 'src/helpers/firebase/collections'
+
 function ToDo() {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
@@ -31,14 +33,15 @@ function ToDo() {
     }
     fetchTodos()
     turnOffLoading()
+    fetchCollections()
   }, []);
 
 
   const addTask = async (e) => {
     if (text.trim().length) {
       dispatch(addTodo({text}))
+      toastSuccess(`New task "${text}" created`)
       setText('')
-      toastSuccess('New task created')
     }
   }
 
@@ -58,7 +61,10 @@ function ToDo() {
         </button>
       </div>
 
-      <ToDoList todos={todos} />
+      {todos.length 
+      ? <ToDoList todos={todos} /> 
+      : <p className='center'>No todos yet. Create new todo</p>}
+      
     </div>
   )
 };

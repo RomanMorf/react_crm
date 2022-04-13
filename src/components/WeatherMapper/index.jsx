@@ -2,7 +2,6 @@ import './style.scss'
 import { dateFilter } from 'src/helpers/dateFilter'
 
 function WeatherMapper({weather}) {
-  console.log(weather, 'weather from WeatherMapper');
 
   return (
     <>

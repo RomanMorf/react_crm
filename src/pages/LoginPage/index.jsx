@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style.scss';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { 
   getAuth,
   signInWithEmailAndPassword, 
@@ -12,6 +10,11 @@ import { createUser } from 'src/store/userSlice';
 import { checkOnExists } from 'src/helpers/firebase/checkOnExists';
 import { errorHandle } from 'src/helpers/errors/errorHandle';
 
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useInput } from 'src/hooks/useInput';
+import { useLoading } from 'src/hooks/useLoading';
+
 import InputField from 'src/components/InputField';
 import Loader from 'src/components/Loader'
 
@@ -19,9 +22,9 @@ import Loader from 'src/components/Loader'
 const provider = new GoogleAuthProvider();
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
-  const [loading, setLoading] = useState(false)
+  const email = useInput('')
+  const pass = useInput('')
+  const {loading, setLoading} = useLoading(false)
 
   const auth = getAuth()
 
@@ -29,10 +32,10 @@ function Login() {
   const dispatch = useDispatch()
 
   const singInHandle = async () => {
-    if (email.trim() || pass.trim()) {
+    if (email.value.trim() || pass.value.trim()) {
       try {
         setLoading(true)
-        await signInWithEmailAndPassword(auth, email, pass)
+        await signInWithEmailAndPassword(auth, email.value, pass.value)
         setLoading(false)
         navigate('/')
       } catch (e) {
@@ -75,17 +78,15 @@ function Login() {
         <h2>Login to your accaunt</h2>
         <div className='form_slot'>
           <InputField 
-            name='email' 
-            value={email}
-            handleInput={setEmail}
+            name='email'
+            {...email}
             placeholder='Enter your email'
           />
         </div>
         <div className="form_slot">
           <InputField 
             name='pass'
-            value={pass}
-            handleInput={setPass}
+            {...pass}
             placeholder='Enter your pass'
           />
         </div>
