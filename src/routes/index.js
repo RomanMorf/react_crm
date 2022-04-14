@@ -1,6 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+import AdminPage from "src/pages/AdminPage";
+
 import Login from '../pages/LoginPage'
 import Register from "../pages/RegisterPage";
 import Home from '../pages/HomePage'
@@ -44,6 +46,10 @@ function RoutesComponent() {
       <Route path="/auth/" element={<EmptyLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+      </Route>
+
+      <Route path="/" element={<MainLayout />}>
+        <Route path="/admin" element={<AdminPage />} />
       </Route>
 
       <Route path="/*" element={<NotFound />} />

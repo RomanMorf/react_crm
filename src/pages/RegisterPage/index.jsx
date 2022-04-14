@@ -12,7 +12,7 @@ import { useToast } from 'src/hooks/useToast';
 import { errorHandle } from 'src/helpers/errors/errorHandle';
 
 import Loader from 'src/components/Loader';
-import InputField from 'src/components/InputField';
+import InputField from 'src/components/elements/InputField';
 
 function Register() {
   const dispatch = useDispatch()

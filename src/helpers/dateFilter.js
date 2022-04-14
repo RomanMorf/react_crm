@@ -16,5 +16,6 @@ export const dateFilter = (value, format = 'date') => {
   const locale = 'en-EN' 
   // const locale = 'ru-RU'
 
-  return new Intl.DateTimeFormat(locale, options).format(new Date(value.toString().length === 13 ? value : value*1e3))
+  return new Intl.DateTimeFormat(locale, options)
+    .format(new Date(value.toString().length === 13 ? value : value*1e3))
 }

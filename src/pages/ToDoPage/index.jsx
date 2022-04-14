@@ -11,9 +11,7 @@ import { useToast } from 'src/hooks/useToast';
 
 import ToDoList from 'src/components/ToDo/ToDoList';
 import Loader from 'src/components/Loader';
-import InputField from 'src/components/InputField';
-
-import { fetchCollections } from 'src/helpers/firebase/collections'
+import InputField from 'src/components/elements/InputField';
 
 function ToDo() {
   const dispatch = useDispatch()
@@ -33,7 +31,6 @@ function ToDo() {
     }
     fetchTodos()
     turnOffLoading()
-    fetchCollections()
   }, []);
 
 
