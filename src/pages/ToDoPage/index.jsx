@@ -13,13 +13,12 @@ import ToDoList from 'src/components/ToDo/ToDoList';
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/InputField';
 
-import { fetchCollections } from 'src/helpers/firebase/collections'
 
 function ToDo() {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-  const {loading, toggleLoading, turnOffLoading, turnOnLoading} = useLoading()
-  const {toastInfo, toastSuccess} = useToast()
+  const {loading, turnOffLoading} = useLoading()
+  const {toastSuccess} = useToast()
 
   const todos = useSelector(state => state.todos.todos)
 
@@ -33,7 +32,6 @@ function ToDo() {
     }
     fetchTodos()
     turnOffLoading()
-    fetchCollections()
   }, []);
 
 

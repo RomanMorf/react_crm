@@ -18,8 +18,8 @@ const useLocation = () => {
     setCoords(position)
   }
   
-  const error = (error) => {
-    console.log(error, 'error')
+  const error = (e) => {
+    throw e
   }
 
   const getLocation = async () => {

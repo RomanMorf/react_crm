@@ -10,10 +10,6 @@ function Header() {
   const navigate = useNavigate()
   const auth = useSelector(state => state.auth.auth)
 
-  const logIn = () => {
-    navigate('/auth/login')
-  }
-
   const logOut = () => {
     dispatch(signOutUser())
     navigate('/auth/login')
@@ -26,7 +22,7 @@ function Header() {
           Logo
         </div>
         <div className='header_btn'>
-          <button onClick={logOut}>Log out</button>
+          {auth && <button onClick={logOut}>Log out</button>}
         </div>
       </div>
       <div className="container">
