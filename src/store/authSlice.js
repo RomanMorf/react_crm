@@ -11,20 +11,17 @@ const authSlice = createSlice({
   },
   reducers: {
     setAuth (state, action) {
-      console.log('setAuth - action');
       console.log(action.payload, 'action.payload');
-      console.log('Sign-in - successful');
     },
     async signOutUser (state, action) {
-      console.log('logOut');
       const auth = getAuth();
 
       await signOut(auth)
         .then(() => {
-          console.log('Sign-out successful.')
+          // console.log('Sign-out successful.')
         })
         .catch((error) => {
-          console.log(error, 'error signOutUser')
+          // console.error(error, 'error signOutUser')
           throw error
         });
     }

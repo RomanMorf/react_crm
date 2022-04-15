@@ -10,7 +10,8 @@ export const getDaily = async (city = 'kiev') => {
       localStorage.setItem('daily', JSON.stringify(await daily))
       return await daily
     } catch (e) {
-      console.log(e);
+      // console.log(e);
+      throw e;
     }
 
   } else {

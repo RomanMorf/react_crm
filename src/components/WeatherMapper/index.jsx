@@ -1,3 +1,4 @@
+import React from 'react';
 import './style.scss'
 import { dateFilter } from 'src/helpers/dateFilter'
 
