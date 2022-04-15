@@ -17,7 +17,7 @@ import InputField from 'src/components/elements/InputField';
 function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const {toastInfo, toastError , toastSuccess} = useToast()
+  const {toastSuccess} = useToast()
 
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
@@ -155,7 +155,6 @@ function Register() {
       errorHandle(e)
       throw e
     }
-    console.log('registerNewUser');
   }
 
   useEffect(() => {

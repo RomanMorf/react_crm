@@ -5,7 +5,7 @@ import { getAuth } from 'firebase/auth'
 const auth = getAuth()
 
 const useAuth = () => {
-  const [user, setUser] = useState(() => auth.currentUser)
+  const [user] = useState(() => auth.currentUser)
 
   return user
 }

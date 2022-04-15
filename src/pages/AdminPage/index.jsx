@@ -1,6 +1,4 @@
 import './style.scss'
-import { useModal } from 'src/hooks/useModal';
-import { useInput } from 'src/hooks/useInput';
 import { 
   updateDocToFirebase,
   addDocToFirebase,
@@ -16,7 +14,7 @@ import { dateFilter } from 'src/helpers/dateFilter';
 
 
 function AdminPage() {
-  // const {loading, setLoading} = useLoading(false)
+  const {loading, setLoading} = useLoading(false)
 
   const newUser = {
     name: 'Romario',
@@ -43,7 +41,7 @@ function AdminPage() {
     setLoading(false)
   }
 
-  const [messages, loading] = useCollection('messages', 'createdAt')
+  const [messages] = useCollection('messages', 'createdAt')
 
   return (
     <div className='admin'>

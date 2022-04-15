@@ -10,7 +10,7 @@ const authSlice = createSlice({
     auth: {}
   },
   reducers: {
-    async signOutUser (n) {
+    async signOutUser () {
       const auth = getAuth();
 
       await signOut(auth)

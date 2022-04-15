@@ -3,18 +3,18 @@ import { Routes, Route } from "react-router-dom";
 
 import AdminPage from "src/pages/AdminPage";
 
-import Login from '../pages/LoginPage'
-import Register from "../pages/RegisterPage";
-import Home from '../pages/HomePage'
-import Weather from '../pages/WeatherPage'
-import Contacts from '../pages/ContactsPage'
-import ToDo from '../pages/ToDoPage'
-import NotFound from '../pages/NotFoundPage'
+import Login from 'src/pages/LoginPage'
+import Register from "src/pages/RegisterPage";
+import Home from 'src/pages/HomePage'
+import Weather from 'src/pages/WeatherPage'
+import Contacts from 'src/pages/ContactsPage'
+import ToDo from 'src/pages/ToDoPage'
+import NotFound from 'src/pages/NotFoundPage'
 
-import EmptyLayout from "../layout/EmptyLayout";
-import MainLayout from "../layout/MainLayout";
+import EmptyLayout from "src/layout/EmptyLayout";
+import MainLayout from "src/layout/MainLayout";
 
-import { RequireAuth } from '../hoc/RequireAuth'
+import { RequireAuth } from 'src/hoc/RequireAuth'
 
 function RoutesComponent() {
 

@@ -9,11 +9,8 @@ import {
   collection,
   orderBy,
   limit,
-  query,
-  serverTimestamp,
-  onSnapshot } from "firebase/firestore"; 
+  query } from "firebase/firestore"; 
 
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
