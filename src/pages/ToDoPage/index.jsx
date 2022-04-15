@@ -16,8 +16,8 @@ import InputField from 'src/components/elements/InputField';
 function ToDo() {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-  const {loading, toggleLoading, turnOffLoading, turnOnLoading} = useLoading()
-  const {toastInfo, toastSuccess} = useToast()
+  const {loading, turnOffLoading} = useLoading()
+  const {toastSuccess} = useToast()
 
   const todos = useSelector(state => state.todos.todos)
 

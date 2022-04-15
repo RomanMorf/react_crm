@@ -10,27 +10,14 @@ const authSlice = createSlice({
     auth: {}
   },
   reducers: {
-    setAuth (state, action) {
-      console.log('setAuth - action');
-      console.log(action.payload, 'action.payload');
-      console.log('Sign-in - successful');
-    },
-    async signOutUser (state, action) {
-      console.log('logOut');
+    async signOutUser (n) {
       const auth = getAuth();
 
       await signOut(auth)
-        .then(() => {
-          console.log('Sign-out successful.')
-        })
-        .catch((error) => {
-          console.log(error, 'error signOutUser')
-          throw error
-        });
     }
   }
 })
 
-export const { signOutUser, setAuth } = authSlice.actions;
+export const { signOutUser } = authSlice.actions;
 
 export default authSlice.reducer;

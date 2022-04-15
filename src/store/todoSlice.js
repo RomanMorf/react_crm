@@ -35,7 +35,7 @@ const todoSlice = createSlice({
       const uid = getUid()
       if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },
-    uploadTodos (state, action) {
+    uploadTodos (state) {
       const uid = getUid()
       if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },

@@ -5,7 +5,7 @@ export const setToDatabase = async (path, payload) => {
   try {
     await set(ref(db, `${path}`), {...payload})
   } catch (e) {
-    console.error(e);
+    console.log(e,'error');
     throw e
   }
 }

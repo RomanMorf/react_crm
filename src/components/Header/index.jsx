@@ -1,3 +1,4 @@
+import React from 'react';
 import './style.scss';
 
 import Navigate from 'src/components/Navigate';
@@ -13,10 +14,6 @@ function Header() {
   const navigate = useNavigate()
   const auth = useSelector(state => state.auth.auth)
 
-  const logIn = () => {
-    navigate('/auth/login')
-  }
-
   const logOut = () => {
     dispatch(signOutUser())
     navigate('/auth/login')
@@ -29,7 +26,7 @@ function Header() {
           Logo
         </div>
         <div className='header_btn'>
-          <Button onClick={logOut} name="Log out"/>
+          {auth && <Button onClick={logOut} name="Log out"/>}
         </div>
       </div>
       <div className="container">
