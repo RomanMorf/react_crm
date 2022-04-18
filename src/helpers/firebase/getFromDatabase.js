@@ -8,10 +8,7 @@ export const getFromDatabase = async (path) => {
     } else {
       return undefined
     }
-  }).catch((e) => {
-    console.error(e);
-    throw e
-  });
+  })
 
   return value
 }

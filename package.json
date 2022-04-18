@@ -1,6 +1,7 @@
 {
+  "homepage": "http://romanmorf.github.io/react_crm",
   "name": "petshop",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
@@ -26,6 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
@@ -43,6 +46,7 @@
   },
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.29.4"
+    "eslint-plugin-react": "^7.29.4",
+    "gh-pages": "^3.2.3"
   }
 }
