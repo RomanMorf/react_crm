@@ -142,7 +142,7 @@ function Register() {
           dispatch(createUser({...user, name: form.name}))
       })
       setLoading(false)
-      navigate('/')
+      navigate('/react_crm/')
       toastSuccess('Account successfuly created')
     } catch (e) {
       setLoading(false)
@@ -211,7 +211,7 @@ function Register() {
           </span>
         </div>
         <div className="form_bottom">
-        <button onClick={() => navigate('/auth/login')}>Login</button>
+        <button onClick={() => navigate('/react_crm/auth/login')}>Login</button>
         <button 
           disabled={!readyForSubmit} 
           onClick={registerNewUser}>Register</button>
