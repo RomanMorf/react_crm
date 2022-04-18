@@ -35,7 +35,7 @@ function ToDo() {
   }, []);
 
 
-  const addTask = async (e) => {
+  const addTask = async () => {
     if (text.trim().length) {
       dispatch(addTodo({text}))
       toastSuccess(`New task "${text}" created`)
@@ -62,9 +62,8 @@ function ToDo() {
       {todos.length 
       ? <ToDoList todos={todos} /> 
       : <p className='center'>No todos yet. Create new todo</p>}
-      
     </div>
   )
-};
+}
 
 export default ToDo;

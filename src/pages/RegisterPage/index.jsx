@@ -10,6 +10,7 @@ import {
 import { createUser } from 'src/store/userSlice';
 import { useToast } from 'src/hooks/useToast';
 import { errorHandle } from 'src/helpers/errors/errorHandle';
+import { validateEmail } from 'src/helpers/valifateEmail';
 
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/InputField';
@@ -17,7 +18,7 @@ import InputField from 'src/components/InputField';
 function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const {toastInfo, toastError , toastSuccess} = useToast()
+  const {toastSuccess} = useToast()
 
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
@@ -53,13 +54,6 @@ function Register() {
   const validHandle = (e) => {
     switch (e.target.name) {
       case 'email':
-        const validateEmail = (email) => {
-          return String(email)
-            .toLowerCase()
-            .match(
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            )
-        }
 
         if (validateEmail(form.email)) {
           setFormValid({
@@ -155,7 +149,6 @@ function Register() {
       errorHandle(e)
       throw e
     }
-    console.log('registerNewUser');
   }
 
   useEffect(() => {
