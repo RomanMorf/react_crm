@@ -13,7 +13,7 @@ import { errorHandle } from 'src/helpers/errors/errorHandle';
 import { validateEmail } from 'src/helpers/valifateEmail';
 
 import Loader from 'src/components/Loader';
-import InputField from 'src/components/InputField';
+import InputField from 'src/components/elements/InputField';
 
 function Register() {
   const dispatch = useDispatch()
@@ -49,6 +49,14 @@ function Register() {
       ...form,
       [name]: value
     })
+  }
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
   }
 
   const validHandle = (e) => {

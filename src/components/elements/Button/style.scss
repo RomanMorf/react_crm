@@ -1,0 +1,19 @@
+@import 'src/assets/style/variables.scss';
+
+.button {
+  border: none;
+  
+  border-radius: 3px;
+  background-color: $btn_bg_primary;
+  box-shadow: $box_shadow_primary;
+  transition: all ease .3s;
+
+  padding: 5px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn_bg_hover;
+    box-shadow: $box_shadow_hover;
+  }
+}

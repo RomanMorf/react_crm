@@ -17,6 +17,7 @@ export const getForecast = async (city = 'kiev') => {
 
 export const fetchWeatherByCityName = async (city = 'kiev') => {
   var fullWeather = {}
+
   const daily = await (await fetch(`${baseURL}weather?q=${city}&appid=${key}`)).json()
   const info = await (await fetch(`${baseURL}forecast?q=${city}&appid=${key}`)).json()
 
@@ -34,8 +35,8 @@ export const fetchWeatherByCityName = async (city = 'kiev') => {
       ...info,
     }  
   }
-  return fullWeather
 
+  return fullWeather
 }
 
 export const getWeatherByCoords = async (coords, part = 'current') => {

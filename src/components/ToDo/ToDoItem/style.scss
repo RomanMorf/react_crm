@@ -1,4 +1,4 @@
-@import '../..//../assets//style/variables.scss';
+@import 'src/assets/style/variables.scss';
 
 .todoitem {
   list-style: none;
@@ -9,6 +9,10 @@
   border: 1px solid $hover_prymary;
   border-radius: 3px;
   margin-bottom: 3px;
+
+  &.completed {
+    background-color: $bg_secondary;
+  }
 
   &_checkbox {
     margin-right: 10px;

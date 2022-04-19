@@ -1,9 +1,13 @@
 import React from 'react';
-import Navigate from '../Navigate'
 import './style.scss';
+
+import Navigate from 'src/components/Navigate';
+import Button from 'src/components/elements/Button';
+
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { signOutUser } from '../../store/authSlice'
+import { signOutUser } from 'src/store/authSlice'
+
 
 function Header() {
   const dispatch = useDispatch()
@@ -22,7 +26,7 @@ function Header() {
           Logo
         </div>
         <div className='header_btn'>
-          {auth && <button onClick={logOut}>Log out</button>}
+          {auth && <Button onClick={logOut} name="Log out"/>}
         </div>
       </div>
       <div className="container">

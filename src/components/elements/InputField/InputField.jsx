@@ -1,7 +1,6 @@
 import './style.scss'
 import React, { useRef } from 'react';
 
-
 function InputField({
     value, 
     name,
@@ -9,7 +8,7 @@ function InputField({
     handleInput, 
     handleEnter,
     handleBlur,
-    placeholder
+    placeholder = ' '
   }) {
 
   const inputEl = useRef()

@@ -6,7 +6,7 @@ import { useAuth } from 'src/hooks/useAuth'
 const RequireAuth = ({children}) => {
 
   const location = useLocation()
-  const auth = useAuth()
+  const auth = useAuth()  
 
   if (!auth) {
     return <Navigate to='/react_crm/auth/login' state={{from: location}}/>

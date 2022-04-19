@@ -16,7 +16,8 @@
 	],
 	"rules": {
 		"no-console": "error",
-		"react/prop-types": 0,
-		"react/no-unescaped-entities": 0
+		"react/prop-types": "off",
+		"react/no-unescaped-entities": 0,
+		"react/react-in-jsx-scope": "off"
 	}
 }

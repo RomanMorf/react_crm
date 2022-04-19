@@ -11,8 +11,7 @@ import { useToast } from 'src/hooks/useToast';
 
 import ToDoList from 'src/components/ToDo/ToDoList';
 import Loader from 'src/components/Loader';
-import InputField from 'src/components/InputField';
-
+import InputField from 'src/components/elements/InputField';
 
 function ToDo() {
   const dispatch = useDispatch()

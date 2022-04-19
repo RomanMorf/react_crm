@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { useInput } from 'src/hooks/useInput';
 import { useLoading } from 'src/hooks/useLoading';
 
-import InputField from 'src/components/InputField';
+import InputField from 'src/components/elements/InputField';
 import Loader from 'src/components/Loader'
 
 
