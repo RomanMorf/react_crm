@@ -18,8 +18,8 @@ function RoutesComponent() {
 
   return (
     <Routes>
-      <Route path="/react_crm" element={<MainLayout />}>
-        <Route path="/react_crm" element={
+      <Route path="/react_crm/" element={<MainLayout />}>
+        <Route path="/react_crm/" element={
           <RequireAuth>
             <Home />
           </RequireAuth>
@@ -46,7 +46,8 @@ function RoutesComponent() {
         <Route path="register" element={<Register />} />
       </Route>
 
-        <Route path="/*" element={<NotFound />} />
+      <Route path="/*" element={<NotFound />} />
+      <Route path="/react_crm/*" element={<NotFound />} />
     </Routes>
   )
 }

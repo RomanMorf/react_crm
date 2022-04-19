@@ -42,6 +42,6 @@ export const getWeatherByCoords = async (coords, part = 'current') => {
   // const partArr = ['current', 'minutely', 'hourly', 'daily', 'alerts']
 
   const weather = await (await fetch(`${baseURL}onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=${part}&appid=${key}`)).json()
-
+  
   return weather
 }

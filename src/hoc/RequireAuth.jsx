@@ -9,7 +9,7 @@ const RequireAuth = ({children}) => {
   const auth = useAuth()
 
   if (!auth) {
-    return <Navigate to='/auth/login' state={{from: location}}/>
+    return <Navigate to='/react_crm/auth/login' state={{from: location}}/>
   }
 
   return children

@@ -1,6 +1,6 @@
 {
   "homepage": "http://romanmorf.github.io/react_crm",
-  "name": "petshop",
+  "name": "react_crm",
   "version": "0.1.8",
   "private": true,
   "dependencies": {
