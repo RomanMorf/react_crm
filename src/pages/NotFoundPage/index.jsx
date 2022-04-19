@@ -4,7 +4,7 @@ function Home() {
   return (
     <>
       Oops... Page not found.
-      <NavLink to="/react_crm/">Go to the main page</NavLink>
+      <NavLink to="/">Go to the main page</NavLink>
     </>
   )
 }

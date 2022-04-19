@@ -37,7 +37,7 @@ function Login() {
         setLoading(true)
         await signInWithEmailAndPassword(auth, email.value, pass.value)
         setLoading(false)
-        navigate('/react_crm/')
+        navigate('/')
       } catch (e) {
         setLoading(false)
         errorHandle(e)
@@ -57,7 +57,7 @@ function Login() {
             dispatch(createUser({...user}))
           }
         })
-      navigate('/react_crm/')
+      navigate('/')
       setLoading(false)
     } catch (e) {
       setLoading(false)
@@ -97,7 +97,7 @@ function Login() {
         <div className="form_bottom">
           <p>
             <span>If you don't have an accaunt yet, </span>
-            <a onClick={() => navigate('/react_crm/auth/register')}>Register now</a>
+            <a onClick={() => navigate('/auth/register')}>Register now</a>
           </p>
         </div>       
       </form>

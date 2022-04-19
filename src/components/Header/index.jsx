@@ -12,7 +12,7 @@ function Header() {
 
   const logOut = () => {
     dispatch(signOutUser())
-    navigate('/react_crm/auth/login')
+    navigate('/auth/login')
   }
 
   return (
