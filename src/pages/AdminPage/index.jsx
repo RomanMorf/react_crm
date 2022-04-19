@@ -29,15 +29,13 @@ function AdminPage() {
 
   const fetch = async () => {
     setLoading(true)
-    const data = await fetchDocFromFirebase('users', 'rXVpp5jEB2JixCQJgFcH')
-    console.log(data, 'fetch');
+    await fetchDocFromFirebase('users', 'rXVpp5jEB2JixCQJgFcH')
     setLoading(false)
   }
 
   const fetchAll = async () => {
     setLoading(true)
-    const data = await fetchDocsFromFirebase('users')
-    console.log(data, 'fetchAll');
+    await fetchDocsFromFirebase('users')
     setLoading(false)
   }
 

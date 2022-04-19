@@ -45,14 +45,15 @@ function SignIn() {
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
 
-    try {
+    // try {
       await signInWithPopup(auth, provider)
-        .then( async (userCredential) => {
-          const user = userCredential.user;
-        })
-    } catch (e) {
-      throw e
-    }
+        // .then( async (userCredential) => {
+        //   // const user = userCredential.user;
+        // })
+    // } catch (e) {
+    //   console.log(e, 'error');
+    //   throw e
+    // }
   }
 
   return (
