@@ -1,27 +1,31 @@
-.form {
-  margin: 20px;
-  padding: 5px;
-  min-width: 400px;
-  max-width: 8000px;
-  background-color: #fff;
-  border-radius: 5px;
+// @import 'src/assets/style/variables.scss';
 
-  & h2 {
-    text-align: center;
-  }
+// .form {
+//   margin: 20px;
+//   padding: 5px;
+//   min-width: 400px;
+//   max-width: 8000px;
 
-  &_slot {
-    margin-bottom: 20px;
-    position: relative;
-  }
+//   background-color: #fff;
+//   border-radius: 5px;
+//   box-shadow: $box_shadow_secondary;
 
-  &_bottom {
-    display: flex;
-    justify-content: space-around;
-  }
+//   & h2 {
+//     text-align: center;
+//   }
 
-  a {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-}
+//   &_slot {
+//     margin-bottom: 20px;
+//     position: relative;
+//   }
+
+//   &_bottom {
+//     display: flex;
+//     justify-content: space-around;
+//   }
+
+//   a {
+//     cursor: pointer;
+//     text-decoration: underline;
+//   }
+// }

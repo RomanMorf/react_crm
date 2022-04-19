@@ -1,6 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from '@testing-library/react';
-// import from '@'
-
 import InputField from './InputField';
 
 const onChange = jest.fn()
@@ -11,8 +10,10 @@ describe('InputField component', () => {
   })
 
   it('InputField renders', () => {
-    render(<InputField />);
+    render(<InputField placeholder="placeholder"  />);
 
+    // const input = screen.getByPlaceholderText('placeholder')
+    // expect(input).toBeInTheDocument()
   })
 
 
