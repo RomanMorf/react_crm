@@ -4,13 +4,13 @@ import {
   addDocToFirebase,
   fetchDocFromFirebase,
   fetchDocsFromFirebase,
-  useCollection
+  // useCollection
 } from 'src/helpers/firebase/firestore';
 import Chat from 'src/components/Chat';
 import Loader from 'src/components/Loader';
 
 import { useLoading } from 'src/hooks/useLoading';
-import { dateFilter } from 'src/helpers/dateFilter';
+// import { dateFilter } from 'src/helpers/dateFilter';
 
 
 function AdminPage() {
@@ -39,16 +39,16 @@ function AdminPage() {
     setLoading(false)
   }
 
-  const [messages] = useCollection('messages', 'createdAt')
+  // const [messages] = useCollection('messages', 'createdAt')
 
   return (
     <div className='admin'>
       <h1>Admin Page</h1>
       {loading && <Loader />}
 
-      <div className='admin_chat'>
+      {/* <div className='admin_chat'>
       {(messages && !loading) && messages.map( (msg, idx) => <ChatMessage key={idx} message={msg}/>)}
-      </div>
+      </div> */}
 
       <button onClick={() => updateDocToFirebase('users', 'VB5edRxp4tobYangzg1i', newUser2)}>updateDocToFirebase</button>
       <button onClick={() => addDocToFirebase('users', newUser)}>addDocToFirebase</button>
@@ -62,13 +62,13 @@ function AdminPage() {
   )
 }
 
-const ChatMessage = ({message}) => {
+// const ChatMessage = ({message}) => {
 
-  const { text, uid } = message
+//   const { text, uid } = message
 
-  const msgDate = dateFilter(message.createdAt.seconds, 'time')
+//   const msgDate = dateFilter(message.createdAt.seconds, 'time')
 
-  return <p>{msgDate}:{uid} - {text}</p>
-}
+//   return <p>{msgDate}:{uid} - {text}</p>
+// }
 
 export default AdminPage;

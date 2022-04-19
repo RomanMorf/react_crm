@@ -1,5 +1,4 @@
 import { fs } from 'src/firebase';
-
 import { 
   doc,
   setDoc,
@@ -10,7 +9,6 @@ import {
   orderBy,
   limit,
   query } from "firebase/firestore"; 
-
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
@@ -19,7 +17,6 @@ export const addDocToFirebase = async (path, payload) => {
   const id = docRef.id
   await setDoc(doc(fs, `${path}`, `${id}`), {...payload, id: id})
 }
-
 
 export const updateDocToFirebase = async (path, key, payload) => {
   await setDoc(doc(fs, `${path}`, `${key}`), {...payload})
