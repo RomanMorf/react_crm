@@ -18,8 +18,8 @@ function RoutesComponent() {
 
   return (
     <Routes>
-      <Route path="/react_crm/" element={<MainLayout />}>
-        <Route path="/react_crm/" element={
+      <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={
           <RequireAuth>
             <Home />
           </RequireAuth>
@@ -41,13 +41,12 @@ function RoutesComponent() {
         } />
       </Route>
 
-      <Route path="/react_crm/auth/" element={<EmptyLayout />}>
+      <Route path="/auth/" element={<EmptyLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
 
       <Route path="/*" element={<NotFound />} />
-      <Route path="/react_crm/*" element={<NotFound />} />
     </Routes>
   )
 }
