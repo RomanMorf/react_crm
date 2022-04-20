@@ -18,6 +18,7 @@ import { useLoading } from 'src/hooks/useLoading';
 import InputField from 'src/components/elements/InputField';
 import Loader from 'src/components/Loader'
 import Button from 'src/components/elements/Button';
+import logo from 'src/assets/img/google_logo.svg';
 
 
 const provider = new GoogleAuthProvider();
@@ -93,7 +94,7 @@ function Login() {
         </div>
         <div className="form_bottom">
           <Button name="Sign in" onClick={singInHandle}/>
-          <Button name="Sign in with google" onClick={singInWithGoogleHandle}/>
+          <Button name="Sign in with google" onClick={singInWithGoogleHandle} img={logo}/>
         </div>       
         <div className="form_bottom">
           <p>

@@ -2,18 +2,26 @@
 
 .button {
   border: none;
-  
   border-radius: 3px;
-  background-color: $btn_bg_primary;
+
+  background: linear-gradient(to right, #66ffff 0%, #0066cc 100%);
   box-shadow: $box_shadow_primary;
   transition: all ease .3s;
 
-  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  font-weight: bold;
 
   cursor: pointer;
 
   &:hover {
-    background-color: $btn_bg_hover;
     box-shadow: $box_shadow_hover;
+  }
+
+  img {
+    margin-right: 5px;
   }
 }
