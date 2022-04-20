@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.scss';
+
 import { useDispatch } from 'react-redux';
-import { removeTodo, toggleTodoCompleted } from '../../../store/todoSlice'
+import { removeTodo, toggleTodoCompleted } from 'src/store/todoSlice'
 import { Reorder } from 'framer-motion'
 
 import Checkbox from 'src/components/elements/Checkbox';
@@ -25,7 +26,7 @@ function ToDoItem({todo}) {
 
   return (
     <Reorder.Item 
-      value={todo} 
+      value={todo}
       className={todo.completed ? 'todoitem completed' : 'todoitem'}
       whileHover={{
         cursor: 'grab',
