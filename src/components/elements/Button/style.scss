@@ -1,10 +1,11 @@
 @import 'src/assets/style/variables.scss';
 
 .button {
+  padding: 0;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
+  overflow: hidden;
 
-  background: linear-gradient(to right, #66ffff 0%, #0066cc 100%);
   box-shadow: $box_shadow_primary;
   transition: all ease .3s;
 
@@ -12,16 +13,28 @@
   justify-content: center;
   align-items: center;
 
-  padding: 10px;
-  font-weight: bold;
-
   cursor: pointer;
+
+
+  &_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 30px;
+    height: 30px;
+  }
+
+  &_text {
+    padding: 10px;
+    background: $btn_bg_primary;
+
+    padding: 10px;
+    font-weight: bold;
+  }
 
   &:hover {
     box-shadow: $box_shadow_hover;
   }
 
-  img {
-    margin-right: 5px;
-  }
 }

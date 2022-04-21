@@ -10,7 +10,7 @@ import {
 import { createUser } from 'src/store/userSlice';
 import { useToast } from 'src/hooks/useToast';
 import { errorHandle } from 'src/helpers/errors/errorHandle';
-import { validateEmail } from 'src/helpers/valifateEmail';
+import { validateEmail } from 'src/helpers/validateEmail';
 
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/elements/InputField';

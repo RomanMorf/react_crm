@@ -6,8 +6,13 @@ function Button({ name, onClick, className, img }) {
       className={className ? `${className} button` : 'button'}
       onClick={onClick}
     >
-      {img && <img src={img} alt="button logo" />}
-      {name}
+      {img && 
+        <div className='button_logo'>
+          <img src={img} alt="button logo" />
+        </div>}
+      <div className='button_text'>
+        {name}
+      </div>
     </button>
   )
 }
