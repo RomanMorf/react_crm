@@ -1,14 +1,15 @@
 import './style.scss'
 import { NavLink } from "react-router-dom";
+import { links } from 'src/assets/menuLinks/links'
 
-function Navigate({links}) {
+function Navigate() {
 
   return (
     <nav className='unselectable'>
       <ul className='nav_list'>
-        {links.map(link => {
+        {links.map((link, idx) => {
           return (
-            <li className='nav_item' key={link.path}>
+            <li className='nav_item' key={`key-${idx}`}>
               <NavLink 
                 className="nav_link"
                 to={link.path}

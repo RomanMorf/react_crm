@@ -5,8 +5,13 @@ import Navigate from 'src/components/Navigate';
 import Button from 'src/components/elements/Button';
 
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
-import { signOutUser } from 'src/store/authSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { setError } from 'src/store/errorSlice'
+
+import { 
+  getAuth,
+  signOut,
+} from 'firebase/auth'
 
 
 function Header() {
@@ -14,8 +19,15 @@ function Header() {
   const navigate = useNavigate()
   const auth = useSelector(state => state.auth.auth)
 
-  const logOut = () => {
-    dispatch(signOutUser())
+  const logOut = async () => {
+    try {
+      const auth = getAuth();
+      await signOut(auth)
+  
+    } catch (e) {
+      dispatch(setError(e))
+    }
+
     navigate('/react_crm/auth/login')
   }
 

@@ -34,7 +34,6 @@ function ToDo() {
     turnOffLoading()
   }, []);
 
-
   const addTask = async () => {
     if (text.trim().length) {
       dispatch(addTodo({text}))
