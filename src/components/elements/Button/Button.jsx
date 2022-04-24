@@ -1,10 +1,11 @@
 import './style.scss'
 
-function Button({ name, onClick, className, img }) {
+function Button({ name, onClick, className, img, disabled }) {
   return (
     <button
       className={className ? `${className} button` : 'button'}
       onClick={onClick}
+      disabled={disabled ? disabled : null}
     >
       {img && 
         <div className='button_logo'>

@@ -15,7 +15,6 @@
 
   cursor: pointer;
 
-
   &_logo {
     display: flex;
     justify-content: center;
@@ -31,6 +30,10 @@
 
     padding: 10px;
     font-weight: bold;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 
   &:hover {
