@@ -1,8 +1,11 @@
 import React from 'react';
 import './style.scss';
+
 import { useDispatch } from 'react-redux';
-import {removeTodo, toggleTodoCompleted} from '../../../store/todoSlice'
+import { removeTodo, toggleTodoCompleted } from 'src/store/todoSlice'
 import { Reorder } from 'framer-motion'
+
+import Checkbox from 'src/components/elements/Checkbox';
 
 const variants = {
   initial: {},
@@ -23,8 +26,8 @@ function ToDoItem({todo}) {
 
   return (
     <Reorder.Item 
-      value={todo} 
-      className='todoitem'
+      value={todo}
+      className={todo.completed ? 'todoitem completed' : 'todoitem'}
       whileHover={{
         cursor: 'grab',
       }}
@@ -34,11 +37,11 @@ function ToDoItem({todo}) {
       }}
       {...variants}
     >
-      <input 
-        className='todoitem_checkbox'
-        type="checkbox" 
+      <Checkbox 
+        onChange={ toggleTodo }
         checked={ todo.completed } 
-        onChange={ toggleTodo } />
+        className='todoitem_checkbox'
+      />
       <span className='todoitem_text'>{todo.text}</span>
       <button className='todoitem_btn' onClick={deleteTodo}>
       <span className="material-icons">delete</span>

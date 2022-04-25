@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { db } from '../firebase'
+import { db } from 'src/firebase'
 import { ref, set } from "firebase/database";
 import { getUid } from 'src/helpers/getUid'
 

@@ -1,7 +1,9 @@
+@import 'src/assets/style/variables.scss';
+
 .footer {
   border-top: 1px solid grey;
   padding: 30px;
-  background-color: rgb(143, 142, 142);
+  background-color: $bg_primary;
   display: flex;
   justify-content: space-around;
   align-items: center;

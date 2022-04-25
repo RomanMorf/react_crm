@@ -1,15 +1,14 @@
 import './style.scss'
 import React, { useRef } from 'react';
 
-
 function InputField({
     value, 
     name,
+    placeholder = ' ',
     onChange,
     handleInput, 
     handleEnter,
     handleBlur,
-    placeholder
   }) {
 
   const inputEl = useRef()
@@ -42,8 +41,12 @@ function InputField({
         onBlur={handleBlur}
         onChange={e => inputAction(e)} 
         onKeyUp={enterAction}
-        />
-      <label onClick={inputSelect} htmlFor={name} className='inputfield_placeholder'>{placeholder}</label>
+      />
+      <label 
+        onClick={inputSelect} 
+        htmlFor={name} 
+        className='inputfield_placeholder'
+      >{placeholder}</label>
     </div>
   )
 }

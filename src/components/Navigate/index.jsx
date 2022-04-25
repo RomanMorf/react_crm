@@ -28,4 +28,4 @@ function Navigate() {
   )
 }
 
-export default Navigate;
+export {default} from './Navigate'

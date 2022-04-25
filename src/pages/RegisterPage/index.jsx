@@ -10,10 +10,11 @@ import {
 import { createUser } from 'src/store/userSlice';
 import { useToast } from 'src/hooks/useToast';
 import { errorHandle } from 'src/helpers/errors/errorHandle';
-import { validateEmail } from 'src/helpers/valifateEmail';
+import { validateEmail } from 'src/helpers/validateEmail';
 
 import Loader from 'src/components/Loader';
-import InputField from 'src/components/InputField';
+import InputField from 'src/components/elements/InputField';
+import Button from 'src/components/elements/Button';
 
 function Register() {
   const dispatch = useDispatch()
@@ -211,10 +212,8 @@ function Register() {
           </span>
         </div>
         <div className="form_bottom">
-        <button onClick={() => navigate('/auth/login')}>Login</button>
-        <button 
-          disabled={!readyForSubmit} 
-          onClick={registerNewUser}>Register</button>
+          <Button onClick={() => navigate('/react_crm/auth/login')} name="Login"/>
+          <Button onClick={registerNewUser} name="register" disabled={!readyForSubmit} />
         </div>
       </form>
     </div>

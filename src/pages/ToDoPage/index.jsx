@@ -11,8 +11,8 @@ import { useToast } from 'src/hooks/useToast';
 
 import ToDoList from 'src/components/ToDo/ToDoList';
 import Loader from 'src/components/Loader';
-import InputField from 'src/components/InputField';
-
+import InputField from 'src/components/elements/InputField';
+import Button from 'src/components/elements/Button';
 
 function ToDo() {
   const dispatch = useDispatch()
@@ -34,7 +34,6 @@ function ToDo() {
     turnOffLoading()
   }, []);
 
-
   const addTask = async () => {
     if (text.trim().length) {
       dispatch(addTodo({text}))
@@ -54,9 +53,7 @@ function ToDo() {
           handleEnter={addTask}
           placeholder='Enter taskname'
         />
-        <button onClick={addTask}>
-          Add task
-        </button>
+        <Button name="Add task" onClick={addTask}/>
       </div>
 
       {todos.length 
