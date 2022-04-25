@@ -2,8 +2,10 @@ import './style.scss'
 import React, { useRef } from 'react';
 
 function InputField({
-    value, 
+    id,
     name,
+    type,
+    value, 
     placeholder = ' ',
     onChange,
     handleInput, 
@@ -33,6 +35,8 @@ function InputField({
   return (
     <div className='inputfield_wrapper'>
       <input
+        id={id}
+        type={type}
         className='inputfield'
         ref={inputEl}
         placeholder=' '

@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "firebase": "^9.6.10",
+    "formik": "^2.2.9",
     "framer-motion": "^6.2.8",
     "jest": "^27.5.1",
     "npm": "^8.7.0",
@@ -32,6 +33,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "firebase": "npm run build && firebase deploy --only hosting",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },

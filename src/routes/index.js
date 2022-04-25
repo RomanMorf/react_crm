@@ -11,6 +11,8 @@ import Contacts from 'src/pages/ContactsPage'
 import ToDo from 'src/pages/ToDoPage'
 import NotFound from 'src/pages/NotFoundPage'
 
+import Landing from 'src/pages/LandingPage'
+
 import EmptyLayout from "src/layout/EmptyLayout";
 import MainLayout from "src/layout/MainLayout";
 
@@ -47,6 +49,8 @@ function RoutesComponent() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
+
+      <Route path="/landing" element={<Landing />} />
 
       <Route path="/" element={<MainLayout />}>
         <Route path="/admin" element={<AdminPage />} />

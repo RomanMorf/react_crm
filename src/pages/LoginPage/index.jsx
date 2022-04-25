@@ -92,16 +92,16 @@ function Login() {
             placeholder='Enter your pass'
           />
         </div>
-        <div className="form_bottom">
+        <div className="form_bottom mb-10">
           <Button name="Sign in" onClick={singInHandle}/>
           <Button name="Sign in with google" onClick={singInWithGoogleHandle} img={logo}/>
         </div>       
-        <div className="form_bottom">
-          <p>
+        <div className='form_bottom'>
+          <span>
             <span>If you don't have an accaunt yet, </span>
             <a onClick={() => navigate('/auth/register')}>Register now</a>
-          </p>
-        </div>       
+          </span>
+        </div>
       </form>
     </div>
   )

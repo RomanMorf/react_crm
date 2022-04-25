@@ -1,0 +1,52 @@
+.red {
+  color: #ff4040;
+}
+.landing {
+  .container {
+    width: 100%;
+    min-width: 1200px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .landing {
+    .container {
+      min-width: 540px;
+
+      max-width: 1440px;
+    }
+  }
+}
+
+@media (max-width: 1200px){
+  .landing {
+    .container {
+      max-width: 1140px;
+    }
+  }
+}
+
+@media (max-width: 992px){
+  .landing {
+    .container {
+      max-width: 960px;
+    }
+  }
+}
+
+@media (min-width: 768px){
+  .landing {
+    .container {
+      max-width: 720px;
+    }
+  }
+}
+
+@media (min-width: 576px){
+  .landing {
+    .container {
+      max-width: 540px;
+    }
+  }
+}
+
