@@ -6,10 +6,29 @@ import phone from 'src/assets/img/icon-phone.svg'
 import menuIcon from 'src/assets/img/icon-menu.svg'
 import closeIcon from 'src/assets/img/icon-close.png'
 
+// const links = [
+//   {title: 'О нас', url: '#about-us'},
+//   {title: 'Цены', url: '#prices'},
+//   {title: 'Услуги', url: '#our-services'},
+//   {title: 'Обратная связь', url: '#contact-us'},
+// ]
 
-function Navigate () {
+
+
+function Navigate ({links}) {
   const [menu, setMenu] = useState(false)
 
+  function linkMapper() {
+    return links.map((link, idx) => {
+  
+      return (
+        <li className='nav_item' key={ idx }>
+          <a href={ link.url }>{ link.title }</a>
+        </li>
+      )
+    })
+  }
+  
   return (
     <div className="nav">
       <div className="nav_body">
@@ -21,9 +40,7 @@ function Navigate () {
             <div className="nav_main">
               <p className='red'>Автомобили с аукционов Copart / Iaai / Manheim</p>
               <ul className='nav_list'>
-                <li className='nav_item'>О нас</li>
-                <li className='nav_item'>Цены</li>
-                <li className='nav_item'>Услуги</li>
+                { linkMapper() }
               </ul>
             </div>
             <div className="nav_contacts">
@@ -45,9 +62,7 @@ function Navigate () {
           <p><a className='nav_tel' href="tel:+380950001767">+38 095 000 17 67</a></p>
           <p><a className='nav_tel' href="tel:+380930001767">+38 093 000 17 67</a></p>
           <ul className='nav_list'>
-            <li className='nav_item'>О нас</li>
-            <li className='nav_item'>Цены</li>
-            <li className='nav_item'>Услуги</li>
+            { linkMapper() }
           </ul>
         </div>
       </div>

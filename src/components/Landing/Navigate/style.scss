@@ -2,16 +2,10 @@
   color: #fff;
   position: relative;
 
-
   &_body {
     background-color: rgba(43,45,49,0.95);
     position: relative;
     z-index: 5000;
-  }
-
-  & .container {
-    max-width: 1200px;
-    margin: auto;
   }
 
   &_section {
@@ -39,6 +33,11 @@
       margin: 0;
       padding: 0;
     }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
   }
 
   &_item {
@@ -57,6 +56,7 @@
     background-color: #37393f;
     z-index: 10;
     transition: all ease-in-out .5s;
+    padding-top: 50px;
 
     & .nav_list {
       flex-direction: column;
@@ -68,7 +68,7 @@
     }
     
     &.active {
-      top: 75px;
+      top: 50px;
       transition: all ease .5s;
     }
   }
@@ -82,9 +82,6 @@
 
 @media (max-width: 1500px) {
   .nav {
-    & .container {
-      max-width: 1440px;
-    }
   }
 }
 
@@ -94,19 +91,11 @@
       background-color: rgba(43,45,49,1);
     }
   }
-
-  .nav .container {
-    max-width: 1140px;
-  }
   
 }
 
 @media (max-width: 992px){
   .nav {
-    .container {
-      max-width: 960px;
-    }
-
     &_main {
       display: none;
     }
@@ -124,16 +113,10 @@
 
 @media (min-width: 768px){
   .nav {
-    .container {
-      max-width: 720px;
-    }
   }
 }
 
 @media (min-width: 576px){
   .nav {
-    .container {
-      max-width: 540px;
-    }  
   }
 }

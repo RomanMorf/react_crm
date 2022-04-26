@@ -11,6 +11,7 @@ function InputField({
     handleInput, 
     handleEnter,
     handleBlur,
+    className,
   }) {
 
   const inputEl = useRef()
@@ -37,7 +38,7 @@ function InputField({
       <input
         id={id}
         type={type}
-        className='inputfield'
+        className={className ? `${className} inputfield` : 'inputfield'}
         ref={inputEl}
         placeholder=' '
         value={value}

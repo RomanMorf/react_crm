@@ -5,6 +5,7 @@ import clock from 'src/assets/img/widget-clock.svg'
 import address from 'src/assets/img/widget-address.svg'
 import mail from 'src/assets/img/widget-mail.svg'
 import phone from 'src/assets/img/widget-phone.svg'
+import logo from 'src/assets/img/logo.png'
 
 function Footer() {
   return (
@@ -24,6 +25,8 @@ function Footer() {
             <p className='widget_text'>+38 095 000 17 67</p>
             <p className='widget_text'>+38 093 000 17 67</p>
           </div>
+        </div>
+        <div className="footer_body">
           <div className='footer_widget'>
             <img src={mail} alt="icon" />
             <h3 className='widget_title'>Сайты, почта и соц. сети:</h3>
@@ -35,6 +38,15 @@ function Footer() {
             <p className='widget_text'>ул. Радистов 34</p>
             <p className='widget_text'>г. Киев,</p>
             <p className='widget_text'>Украина, 02000</p>
+          </div>
+        </div>
+      </div>
+      <div className="footer_bottom">
+        <div className="container">
+          <div className="wrapper">
+            <div>V8CARS.UA 2021 © Все права защищены</div>
+            <div><img src={logo} alt="Авто из США V8CARS.UA" /></div>
+            <div className='red'>Политика конфиденциальности</div>
           </div>
         </div>
       </div>

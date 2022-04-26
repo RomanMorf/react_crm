@@ -18,6 +18,7 @@
 		"react/no-console": "off",
 		"react/prop-types": "off",
 		"react/no-unescaped-entities": 0,
-		"react/react-in-jsx-scope": "off"
+		"react/react-in-jsx-scope": "off",
+		"react/no-unknown-property": "off"
 	}
 }

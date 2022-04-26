@@ -1,0 +1,79 @@
+.landing {
+  .contacts {
+    &_body {
+      position: relative;
+
+      &::before {
+        content: '';
+        background-image: url('../../../assets/img/contacts_bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 300px;
+        height: 200px;
+        position: absolute;
+        top: 50px;
+        right: 0;
+      }
+    }
+    &_title {
+      width: 50%;
+    }
+    &_text {
+      width: 50%;
+    }
+    &_field {
+      width: 300px;
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+
+}
+
+@media (max-width: 768px){
+  .landing {
+    .contacts {
+      &_body {
+        position: relative;
+        padding-top: 200px;
+  
+        &::before {
+          content: '';
+          background-image: url('../../../assets/img/contacts_bg.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 300px;
+          height: 200px;
+          position: absolute;
+          top: 0px;
+          right: calc((100% / 2) - 100px);
+        }
+      }
+      &_title {
+        width: 100%;
+      }
+      &_text {
+        width: 100%;
+      }
+      &_field {
+        width: 100%;
+      }
+    }
+  }
+  
+}
+
+@media (max-width: 576px){
+  .btn {
+    text-align: center;
+  }
+}

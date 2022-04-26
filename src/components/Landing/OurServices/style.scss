@@ -1,0 +1,93 @@
+.services {
+  &_main {
+    background-color: #f5f7fb;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 25px;
+    border-bottom: 1px solid rgba(125,126,130,0.25);
+    margin-bottom: 20px;
+
+    p {
+      display: flex;
+      align-items: center;
+    }
+
+    & span {
+      font-weight: bold;
+      font-size: 40px;
+      margin-left: 10px;
+      color: #ff4040;
+    }
+  }
+
+  &_body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+  }
+
+  &_list {
+    list-style: none;
+    margin: 0;
+  }
+
+  &_item {
+    position: relative;
+    margin-bottom: 10px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -30px;
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+      background: url('../../../assets/img/icon-checked.svg') no-repeat;
+      background-size: 100%;
+      }
+  
+  }
+}
+
+@media (max-width: 1500px) {
+
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+
+}
+
+@media (max-width: 768px){
+  .services {
+    &_body {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    
+    &_header {
+      & span {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px){
+  .services {
+    &_header {
+      flex-direction: column;
+    }
+  }
+}
