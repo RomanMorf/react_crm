@@ -13,7 +13,7 @@ function ToDoList({todos}) {
 
   return (
     <div>
-      <Reorder.Group 
+      <Reorder.Group
         className='todo_list' 
         as='ul' 
         axis='y' 
@@ -25,7 +25,7 @@ function ToDoList({todos}) {
             todos.map( todo => <ToDoItem key={todo.id} todo={todo} />) 
           }
         </AnimatePresence>
-      </Reorder.Group>
+      </ Reorder.Group>
     </div>
   )
 }

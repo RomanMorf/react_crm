@@ -31,15 +31,18 @@
     }
   }
 
-  &_btn {
+  &_buttons {
     margin-left: auto;
+  }
+
+  &_btn {
     cursor: pointer;
     background-color: transparent;
     border: none;
-  }
 
-  &:hover {
-    cursor: grab;
+    &.hover {
+      cursor: grab;
+    }
   }
 
 }
