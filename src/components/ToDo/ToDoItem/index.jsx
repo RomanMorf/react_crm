@@ -7,8 +7,7 @@ import { Reorder, useDragControls } from 'framer-motion'
 
 import Checkbox from 'src/components/elements/Checkbox';
 
-
-function ToDoItem({todo}) {
+function ToDoItem({todo, canEdit}) {
   const dispatch = useDispatch()
   const dragControls = useDragControls()
 
@@ -23,13 +22,11 @@ function ToDoItem({todo}) {
   return (
     <Reorder.Item 
       value={todo}
-      dragListener={false}
+      dragListener={!canEdit ? false : true}
       dragControls={dragControls}
+      dragDirectionLock
       className={todo.completed ? 'todoitem completed' : 'todoitem'}
-      whileDrag={{
-        scale: 1.05,
-        cursor: 'grabbing',
-      }}
+      whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
     >
       <Checkbox 
         onChange={ toggleTodo }
@@ -38,9 +35,14 @@ function ToDoItem({todo}) {
       />
       <span className='todoitem_text'>{todo.text}</span>
       <div className="todoitem_buttons">
-        <button className='todoitem_btn hover' onPointerDown={ event => dragControls.start(event) }>
+        { canEdit && 
+        <button 
+          className='todoitem_btn hover' 
+          onPointerDown={ e => dragControls.start(e, { snapToCursor: true }) }
+        >
           <span class="material-icons">drag_indicator</span>
         </button>
+        }
         <button className='todoitem_btn' onClick={deleteTodo}>
           <span className="material-icons">delete</span>
         </button>

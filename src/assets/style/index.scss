@@ -26,7 +26,6 @@ button {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  // padding: 5px;
 }
 
 .center {
@@ -55,6 +54,11 @@ button {
   &-20 {
     margin-top: 20px;
   }
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 @media (max-width: 1202px){

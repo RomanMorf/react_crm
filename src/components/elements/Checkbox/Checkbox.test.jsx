@@ -7,6 +7,7 @@ import Checkbox from './Checkbox';
 describe('Checkbox component', () => {
   const onChange = jest.fn()
   const className = 'class'
+  const id = 'checkbox-id'
 
   it('Checkbox renders', () => {
     render(<Checkbox />);
@@ -25,6 +26,14 @@ describe('Checkbox component', () => {
 
     expect(container.firstChild).toHaveClass(`checkbox ${className}`)
   })
+
+  it('Checkbox id test', () => { 
+    const { container } = render(
+      <Checkbox id={id} />)
+      
+    expect(container.firstChild).toHaveAttribute('id')
+  })
+
 
   it('Checkbox onChange func test', () => {
     render(<Checkbox onChange={onChange} />);

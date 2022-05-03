@@ -1,6 +1,6 @@
 import './style.scss'
 
-function Checkbox({checked, onChange, className}) {
+function Checkbox({checked, onChange, className, id}) {
 
   return (
     <>
@@ -9,6 +9,7 @@ function Checkbox({checked, onChange, className}) {
         className={ className ? `checkbox ${className} ` : 'checkbox'}
         checked={ checked } 
         onChange={ onChange }
+        id={ id }
       />
       <label role='checkbox_label' onClick={onChange}></label>
     </>
