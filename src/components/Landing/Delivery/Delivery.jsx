@@ -34,8 +34,6 @@ const deliveryTexts = [
   },
 ]
 
-console.log(deliveryTexts, 'deliveryTexts');
-
 function Delivery () {
   return (
     <div className="delivery">

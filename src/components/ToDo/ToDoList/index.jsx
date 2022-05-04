@@ -17,10 +17,10 @@ function ToDoList({todos}) {
     <div>
       <label htmlFor="can-edit">
         <Checkbox id="can-edit" checked={canEdit} onChange={() => setCanEdit(!canEdit)}/>
-        Allow edit "To do list"
+        <span className='unselectable'>Allow edit "To do list"</span>
       </label>
       <Reorder.Group
-        className='todo_list unselectable' 
+        className='todo_list unselectable scroll' 
         as='ul' 
         axis='y' 
         values={ todos } 

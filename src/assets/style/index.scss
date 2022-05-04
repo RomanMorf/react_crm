@@ -61,6 +61,23 @@ button {
   overflow: hidden;
 }
 
+.scroll {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    // outline: 1px solid slategrey;
+  }
+}
+
+
+
 @media (max-width: 1202px){
 
 }

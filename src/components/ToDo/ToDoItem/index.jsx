@@ -33,14 +33,14 @@ function ToDoItem({todo, canEdit}) {
         checked={ todo.completed } 
         className='todoitem_checkbox'
       />
-      <span className='todoitem_text'>{todo.text}</span>
+      <span className='todoitem_text'>{ todo.text }</span>
       <div className="todoitem_buttons">
         { canEdit && 
         <button 
           className='todoitem_btn hover' 
           onPointerDown={ e => dragControls.start(e, { snapToCursor: true }) }
         >
-          <span class="material-icons">drag_indicator</span>
+          <span className="material-icons">drag_indicator</span>
         </button>
         }
         <button className='todoitem_btn' onClick={deleteTodo}>
