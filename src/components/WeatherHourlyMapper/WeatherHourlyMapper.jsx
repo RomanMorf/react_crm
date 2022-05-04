@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss'
 import { dateFilter } from 'src/helpers/dateFilter'
+import { tempConverter } from 'src/helpers/tempConverter'
 
 function WeatherMapper({weather}) {
 
@@ -14,14 +15,14 @@ function WeatherMapper({weather}) {
           <li className='weather_item' key={`key-${el.dt}`}>
           <details>
             <summary>{dateFilter((el.dt), 'datetime')}</summary>
-            <p>feels like: { (el.feels_like -273.15).toFixed(0) } C°</p>
-            <p>temp: { (el.temp -273.15).toFixed(0) } C°</p>
+            <p>feels like: { tempConverter(el.feels_like) } C°</p>
+            <p>temp: {  tempConverter(el.temp) } C°</p>
             <p>pressure: { el.pressure } Pa</p>
             <p>visibility: { el.visibility } m</p>
             <p>
               { el.weather[0].main }
               <img 
-                src={ 'http://openweathermap.org/img/wn/' + el.weather[0].icon + '.png' } 
+                src={ `http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png` } 
                 alt={ el.weather[0].main }
               />
             </p>

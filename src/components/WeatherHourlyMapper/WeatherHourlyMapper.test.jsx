@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import WeatherMaper from './WeatherMapper'
+import WeatherHourlyMapper from './WeatherHourlyMapper'
 
 
-describe('WeatherMaper component', () => {
+describe('WeatherHourlyMapper component', () => {
   const weather = {
     hourly: [
       {
@@ -55,13 +55,13 @@ describe('WeatherMaper component', () => {
     ]
   }
 
-  it('WeatherMaper render component', () => {
-    render(<WeatherMaper weather={weather} />);
+  it('WeatherHourlyMapper render component', () => {
+    render(<WeatherHourlyMapper weather={weather} />);
   })
 
-  it('WeatherMaper correct key test', () => { 
+  it('WeatherHourlyMapper correct key test', () => { 
     const { container } = render(
-      <WeatherMaper weather={weather} />
+      <WeatherHourlyMapper weather={weather} />
     );
 
     const weatherItem = weather.hourly[0]
@@ -71,9 +71,9 @@ describe('WeatherMaper component', () => {
     expect(correntKey).toEqual(`key-${weatherItem.dt}`)
   })
 
-  it('WeatherMaper correct mapper test', () => { 
+  it('WeatherHourlyMapper correct mapper test', () => { 
     const { container } = render(
-      <WeatherMaper weather={weather} />
+      <WeatherHourlyMapper weather={weather} />
     );
 
     const item = weather.hourly[0]

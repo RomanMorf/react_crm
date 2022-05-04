@@ -1,0 +1,81 @@
+@import 'src/assets/style/variables.scss';
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  p {
+    margin: 5px;
+  }
+
+  &_item {
+    border-bottom: 1px solid #000;
+    margin: 5px;
+  }
+
+  &_header {
+    padding: 5px 5px 5px 40px;
+    position: relative;
+    transition: all ease .3s;
+
+    &:hover {
+      background-color: $hover_prymary;
+    }
+
+    &.open {
+      transition: all ease .3s;
+      background-color: #fff;
+    }
+
+  }
+
+  &_arrow {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    max-width: 30px;
+    max-height: 30px;
+    transition: all ease .3s;
+
+    &.open {
+      transition: all ease .3s;
+      transform: rotate(180deg);
+    }
+  }
+
+  &_body {
+    display: flex;
+    justify-content: space-between;
+    height: 0;
+    overflow: hidden;
+    transition: all ease .3s;
+
+    &.open {
+      transition: all ease .3s;
+      height: 200px;
+    }
+  }
+
+  &_section {
+    padding: 5px;
+    margin: 0 5px;
+
+    p::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .list {
+    &_body {
+      flex-direction: column;
+
+      &.open {
+        transition: all ease .3s;
+        height: 550px;
+      }
+    }
+  }
+}
