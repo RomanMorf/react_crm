@@ -4,14 +4,14 @@ import { getWeatherByCoords } from 'src/api/weather';
 import { useLoading } from 'src/hooks/useLoading';
 import { useLocation } from 'src/hooks/useLocation';
 
-import WeatherMapper from 'src/components/WeatherMapper';
 import Loader from 'src/components/Loader';
+import WeatherDailyMapper from 'src/components/WeatherDailyMapper/';
+import WeatherHourlyMapper from 'src/components/WeatherHourlyMapper';
 
 function Weather() {
   const [weather, setWeather] = useState(null)
   const {loading, setLoading} = useLoading()
   const {coords, getLocation} = useLocation()
-
 
   useEffect(async () => {
     if (!coords) getLocation()
@@ -21,11 +21,11 @@ function Weather() {
     if (coords) {
       const weather = await getWeatherByCoords(coords)
       await setWeather(weather)
+      console.log(weather, 'weather');
     }
 
     setLoading(false)
   }, [coords]);
-
 
   return (
     <div>
@@ -33,7 +33,9 @@ function Weather() {
 
       { loading &&  <Loader /> }
 
-      {(weather && !loading) && <WeatherMapper weather={ weather } />}
+      {(weather && !loading) && <WeatherDailyMapper weather={ weather }/>} 
+
+      {(weather && !loading) && <WeatherHourlyMapper weather={ weather } />}
 
     </div>
   )
