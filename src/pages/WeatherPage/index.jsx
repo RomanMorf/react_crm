@@ -1,39 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import './style.scss'
-import { fetchWeather } from '../../api/weather'
-import WeatherMapper from '../../components/WeatherMapper'
-import Loader from '../../components/Loader'
+import React, { useEffect, useState } from 'react';
+import './style.scss';
+import { getWeatherByCoords } from 'src/api/weather';
+import { useLoading } from 'src/hooks/useLoading';
+import { useLocation } from 'src/hooks/useLocation';
+
+import WeatherMapper from 'src/components/WeatherMapper';
+import Loader from 'src/components/Loader';
 
 function Weather() {
   const [weather, setWeather] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const {loading, setLoading} = useLoading()
+  const {coords, getLocation} = useLocation()
 
-  useEffect(() => {
-    async function fetchData () {
-      const weather = await fetchWeather('lviv')
-      setWeather(weather)
-      setLoading(false)
+
+  useEffect(async () => {
+    if (!coords) getLocation()
+
+    setLoading(true)
+
+    if (coords) {
+      const weather = await getWeatherByCoords(coords)
+      await setWeather(weather)
     }
 
-    fetchData()
-  }, []);
+    setLoading(false)
+  }, [coords]);
 
 
   return (
     <div>
       <h1 className="center">Weather forecast page</h1>
 
-      {loading && <div className='center'>
-        <p className="loading">Fetching weather data...</p>
-        <Loader />
-      </div>}
-
-      {(weather && !loading) && <div>
-        <p>feels_like { (weather.feels_like -273.15).toFixed(0) }  C°</p>
-        <p>humidity { weather.humidity } %</p>
-        <p>pressure { weather.pressure } </p>
-        <p>temp { weather.temp }  C°</p>
-      </div>}
+      { loading &&  <Loader /> }
 
       {(weather && !loading) && <WeatherMapper weather={ weather } />}
 

@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { db } from '../firebase'
+import { db } from 'src/firebase'
 import { ref, set } from "firebase/database";
 import { getUid } from 'src/helpers/getUid'
 
@@ -35,7 +35,7 @@ const todoSlice = createSlice({
       const uid = getUid()
       if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },
-    uploadTodos (state, action) {
+    uploadTodos (state) {
       const uid = getUid()
       if (uid) set(ref(db, `users/${uid}/todos`), {...state.todos})
     },

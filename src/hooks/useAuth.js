@@ -1,8 +1,13 @@
+import { useState } from 'react';
+
 import { getAuth } from 'firebase/auth'
 
+const auth = getAuth()
+
 const useAuth = () => {
-  const auth = getAuth()
-  return auth ? auth.currentUser : null
+  const [user] = useState(() => auth.currentUser)
+
+  return user
 }
 
 export { useAuth };

@@ -1,23 +1,23 @@
-import Modal from '../../components/Modal';
-import React, { useState } from 'react';
+import React from 'react';
+import { useModal } from 'src/hooks/useModal';
+import { useInput } from 'src/hooks/useInput';
 
-function Contacts(props) {
-  const [ showModal, setShowModal ] = useState(false)
-  const [ text, setText ] = useState('')
+function Contacts() {
+  const text = useInput('')
+  const {showModal, setShowModal, ModalComponent} = useModal()
 
   return (
     <div>
       <h1>Contacts page</h1>
       <input 
         type="text" 
-        onChange={ (e) => setText(e.target.value) }
-        onKeyUp={ (e) => e.key === 'Enter' ? setShowModal(true) : null }
+        {...text}
         />
       <button onClick={ () => setShowModal(true)}>Ask somethimg</button>
-      {showModal && <Modal 
+      {showModal && <ModalComponent 
         headerText ='Are you sure ?'
-        text = { text }
-        confirm
+        text = { text.value }
+        confirmBtn
         onCloseModal = {() => setShowModal(false)}
         onConfirm = {() => setShowModal(false)}
         onCancel = {() => setShowModal(false)}

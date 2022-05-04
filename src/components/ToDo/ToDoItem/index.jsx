@@ -1,17 +1,15 @@
 import React from 'react';
 import './style.scss';
+
 import { useDispatch } from 'react-redux';
-import {removeTodo, toggleTodoCompleted} from '../../../store/todoSlice'
-import { Reorder } from 'framer-motion'
+import { removeTodo, toggleTodoCompleted } from 'src/store/todoSlice'
+import { Reorder, useDragControls } from 'framer-motion'
 
-const variants = {
-  initial: {},
-  animate: {},
-  exit: {},
-}
+import Checkbox from 'src/components/elements/Checkbox';
 
-function ToDoItem({todo}) {
+function ToDoItem({todo, canEdit}) {
   const dispatch = useDispatch()
+  const dragControls = useDragControls()
 
   function toggleTodo() {
     dispatch(toggleTodoCompleted({id: todo.id}))
@@ -23,26 +21,32 @@ function ToDoItem({todo}) {
 
   return (
     <Reorder.Item 
-      value={todo} 
-      className='todoitem'
-      whileHover={{
-        cursor: 'grab',
-      }}
-      whileDrag={{
-        scale: 1.05,
-        cursor: 'grabbing',
-      }}
-      {...variants}
+      value={todo}
+      dragListener={!canEdit ? false : true}
+      dragControls={dragControls}
+      dragDirectionLock
+      className={todo.completed ? 'todoitem completed' : 'todoitem'}
+      whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
     >
-      <input 
+      <Checkbox 
+        onChange={ toggleTodo }
+        checked={ todo.completed } 
         className='todoitem_checkbox'
-        type="checkbox" 
-        checked={todo.completed} 
-        onChange={toggleTodo} />
+      />
       <span className='todoitem_text'>{todo.text}</span>
-      <button className='todoitem_btn' onClick={deleteTodo}>
-      <span className="material-icons">delete</span>
-      </button>
+      <div className="todoitem_buttons">
+        { canEdit && 
+        <button 
+          className='todoitem_btn hover' 
+          onPointerDown={ e => dragControls.start(e, { snapToCursor: true }) }
+        >
+          <span class="material-icons">drag_indicator</span>
+        </button>
+        }
+        <button className='todoitem_btn' onClick={deleteTodo}>
+          <span className="material-icons">delete</span>
+        </button>
+      </div>
     </Reorder.Item>
   )
 }

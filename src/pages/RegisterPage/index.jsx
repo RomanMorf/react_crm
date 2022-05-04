@@ -1,228 +1,162 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './style.scss';
-import { useDispatch } from 'react-redux'
-import InputField from '../../components/InputField';
+
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Loader from '../../components/Loader'
 import { 
   getAuth,
   createUserWithEmailAndPassword, 
-} from 'firebase/auth'
-import { setAuth } from '../../store/authSlice'
+} from 'firebase/auth';
+import { createUser } from 'src/store/userSlice';
+import { useToast } from 'src/hooks/useToast';
+import { errorHandle } from 'src/helpers/errors/errorHandle';
+import { useFormik } from 'formik';
+import { useLoading } from 'src/hooks/useLoading';
 
+import Loader from 'src/components/Loader';
+import InputField from 'src/components/elements/InputField';
+import Button from 'src/components/elements/Button';
 
 function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [loading, setLoading] = useState(false)
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    pass: '',
-    pass2: '',
-    checked: false
-  })
-  const [formValid, setFormValid] = useState({
-    email: true,
-    pass: true,
-    checkPass: true,
-    name: true,
-  })
-  const [readyForSubmit, setReadyForSubmit] = useState(false)
+  const { loading, setLoading } = useLoading(false)
+  const { toastSuccess } = useToast()
 
-  const preventDefault = e => {
-    e.preventDefault()
-    return
-  }
+  const registerNewUser = async (values) => {
+    const {email, pass, userName} = values
 
-  const inputHandle = (e) => {
-    const name = e.target.name
-    const value = e.target.value 
-
-    setForm({
-      ...form,
-      [name]: value
-    })
-  }
-
-  const validHandle = (e) => {
-
-    switch (e.target.name) {
-      case 'email':
-        const validateEmail = (email) => {
-          return String(email)
-            .toLowerCase()
-            .match(
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            )
-        }
-
-        if (validateEmail(form.email)) {
-          setFormValid({
-            ...formValid,
-            email: true
-          })
-        } else {
-          setFormValid({
-            ...formValid,
-            email: false
-          })
-        }
-        break;
-      case 'pass':
-        if (form.pass.length < 6) {
-          setFormValid({
-            ...formValid,
-            pass: false
-          })
-        } else {
-          setFormValid({
-            ...formValid,
-            pass: true
-          })
-        }
-        break;
-      case 'pass2':
-        if (form.pass !== form.pass2) {
-          setFormValid({
-            ...formValid,
-            checkPass: false
-          })
-        } else {
-          setFormValid({
-            ...formValid,
-            checkPass: true
-          })
-        }
-        break;
-      case 'name':
-        if (form.name.length <= 3) {
-          setFormValid({
-            ...formValid,
-            name: false
-          })
-        } else {
-          setFormValid({
-            ...formValid,
-            name: true
-          })
-        }
-        break;
-
-        default:
-        break;
-    }
-  }
-
-  const checkValid = () => {
-    if (formValid.email &&
-        formValid.name &&
-        formValid.pass &&
-        formValid.checkPass && 
-        form.checked) {
-      setReadyForSubmit(true)
-    } else {
-      setReadyForSubmit(false)
-    }
-  }
-
-  const checkboxHandle = () => {
-    setForm({
-      ...form,
-      checked: !form.checked
-    })
-  }
-
-  const registerNewUser = async () => {
     setLoading(true)
     try {
       const auth = getAuth()
-      await createUserWithEmailAndPassword(auth, form.email, form.pass)
+
+      await createUserWithEmailAndPassword(auth, email, pass)
         .then(userCredential => {
           const user = userCredential.user;
-          console.log(user, 'registerNewUser');
-          dispatch(setAuth({
-            email: user.email,
-            uid: user.uid,
-            token: user.accessToken
-          }))
+          dispatch(createUser({...user, name: userName}))
       })
+
       setLoading(false)
-      navigate('/auth/login')
+      navigate('/')
+      toastSuccess('Account successfuly created')
+
     } catch (e) {
-      console.log(e);
       setLoading(false)
+      errorHandle(e)
       throw e
     }
-    console.log('registerNewUser');
   }
 
+  const validate = values => {
+    const errors = {};
+    if (!values.pass) {
+      errors.pass = 'Required field';
+    } else if (values.pass.length <= 5) {
+      errors.pass = `Must be 6 characters or more, now ( ${values.pass.length} )`;
+    }
+  
+    if (!values.passRepeat) {
+      errors.passRepeat = 'Required field';
+    } else if (values.passRepeat !== values.pass) {
+      errors.passRepeat = 'Passwords mast be the same';
+    }
+  
+    if (!values.email) {
+      errors.email = 'Required field';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = 'Invalid email address';
+    }
 
-  useEffect(() => {
-    checkValid()
-  }, [form]);
+    if (!values.userName) {
+      errors.userName = 'Required field';
+    } else if (values.userName.length < 3 ) {
+      errors.userName = 'Must be 5 characters at least';
+    } else if (values.userName.length > 15) {
+      errors.userName = 'Must be 15 characters or less';
+    }
+
+  
+    return errors;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      pass: '',
+      passRepeat: '',
+      userName: ''
+    },
+    validate,
+    onSubmit: values => registerNewUser(values),
+  });
 
   return (
-    <div className="login">
+    <div className="register">
       {loading && <Loader/>}
-      <form className='form' onSubmit={preventDefault}>
+      <form className='form' onSubmit={formik.handleSubmit}>
         <h2>Register new accaunt</h2>
         <div className='form_slot'>
           <InputField 
-            name='email' 
-            value={form.email}
-            handleBlur={validHandle}
-            handleInput={inputHandle}
+            id='email'
+            name='email'
+            type='email'
+            value={formik.values.email}
+            onChange={formik.handleChange}
             placeholder='Enter your email'
           />
-          {!formValid.email && <span className='form_helper'>Etner the correct email</span>}
+          {formik.errors.email ? <span className='form_helper'>{formik.errors.email}</span> : null}
         </div>
-        <div className="form_slot">
+        <div className='form_slot'>
           <InputField 
+            id='pass'
             name='pass'
-            value={form.pass}
-            handleBlur={validHandle}
-            handleInput={inputHandle}
-            placeholder='Enter your pass'
+            type='password'
+            value={formik.values.pass}
+            onChange={formik.handleChange}
+            placeholder='Enter your password'
           />
-          {!formValid.pass && <span className='form_helper'>Password must be more then 5 symbol</span>}
+          {formik.errors.pass ? <span className='form_helper'>{formik.errors.pass}</span> : null}
         </div>
-        <div className="form_slot">
+        <div className='form_slot'>
           <InputField 
-            name='pass2'
-            value={form.pass2}
-            handleBlur={validHandle}
-            handleInput={inputHandle}
-            placeholder='Repeat your pass'
+            id='passRepeat'
+            name='passRepeat'
+            type='password'
+            value={formik.values.passRepeat}
+            onChange={formik.handleChange}
+            placeholder='Repeat your password'
           />
-        {!formValid.checkPass && <span className='form_helper'>Passwords must be the same</span>}
+          {formik.errors.passRepeat ? <span className='form_helper'>{formik.errors.passRepeat}</span> : null}
         </div>
-        <div className="form_slot">
+        <div className='form_slot'>
           <InputField 
-            name='name'
-            value={form.name}
-            handleBlur={validHandle}
-            handleInput={inputHandle}
-            placeholder='Enter you name'
+            id='userName'
+            name='userName'
+            type='userName'
+            value={formik.values.userName}
+            onChange={formik.handleChange}
+            placeholder='Enter your name'
           />
-          {!formValid.name && <span className='form_helper'>Name must be longer then 3 symbol</span>}
+          {formik.errors.userName ? <span className='form_helper'>{formik.errors.userName}</span> : null}
         </div>
-        <div className="form_slot center mb-20">
+        <div className="form_bottom mb-10">
+          <Button 
+            type='submit' 
+            name="register"
+            disabled={
+              formik.errors.userName ||
+              formik.errors.email ||
+              formik.errors.pass || 
+              formik.errors.passRepeat ? true : false
+            }
+          />
+        </div>
+        <div className='form_bottom'>
           <span>
-            <input 
-              checked={form.checked}
-              onChange={checkboxHandle}
-              type='checkbox' name='agree'
-            /> 
-            <span>Agree with the ruls</span>
+            <span>Already have an account? </span>
+            <a onClick={() => navigate('/auth/login')}>Login</a>
           </span>
-        </div>
-        <div className="form_bottom">
-        <button onClick={() => navigate('/auth/login')}>Login</button>
-        <button 
-          disabled={!readyForSubmit} 
-          onClick={registerNewUser}>Register</button>
         </div>
       </form>
     </div>

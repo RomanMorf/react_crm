@@ -1,35 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style.scss';
-import InputField from '../../components/InputField';
-import { useNavigate } from 'react-router-dom';
-import Loader from '../../components/Loader'
 import { 
   getAuth,
   signInWithEmailAndPassword, 
   signInWithPopup, 
   GoogleAuthProvider 
-} from 'firebase/auth'
+} from 'firebase/auth';
+import { createUser } from 'src/store/userSlice';
+import { checkOnExists } from 'src/helpers/firebase/checkOnExists';
+import { errorHandle } from 'src/helpers/errors/errorHandle';
+
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useInput } from 'src/hooks/useInput';
+import { useLoading } from 'src/hooks/useLoading';
+
+import InputField from 'src/components/elements/InputField';
+import Loader from 'src/components/Loader'
+import Button from 'src/components/elements/Button';
+import logo from 'src/assets/img/google_logo.svg';
+
 
 const provider = new GoogleAuthProvider();
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
-  const [loading, setLoading] = useState(false)
+  const email = useInput('')
+  const pass = useInput('')
+  const {loading, setLoading} = useLoading(false)
 
   const auth = getAuth()
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const singInHandle = async () => {
-    if (email.trim() || pass.trim()) {
+    if (email.value.trim() || pass.value.trim()) {
       try {
         setLoading(true)
-        await signInWithEmailAndPassword(auth, email, pass)
+        await signInWithEmailAndPassword(auth, email.value, pass.value)
         setLoading(false)
         navigate('/')
       } catch (e) {
         setLoading(false)
+        errorHandle(e)
         throw e
       }
     }
@@ -39,10 +52,18 @@ function Login() {
     try {
       setLoading(true)
       await signInWithPopup(auth, provider)
+        .then( async (userCredential) => {
+          const user = userCredential.user;
+          const userExist = await checkOnExists(user.uid)
+          if (!userExist) {
+            dispatch(createUser({...user}))
+          }
+        })
       navigate('/')
       setLoading(false)
     } catch (e) {
       setLoading(false)
+      errorHandle(e)
       throw e
     }
   }
@@ -59,30 +80,28 @@ function Login() {
         <h2>Login to your accaunt</h2>
         <div className='form_slot'>
           <InputField 
-            name='email' 
-            value={email}
-            handleInput={e => setEmail(e.target.value)}
+            name='email'
+            {...email}
             placeholder='Enter your email'
           />
         </div>
         <div className="form_slot">
           <InputField 
             name='pass'
-            value={pass}
-            handleInput={e => setPass(e.target.value)}
+            {...pass}
             placeholder='Enter your pass'
           />
         </div>
-        <div className="form_bottom">
-          <button onClick={singInHandle}>Sign in</button>
-          <button onClick={singInWithGoogleHandle}>Sign in with google</button>
+        <div className="form_bottom mb-10">
+          <Button name="Sign in" onClick={singInHandle}/>
+          <Button name="Sign in with google" onClick={singInWithGoogleHandle} img={logo}/>
         </div>       
-        <div className="form_bottom">
-          <p>
+        <div className='form_bottom'>
+          <span>
             <span>If you don't have an accaunt yet, </span>
             <a onClick={() => navigate('/auth/register')}>Register now</a>
-          </p>
-        </div>       
+          </span>
+        </div>
       </form>
     </div>
   )

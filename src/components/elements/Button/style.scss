@@ -1,0 +1,43 @@
+@import 'src/assets/style/variables.scss';
+
+.button {
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+
+  box-shadow: $box_shadow_primary;
+  transition: all ease .3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  &_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 30px;
+    height: 30px;
+  }
+
+  &_text {
+    padding: 10px;
+    background: $btn_bg_primary;
+
+    padding: 10px;
+    font-weight: bold;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  &:hover {
+    box-shadow: $box_shadow_hover;
+  }
+
+}

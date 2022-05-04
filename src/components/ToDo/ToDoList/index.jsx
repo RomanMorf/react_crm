@@ -1,47 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import './style.scss';
 import ToDoItem from 'src/components/ToDo/ToDoItem';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateTodos, setTodos } from 'src/store/todoSlice';
+
 import { Reorder, AnimatePresence } from 'framer-motion'
-import {fetchFromFirebase} from 'src/helpers/fetchFromFirebase'
-import Loader from 'src/components/Loader';
-import { getUid } from 'src/helpers/getUid'
+import { useDispatch } from 'react-redux';
+import { updateTodos } from 'src/store/todoSlice';
+import Checkbox from 'src/components/elements/Checkbox';
 
-function ToDoList() {
+function ToDoList({todos}) {
   const dispatch = useDispatch()
-  const todos = useSelector(state => state.todos.todos)
-
-  useEffect(() => {
-    async function fetchTodos() {
-      const uid = getUid()
-      if (uid) {
-        const todos = await fetchFromFirebase(`${uid}/todos`)
-        if (todos) dispatch(setTodos(todos))
-      }
-    }
-    fetchTodos()
-  }, []);
+  const [canEdit, setCanEdit] = useState(false)
 
   const reorderHandle = todos => dispatch(updateTodos({todos}))
 
   return (
     <div>
-      <Reorder.Group 
-        className='todo_list' 
+      <label htmlFor="can-edit">
+        <Checkbox id="can-edit" checked={canEdit} onChange={() => setCanEdit(!canEdit)}/>
+        Allow edit "To do list"
+      </label>
+      <Reorder.Group
+        className='todo_list unselectable' 
         as='ul' 
         axis='y' 
         values={ todos } 
-        onReorder={reorderHandle}
+        onReorder={ reorderHandle }
       >
-        {todos.length 
-        ? <AnimatePresence initial={false}> 
-            {todos.length &&
-              todos.map( todo => <ToDoItem key={todo.id} todo={todo} />) 
-            }
-          </AnimatePresence>
-        : <p className='center'>No todos yet. Create new todo</p> }
-      </Reorder.Group>
+        <AnimatePresence initial={false}> 
+          {todos.length &&
+            todos.map( todo => <ToDoItem key={todo.id} todo={todo} canEdit={canEdit} />) 
+          }
+        </AnimatePresence>
+      </ Reorder.Group>
     </div>
   )
 }

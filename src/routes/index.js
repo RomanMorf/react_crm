@@ -1,18 +1,22 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Login from '../pages/LoginPage'
-import Register from "../pages/RegisterPage";
-import Home from '../pages/HomePage'
-import Weather from '../pages/WeatherPage'
-import Contacts from '../pages/ContactsPage'
-import ToDo from '../pages/ToDoPage'
-import NotFound from '../pages/NotFoundPage'
+import AdminPage from "src/pages/AdminPage";
 
-import EmptyLayout from "../layout/EmptyLayout";
-import MainLayout from "../layout/MainLayout";
+import Login from 'src/pages/LoginPage'
+import Register from "src/pages/RegisterPage";
+import Home from 'src/pages/HomePage'
+import Weather from 'src/pages/WeatherPage'
+import Contacts from 'src/pages/ContactsPage'
+import ToDo from 'src/pages/ToDoPage'
+import NotFound from 'src/pages/NotFoundPage'
 
-import { RequireAuth } from '../hoc/RequireAuth'
+import Landing from 'src/pages/LandingPage'
+
+import EmptyLayout from "src/layout/EmptyLayout";
+import MainLayout from "src/layout/MainLayout";
+
+import { RequireAuth } from 'src/hoc/RequireAuth'
 
 function RoutesComponent() {
 
@@ -44,6 +48,12 @@ function RoutesComponent() {
       <Route path="/auth/" element={<EmptyLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+      </Route>
+
+      <Route path="/landing" element={<Landing />} />
+
+      <Route path="/" element={<MainLayout />}>
+        <Route path="/admin" element={<AdminPage />} />
       </Route>
 
       <Route path="/*" element={<NotFound />} />
