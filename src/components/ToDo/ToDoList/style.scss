@@ -2,5 +2,35 @@
   &_list {
     padding: 0;
     margin-bottom: 30px;
+    position: relative;
+  }
+}
+
+@media (max-width: 600px) {
+  .todo {
+    &_list {
+      padding: 5px 10px;
+      height: 80vh;
+      overflow-x: hidden;
+      overflow-y: scroll;
+
+      &::before {
+        content: '';
+        box-shadow: 0px 1px 12px 2px black;
+        position: absolute;
+        top: 1px;
+        left: 5%;
+        width: 90%;
+      }
+
+      &::after {
+        content: '';
+        box-shadow: 0px 1px 12px 2px black;
+        position: absolute;
+        bottom: -65x;
+        left: 5%;
+        width: 90%;
+      }
+    }
   }
 }
