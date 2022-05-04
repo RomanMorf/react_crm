@@ -21,7 +21,6 @@ function Weather() {
     if (coords) {
       const weather = await getWeatherByCoords(coords)
       await setWeather(weather)
-      console.log(weather, 'weather');
     }
 
     setLoading(false)

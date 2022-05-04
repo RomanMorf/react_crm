@@ -1,7 +1,7 @@
 {
   "homepage": "http://romanmorf.github.io/react_crm",
   "name": "react_crm",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
