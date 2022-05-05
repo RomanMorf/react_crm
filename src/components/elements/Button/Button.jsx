@@ -1,6 +1,6 @@
 import './style.scss'
 
-function Button({ name, type, onClick, className, img, disabled }) {
+function Button({ name, type, onClick, className, img, disabled, googleIcon }) {
   return (
     <button
       className={className ? `${className} button` : 'button'}
@@ -14,6 +14,11 @@ function Button({ name, type, onClick, className, img, disabled }) {
         </div>}
       <div className='button_text'>
         {name}
+        {googleIcon && 
+          <span className="material-icons">
+            {googleIcon}
+          </span>
+        }
       </div>
     </button>
   )

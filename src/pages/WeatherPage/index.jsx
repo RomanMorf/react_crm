@@ -4,6 +4,7 @@ import { getWeatherByCoords } from 'src/api/weather';
 import { useLoading } from 'src/hooks/useLoading';
 import { useLocation } from 'src/hooks/useLocation';
 
+import Button from 'src/components/elements/Button';
 import Loader from 'src/components/Loader';
 import WeatherDailyMapper from 'src/components/WeatherDailyMapper/';
 import WeatherHourlyMapper from 'src/components/WeatherHourlyMapper';
@@ -21,15 +22,28 @@ function Weather() {
     if (coords) {
       const weather = await getWeatherByCoords(coords)
       await setWeather(weather)
-      console.log(weather, 'weather');
     }
 
     setLoading(false)
   }, [coords]);
 
+  const refreshWeather = async () => {
+    if (!coords) getLocation()
+
+    setLoading(true)
+
+    if (coords) {
+      const weather = await getWeatherByCoords(coords)
+      await setWeather(weather)
+    }
+
+    setLoading(false)
+  }
+
   return (
     <div>
       <h1 className="center">Weather forecast page</h1>
+      <Button googleIcon='refresh' onClick={refreshWeather} />
 
       { loading &&  <Loader /> }
 

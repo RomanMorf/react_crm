@@ -26,8 +26,8 @@ function ToDo() {
     async function fetchTodos() {
       const uid = getUid()
       if (uid) {
-        const todos = await getFromDatabase(`users/${uid}/todos`)
-        if (todos) dispatch(setTodos(todos))
+        const getTodos = await getFromDatabase(`users/${uid}/todos`)
+        if (getTodos) dispatch(setTodos(getTodos))
       }
     }
     fetchTodos()
@@ -44,7 +44,6 @@ function ToDo() {
 
   return (
     <div className="todo">
-      <h1>ToDo page</h1>
       <div className='todo_input'>
         {loading && <Loader/>}
         <InputField 

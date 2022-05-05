@@ -28,6 +28,7 @@ button {
 .container {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 5px;
 }
 
 .center {
@@ -89,6 +90,10 @@ button {
 }
 
 @media (max-width: 768px){
+  h1 {
+    margin: 5px 0;
+    font-size: 25px;
+  }
   .container {
     max-width: 720px;
   }

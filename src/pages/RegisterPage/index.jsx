@@ -12,6 +12,7 @@ import { useToast } from 'src/hooks/useToast';
 import { errorHandle } from 'src/helpers/errors/errorHandle';
 import { useFormik } from 'formik';
 import { useLoading } from 'src/hooks/useLoading';
+import { validate } from 'src/helpers/validate';
 
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/elements/InputField';
@@ -47,38 +48,6 @@ function Register() {
       throw e
     }
   }
-
-  const validate = values => {
-    const errors = {};
-    if (!values.pass) {
-      errors.pass = 'Required field';
-    } else if (values.pass.length <= 5) {
-      errors.pass = `Must be 6 characters or more, now ( ${values.pass.length} )`;
-    }
-  
-    if (!values.passRepeat) {
-      errors.passRepeat = 'Required field';
-    } else if (values.passRepeat !== values.pass) {
-      errors.passRepeat = 'Passwords mast be the same';
-    }
-  
-    if (!values.email) {
-      errors.email = 'Required field';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address';
-    }
-
-    if (!values.userName) {
-      errors.userName = 'Required field';
-    } else if (values.userName.length < 3 ) {
-      errors.userName = 'Must be 5 characters at least';
-    } else if (values.userName.length > 15) {
-      errors.userName = 'Must be 15 characters or less';
-    }
-
-  
-    return errors;
-  };
 
   const formik = useFormik({
     initialValues: {

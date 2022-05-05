@@ -3,9 +3,8 @@ import './style.scss';
 function Footer() {
   return (
     <div className='footer'>
-      <p>Logo</p>
-      <p>Footer componet</p>
-      <p>All rights reserved © Romario Corp. 2022</p>
+      <div className='footer_logo'>Logo</div>
+      <div className='footer_rights'>All rights reserved © Romario Corp. 2022</div>
     </div>
   )
 }

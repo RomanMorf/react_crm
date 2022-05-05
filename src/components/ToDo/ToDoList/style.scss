@@ -1,36 +1,30 @@
+@import 'src/assets/style/variables.scss';
+
 .todo {
   &_list {
     padding: 0;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     position: relative;
+  }
+
+  &_wrapper {
+    margin: 10px 0;
   }
 }
 
 @media (max-width: 600px) {
   .todo {
     &_list {
-      padding: 5px 10px;
-      height: 80vh;
+      padding: 3px 10px 3px 20px;
+      height: 70vh;
       overflow-x: hidden;
       overflow-y: scroll;
+      margin-bottom: 10px;
+    }
 
-      &::before {
-        content: '';
-        box-shadow: 0px 1px 12px 2px black;
-        position: absolute;
-        top: 1px;
-        left: 5%;
-        width: 90%;
-      }
-
-      &::after {
-        content: '';
-        box-shadow: 0px 1px 12px 2px black;
-        position: absolute;
-        bottom: -65x;
-        left: 5%;
-        width: 90%;
-      }
+    &_wrapper {
+      border-top: 1px solid $bg_secondary;
+      border-bottom: 1px solid $bg_secondary;
     }
   }
 }

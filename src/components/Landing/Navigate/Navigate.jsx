@@ -1,19 +1,10 @@
 import React, { useState } from 'react';
 import './style.scss';
 
-import logo from 'src/assets/img/logo.png'
+import logo from 'src/assets/img/logo-landing.png'
 import phone from 'src/assets/img/icon-phone.svg'
 import menuIcon from 'src/assets/img/icon-menu.svg'
 import closeIcon from 'src/assets/img/icon-close.png'
-
-// const links = [
-//   {title: 'О нас', url: '#about-us'},
-//   {title: 'Цены', url: '#prices'},
-//   {title: 'Услуги', url: '#our-services'},
-//   {title: 'Обратная связь', url: '#contact-us'},
-// ]
-
-
 
 function Navigate ({links}) {
   const [menu, setMenu] = useState(false)

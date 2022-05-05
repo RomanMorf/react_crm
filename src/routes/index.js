@@ -10,6 +10,7 @@ import Weather from 'src/pages/WeatherPage'
 import Contacts from 'src/pages/ContactsPage'
 import ToDo from 'src/pages/ToDoPage'
 import NotFound from 'src/pages/NotFoundPage'
+import UserPage from "src/pages/UserPage";
 
 import Landing from 'src/pages/LandingPage'
 
@@ -41,6 +42,11 @@ function RoutesComponent() {
         <Route path="todo" element={
           <RequireAuth>
             <ToDo />
+          </RequireAuth>
+        } />
+        <Route path="user/" element={
+          <RequireAuth>
+            <UserPage />
           </RequireAuth>
         } />
       </Route>

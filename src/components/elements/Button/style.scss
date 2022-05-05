@@ -20,16 +20,17 @@
     justify-content: center;
     align-items: center;
   
-    width: 30px;
-    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
   }
 
   &_text {
     padding: 10px;
     background: $btn_bg_primary;
-
-    padding: 10px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &::first-letter {
       text-transform: capitalize;
@@ -39,5 +40,22 @@
   &:hover {
     box-shadow: $box_shadow_hover;
   }
+}
 
+@media (max-width: 768px){
+  .button {
+    &_logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      max-width: 15px;
+      max-height: 15px;
+    }
+
+    &_text {
+      padding: 3px;
+    }
+  
+  }
 }

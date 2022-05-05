@@ -5,7 +5,7 @@ import clock from 'src/assets/img/widget-clock.svg'
 import address from 'src/assets/img/widget-address.svg'
 import mail from 'src/assets/img/widget-mail.svg'
 import phone from 'src/assets/img/widget-phone.svg'
-import logo from 'src/assets/img/logo.png'
+import logo from 'src/assets/img/logo-landing.png'
 
 function Footer() {
   return (

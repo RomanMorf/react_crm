@@ -1,10 +1,20 @@
 @import 'src/assets/style/variables.scss';
 
 .footer {
-  border-top: 1px solid grey;
-  padding: 30px;
+  padding: 10px;
   background-color: $bg_primary;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+
+@media (max-width: 768px){
+  .footer {
+    &_logo {}
+
+    &_rights {
+      display: none;
+    }
+  }
 }

@@ -1,0 +1,62 @@
+@import 'src/assets/style/variables.scss';
+
+.user-nav {
+  position: relative;
+  overflow: hidden;
+
+  &.open {
+    overflow: visible;
+  }
+
+  &_icon {
+    cursor: pointer;
+  }
+
+  &_wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    &.open {
+      bottom: 0;
+    }
+  }
+
+  &_body {
+    position: absolute;
+    overflow: hidden;
+    transition: all ease .3s;
+    box-shadow: $box_shadow_secondary;
+    background-color: $bg_primary;    
+    border-radius: 3px;
+    right: 40px;
+    top: -150px;
+
+    &.open {
+      top: 50px;
+    }
+  }
+
+  &_list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    transition: all ease .3s;
+  }
+
+  &_item {
+    padding: 5px 10px;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: $box_shadow_primary;
+    transition: all ease .3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover_prymary;
+      transition: all ease .3s;
+    }
+  }
+}

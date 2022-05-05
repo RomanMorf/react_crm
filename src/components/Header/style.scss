@@ -3,9 +3,59 @@
 .header {
   background-color: $bg_primary;
   padding: 5px;
+
   &_body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 35px;
+  }
+
+  &_nav {
+    padding-bottom: 10px;
+  }
+
+  &_mobile {
+    display: none;
   }
 }
+
+@media (max-width: 768px){
+  .header {
+  
+    &_body {
+      position: relative;
+      align-items: center;
+      justify-content: end;
+    }
+
+    &_logo {
+      display: none;
+    }
+
+    &_nav {
+      position: absolute;
+      top: -500px;
+      left: 0;
+      z-index: 100;
+      height: auto;
+      width: 100%;
+      background-color: $bg_primary;
+      box-shadow: $box_shadow_secondary;
+      transition: all ease-in .5s;
+
+      &.open {
+        top: 0%;
+        transition: all ease-out .5s;
+      }
+    }
+
+    &_mobile {
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      z-index: 100;
+      transition: all ease .3s;
+    }
+  }}

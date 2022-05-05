@@ -19,19 +19,21 @@ function ToDoList({todos}) {
         <Checkbox id="can-edit" checked={canEdit} onChange={() => setCanEdit(!canEdit)}/>
         <span className='unselectable'>Allow edit "To do list"</span>
       </label>
-      <Reorder.Group
-        className='todo_list unselectable scroll' 
-        as='ul' 
-        axis='y' 
-        values={ todos } 
-        onReorder={ reorderHandle }
-      >
-        <AnimatePresence initial={false}> 
-          {todos.length &&
-            todos.map( todo => <ToDoItem key={todo.id} todo={todo} canEdit={canEdit} />) 
-          }
-        </AnimatePresence>
-      </ Reorder.Group>
+      <div className="todo_wrapper">
+        <Reorder.Group
+          className='todo_list unselectable scroll' 
+          as='ul' 
+          axis='y' 
+          values={ todos } 
+          onReorder={ reorderHandle }
+        >
+          <AnimatePresence initial={false}> 
+            {todos.length &&
+              todos.map( todo => <ToDoItem key={todo.id} todo={todo} canEdit={canEdit} />) 
+            }
+          </AnimatePresence>
+        </ Reorder.Group>
+      </div>
     </div>
   )
 }
