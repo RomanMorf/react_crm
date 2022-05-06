@@ -3,6 +3,7 @@
 .user-nav {
   position: relative;
   overflow: hidden;
+  z-index: 1;
 
   &.open {
     overflow: visible;

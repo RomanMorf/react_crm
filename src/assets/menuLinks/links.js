@@ -3,5 +3,4 @@ export const links = [
   { name: 'Weather', path: '/weather'},
   { name: 'Contacts', path: '/contacts'},
   { name: 'Todo', path: '/todo'},
-  { name: 'User', path: '/user'},
 ]
