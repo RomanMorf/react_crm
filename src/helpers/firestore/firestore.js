@@ -11,6 +11,25 @@ import {
   query } from "firebase/firestore"; 
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
+export const useCollection = (path, sort) => {
+  const messagesRef = (collection(fs, `${path}`));
+
+  if (sort) {
+    const q = query(
+      messagesRef, 
+      orderBy(`${sort}`)
+    );
+
+    return useCollectionData(q, { idField: 'id' })
+
+  } else {
+    const q = query(
+      messagesRef, 
+    );
+
+    return useCollectionData(q, { idField: 'id' })
+  }
+}
 
 export const addDocToFirebase = async (path, payload) => {
   const docRef = await addDoc(collection(fs, `${path}`), {...payload})
@@ -46,22 +65,13 @@ export const fetchDocsFromFirebase = async (path) => {
 
 }
 
-export const useCollection = (path, sort) => {
-  const messagesRef = (collection(fs, `${path}`));
 
-  if (sort) {
-    const q = query(
-      messagesRef, 
-      orderBy(`${sort}`)
-    );
-
-    return useCollectionData(q, { idField: 'id' })
-
-  } else {
-    const q = query(
-      messagesRef, 
-    );
-
-    return useCollectionData(q, { idField: 'id' })
+export const useFirestore = () => {
+  return {
+    useCollection,
+    addDocToFirebase,
+    updateDocToFirebase,
+    fetchDocFromFirebase,
+    fetchDocsFromFirebase,
   }
 }

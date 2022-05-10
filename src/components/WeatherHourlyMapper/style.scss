@@ -16,7 +16,7 @@
     }
 
     &:hover {
-      background-color: $hover_prymary;
+      background-color: $hover_primary;
     }
   }
 }
@@ -24,6 +24,6 @@
 details {
   &[open] {
     background-color: white;
-    border: 1px solid $hover_prymary;
+    border: 1px solid $hover_primary;
   }
 }

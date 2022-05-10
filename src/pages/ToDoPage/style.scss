@@ -1,6 +1,10 @@
 .todo {
   &_input {
-    width: 80%;
+    max-width: 90%;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    gap: 20px;
   }
 }

@@ -4,13 +4,15 @@ import './style.scss';
 
 import Navigate from 'src/components/Navigate';
 import Button from 'src/components/elements/Button';
-import UserMenu from '../UserMenu';
+import UserMenu from 'src/components/UserMenu';
+import MobileMenu from 'src/components/BurgerMenu';
 
 
 function Header() {
-  const [menu, setMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
 
   return (
+    <>
     <div className='header'>
       <div className="container">
         <div className='header_body'>
@@ -21,14 +23,20 @@ function Header() {
             <UserMenu />
         </div>
         </div>
-        <div className={menu ? "header_nav open" : "header_nav"}>
+        <div className="header_nav">
           <Navigate />
         </div>
         <div className="header_mobile">
-          <Button googleIcon={menu ? 'close' : 'menu'} onClick={() => setMenu(!menu)}/>
+          <Button googleIcon={showMenu ? 'close' : 'menu'} onClick={() => setShowMenu(!showMenu)}/>
         </div>
       </div>
     </div>
+    <MobileMenu 
+      menuOpen={showMenu} 
+      onCloseMenu={() => setShowMenu(false)}  
+      children={<Navigate />}
+    />
+    </>
   )
 }
 

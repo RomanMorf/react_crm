@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import './style.scss';
 
+import Button from '../elements/Button';
+
 function Modal({
-  headerText,
+  textHeader,
   text,
   onCloseModal,
   confirmBtn,
@@ -24,13 +26,19 @@ function Modal({
   return (
     <div className="modal_wrapper" onClick={ (e) => closeModal(e) }>
       <div className="modal_body">
+
         { children }
-        { headerText && <div className="modal_header">{ headerText }</div>}
+
+        { textHeader && <div className="modal_header">{ textHeader }</div>}
+
         { text && <div className="modal_main">{ text }</div>}
+        
         { confirmBtn && <div className="modal_footer">
-          <button onClick={ onConfirm } id="confirm">Confirm</button>
-          <button onClick={ onCancel } id="cancel">Cancel</button>
+          <Button onClick={ onConfirm } id="confirm" name='Confirm' />
+          <Button onClick={ onCancel } id="cancel" name='Cancel' />
         </div>}
+        
+
         <button className="modal_close" onClick={ onCloseModal }>
           <span className="material-icons">cancel</span>
         </button>

@@ -5,7 +5,7 @@ import Modal from './Modal'
 
 
 describe('Modal component', () => {
-  const headerText = 'header text'
+  const textHeader = 'header text'
   const text = 'some text'
   const onCloseModal = jest.fn()
   const onConfirm = jest.fn()
@@ -39,12 +39,12 @@ describe('Modal component', () => {
     const { container } = render(
       <Modal 
         onCloseModal={onCloseModal} 
-        headerText={headerText}
+        textHeader={textHeader}
       />)  
 
     const header = container.getElementsByClassName('modal_header')[0]
 
-    expect(header.innerHTML).toContain(headerText)
+    expect(header.innerHTML).toContain(textHeader)
   })
 
   it('Modal text test', () => { 

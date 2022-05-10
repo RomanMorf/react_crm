@@ -1,6 +1,6 @@
 import React, { NavLink } from "react-router-dom";
 
-function Home() {
+function NotFoundPage() {
   return (
     <>
       Oops... Page not found.
@@ -9,4 +9,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default NotFoundPage;

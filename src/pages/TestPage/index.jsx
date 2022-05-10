@@ -6,7 +6,7 @@ import {
   addDocToFirebase,
   fetchDocFromFirebase,
   fetchDocsFromFirebase,
-} from 'src/helpers/firebase/firestore';
+} from 'src/helpers/firestore/firestore';
 import { useLoading } from 'src/hooks/useLoading';
 import { sendTelegramMessage } from 'src/helpers/sendTelegramMessage'
 import { sendEmail } from 'src/helpers/sendEmail'
@@ -15,7 +15,7 @@ import Chat from 'src/components/Chat';
 import Loader from 'src/components/Loader';
 import InputField from 'src/components/elements/InputField';
 
-function AdminPage() {
+function TestPage() {
   const [text, setText] = useState('')
   const {loading, setLoading} = useLoading(false)
 
@@ -72,4 +72,4 @@ function AdminPage() {
 }
 
 
-export default AdminPage;
+export default TestPage;

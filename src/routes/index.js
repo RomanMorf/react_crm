@@ -1,18 +1,18 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import AdminPage from "src/pages/AdminPage";
+import TestPage from "src/pages/TestPage";
 
-import Login from 'src/pages/LoginPage'
-import Register from "src/pages/RegisterPage";
-import Home from 'src/pages/HomePage'
-import Weather from 'src/pages/WeatherPage'
-import Contacts from 'src/pages/ContactsPage'
-import ToDo from 'src/pages/ToDoPage'
-import NotFound from 'src/pages/NotFoundPage'
+import LoginPage from 'src/pages/LoginPage'
+import RegisterPage from "src/pages/RegisterPage";
+import HomePage from 'src/pages/HomePage'
+import WeatherPage from 'src/pages/WeatherPage'
+import TasksPage from 'src/pages/TasksPage'
+import ToDoPage from 'src/pages/ToDoPage'
+import NotFoundPage from 'src/pages/NotFoundPage'
 import UserPage from "src/pages/UserPage";
 
-import Landing from 'src/pages/LandingPage'
+import LandingPage from 'src/pages/LandingPage'
 
 import EmptyLayout from "src/layout/EmptyLayout";
 import MainLayout from "src/layout/MainLayout";
@@ -26,22 +26,22 @@ function RoutesComponent() {
       <Route path="/" element={<MainLayout />}>
         <Route path="/" element={
           <RequireAuth>
-            <Home />
+            <HomePage />
           </RequireAuth>
         } />
         <Route path="weather" element={
           <RequireAuth>
-            <Weather />
+            <WeatherPage />
           </RequireAuth>
         } />
-        <Route path="contacts" element={
+        <Route path="tasks" element={
           <RequireAuth>
-            <Contacts />
+            <TasksPage />
           </RequireAuth>
         } />
         <Route path="todo" element={
           <RequireAuth>
-            <ToDo />
+            <ToDoPage />
           </RequireAuth>
         } />
         <Route path="user/" element={
@@ -52,17 +52,17 @@ function RoutesComponent() {
       </Route>
 
       <Route path="/auth/" element={<EmptyLayout />}>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
       </Route>
 
-      <Route path="/landing" element={<Landing />} />
+      <Route path="/landing" element={<LandingPage />} />
 
       <Route path="/" element={<MainLayout />}>
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/test" element={<TestPage />} />
       </Route>
 
-      <Route path="/*" element={<NotFound />} />
+      <Route path="/*" element={<NotFoundPage/>} />
     </Routes>
   )
 }

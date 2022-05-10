@@ -5,8 +5,10 @@ const useInput = (initialValue) => {
 
   const onChange = e => setValue(e.target.value)
 
+  const cleareValue = () => setValue(initialValue)
+
   return {
-    value, onChange
+    value, onChange, cleareValue
   }
 }
 

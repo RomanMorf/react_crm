@@ -1,5 +1,16 @@
 @import 'src/assets/style/variables.scss';
 
+.todolist {
+  &_checkbox {
+    display: flex;
+    justify-content: flex-end;
+
+    label:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
 .todo {
   &_list {
     padding: 0;
@@ -12,11 +23,11 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .todo {
     &_list {
       padding: 3px 10px 3px 20px;
-      height: 70vh;
+      height: 60vh;
       overflow-x: hidden;
       overflow-y: scroll;
       margin-bottom: 10px;

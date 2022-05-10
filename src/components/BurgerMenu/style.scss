@@ -1,0 +1,40 @@
+@import 'src/assets/style/variables.scss';
+
+.burgermenu {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &_wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.0);
+
+    &.open {
+      bottom: 0;
+      transition: background-color ease 1s;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &_body {
+    position: absolute;
+    transition: all ease .5s;
+    background-color: $bg_primary;
+    height: auto;
+    width: 100%;
+    padding: 60px;
+    top: -400px;
+    right: 0px;
+    box-shadow: $box_shadow_primary;
+
+
+    &.open {
+      transition: all ease .3s;
+      top: 0px;
+      right: 0px;
+    }
+  }
+}

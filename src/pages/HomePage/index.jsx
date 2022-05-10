@@ -8,12 +8,12 @@ function Home() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.users.currentUser)
 
-  console.log(user, 'user from Home');
 
   useEffect( async () => {
     const uid = getUid()
     const user = await getFromDatabase(`users/${uid}/userInfo`)
     if (user) dispatch(setUserInfo(user))
+    console.log(user, 'use form home');
 
   }, []);
 
@@ -22,8 +22,8 @@ function Home() {
       <h1>Home page</h1>
       {user && 
       <>
-        <h3>Name - {user.name}</h3> 
-        <p>Email - {user.email}</p>
+        <h2>Wellcome {user.nickName ? user.nickName : `${user.name} ${user.surname}`}</h2> 
+        <p>Have a good day {':)'}</p> 
       </>
       }
 

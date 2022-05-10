@@ -44,20 +44,23 @@ function ToDo() {
 
   return (
     <div className="todo">
+      {loading && <Loader/>}
       <div className='todo_input'>
-        {loading && <Loader/>}
         <InputField 
           value={text} 
           handleInput={setText}
           handleEnter={addTask}
           placeholder='Enter taskname'
         />
-        <Button name="Add task" onClick={addTask}/>
+        <div className='todo_btn'>
+          <Button name="Add task" onClick={addTask}/>
+        </div>
       </div>
 
-      {todos.length 
-      ? <ToDoList todos={todos} /> 
-      : <p className='center'>No todos yet. Create new todo</p>}
+      { todos.length 
+        ? <ToDoList todos={todos} /> 
+        : <p className='center'>No todos yet. Create new todo</p>
+      }
     </div>
   )
 }

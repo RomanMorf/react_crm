@@ -6,7 +6,6 @@ import { setError } from 'src/store/errorSlice'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 
-
 function UserMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const dispatch = useDispatch()
@@ -24,20 +23,21 @@ function UserMenu() {
     navigate('/auth/login')
   }
 
-
   return (
     <div className={isOpen ? 'user-nav open' :'user-nav' } onClick={() => setIsOpen(!isOpen)}>
       <div className="user-nav_icon" onClick={() => setIsOpen(!isOpen)}>
-        <span class="material-icons-outlined">
+        <span className="material-icons-outlined">
           account_circle
         </span>
       </div>
       <div className={isOpen ? "user-nav_wrapper open" : "user-nav_wrapper"}>
-        <div className={isOpen ?  "user-nav_body open" :  "user-nav_body"}>
-          <ul className='user-nav_list'>
-            <li className='user-nav_item' onClick={() => navigate('/user')}>Cabinet</li>
-            <li className='user-nav_item' onClick={logOut}>Log out</li>
-          </ul>
+        <div className="container relative">
+          <div className={isOpen ?  "user-nav_body open" : "user-nav_body"}>
+            <ul className='user-nav_list'>
+              <li className='user-nav_item' onClick={() => navigate('/user')}>Cabinet</li>
+              <li className='user-nav_item' onClick={logOut}>Log out</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

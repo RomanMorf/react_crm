@@ -29,25 +29,9 @@
       justify-content: end;
     }
 
-    &_logo {
-      display: none;
-    }
-
+    &_logo,
     &_nav {
-      position: absolute;
-      top: -500px;
-      left: 0;
-      z-index: 100;
-      height: auto;
-      width: 100%;
-      background-color: $bg_primary;
-      box-shadow: $box_shadow_secondary;
-      transition: all ease-in .5s;
-
-      &.open {
-        top: 0%;
-        transition: all ease-out .5s;
-      }
+      display: none;
     }
 
     &_mobile {

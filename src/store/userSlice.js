@@ -3,7 +3,6 @@ import {createSlice} from '@reduxjs/toolkit'
 import { ref, set } from "firebase/database"
 import { db } from 'src/firebase'
 
-
 const userSlice = createSlice({
   name: 'users',
   initialState: {

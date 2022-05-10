@@ -1,3 +1,5 @@
+@import 'src/assets/style/variables.scss';
+
 .modal {
   &_wrapper {
     position: fixed;
@@ -27,16 +29,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
   }
 
   &_footer {
-    margin: 10px 0 0 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
 
   &_close {
+    border-top: 1px solid $hover_primary;
     position: absolute;
     top: -25px;
     right: -25px;

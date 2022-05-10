@@ -1,0 +1,22 @@
+@import 'src/assets/style/variables.scss';
+
+.task {
+  border: 1px solid $hover_primary;
+  border-radius: 3px;
+  margin: 10px 0;
+  padding: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  &.completed {
+    background-color: $bg_secondary;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+}
