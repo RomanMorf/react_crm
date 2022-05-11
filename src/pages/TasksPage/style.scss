@@ -12,6 +12,21 @@
     width: 50%;
     margin: 0 auto;
   }
+
+  &_bar {
+    display: flex;
+  }
+
+  &_btn {
+    border: none;
+    background-color: #fff;
+    transition: all ease .3s;
+    &.reverse {
+      transition: all ease .3s;
+      transform: rotate(90deg);
+      transform: rotateX(180deg);
+    }
+  }
 }
 
 @media (max-width: 768px) {

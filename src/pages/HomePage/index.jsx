@@ -13,7 +13,7 @@ function Home() {
     const uid = getUid()
     const user = await getFromDatabase(`users/${uid}/userInfo`)
     if (user) dispatch(setUserInfo(user))
-    console.log(user, 'use form home');
+    // console.log(user, 'use form home');
 
   }, []);
 

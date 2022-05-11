@@ -9,8 +9,12 @@ import Checkbox from 'src/components/elements/Checkbox';
 
 function TaskItem({task}) {
   const dispatch = useDispatch()
+  const dateNow = dateFilter( Date.now() )
+  const dateExpire = dateFilter( task.expireAt )
 
-  const expireAt = task.expireAt
+  const dExp = dateExpire < dateNow
+  const dToday = dateExpire === dateNow
+  const tComp = task.completed
 
   const deleteTask = () => {
     dispatch(removeTask({id: task.id}))
@@ -21,14 +25,10 @@ function TaskItem({task}) {
   }
 
   return (
-    <div 
-    className={task.completed ? 'task completed' : 'task'} 
-    style={{backgroundColor: (
-      expireAt < Date.now()) 
-      && !task.completed ? 'rgb(251 116 116)' : null }}>
-      <Checkbox checked={task.completed} onChange={toggleTask}/>
+    <div className={`task ${tComp ?'completed':''} ${dExp && !tComp ?'expired':''} ${dToday && !tComp ?'today':''}`}>
+      <Checkbox checked={tComp} onChange={toggleTask}/>
       <p>{task.text}</p>
-      <p>Expire - {dateFilter(task.expireAt, 'date')}</p>
+      <p>Expire - {dateExpire}</p>
       <button onClick={deleteTask}>
         <span className="material-icons">delete</span>
       </button>

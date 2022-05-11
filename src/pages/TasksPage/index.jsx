@@ -6,6 +6,7 @@ import { getUid } from 'src/helpers/getUid';
 import { getFromDatabase } from 'src/helpers/firebase/getFromDatabase';
 import { useInput } from 'src/hooks/useInput';
 import { addTask, setTasks } from 'src/store/taskSlice';
+import { sortByFunc } from 'src/helpers/sortByFunc';
 
 import TaskList from 'src/components/Tasks/TaskList';
 import InputField from 'src/components/elements/InputField';
@@ -17,24 +18,8 @@ function TasksPage() {
   const tasks = useSelector(state => state.tasks.tasks)
   const taskText = useInput('')
   const taskDate = useInput('')
-
-  const [sortBy, setSortBy] = useState('uncompleted')
-
-  const filteredTasks = useMemo(() => {
-    if (sortBy === 'completed') {
-      const filtered = tasks.filter(task => task.completed === true)
-      return filtered
-
-    } else if (sortBy === 'uncompleted') {
-      const filtered = tasks.filter(task => task.completed === false)
-      return filtered
-
-    } else {
-      return tasks
-    }
-
-  }, [tasks, sortBy])
-
+  const [filteredBy, setFilteredtBy] = useState('uncompleted')
+  const [sortBy, setSortBy] = useState(false)
 
   useEffect(async () => {
     await fetchTasks()
@@ -49,10 +34,29 @@ function TasksPage() {
     
   }
 
+  const filteredTasks = useMemo(() => {
+    if (filteredBy === 'completed') {
+      const filtered = tasks.filter(task => task.completed === true)
+      return filtered
+
+    } else if (filteredBy === 'uncompleted') {
+      const filtered = tasks.filter(task => task.completed === false)
+      return filtered
+
+    } else {
+      return tasks
+    }
+
+  }, [tasks, filteredBy])
+
+  const sortingTasks = [...filteredTasks]
+  sortByFunc(sortingTasks, 'expireAt', {reverse: sortBy})
+
   const createTask = async () => {
+
     if (taskText.value.trim() && taskDate.value.trim()) {
       const newTask = {
-        id: Date.now(),
+        id: `task-id-${Date.now()}`,
         text: taskText.value,
         completed: false,
         ctreatedAt: Date.now(),
@@ -88,15 +92,26 @@ function TasksPage() {
         </div>
       </div>
 
-      <div className="tasks_select">
-        <Select
-          options={selectOptions}
-          onChange={value => setSortBy(value.value)}
-        />
+      <div className="tasks_bar">
+        <div className="tasks_select">
+          <Select
+            options={selectOptions}
+            onChange={value => setFilteredtBy(value.value)}
+            defaultValue={selectOptions[2]}
+            isSearchable={false}
+          />
+        </div>
+        <button 
+          className={sortBy ? 'tasks_btn reverse' : 'tasks_btn'} 
+          onClick={() => setSortBy(!sortBy)}
+        >
+          <span className="material-icons">sort</span>
+        </button>
       </div>
+
       <div className='tasks_list'>
         { filteredTasks.length
-          ? <TaskList tasks={filteredTasks} /> 
+          ? <TaskList tasks={sortingTasks} /> 
           : <p className='center'>Tasks list empty.</p>
         }
       </div>

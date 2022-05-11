@@ -6,6 +6,7 @@ import {
   signInWithPopup, 
   GoogleAuthProvider 
 } from 'firebase/auth';
+import { useLocation } from 'react-router-dom'
 import { createUser } from 'src/store/userSlice';
 import { checkOnExists } from 'src/helpers/firebase/checkOnExists';
 import { errorHandle } from 'src/helpers/errors/errorHandle';
@@ -24,14 +25,16 @@ import logo from 'src/assets/img/google_logo.svg';
 const provider = new GoogleAuthProvider();
 
 function Login() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const auth = getAuth()
+
   const email = useInput('')
   const pass = useInput('')
   const {loading, setLoading} = useLoading(false)
 
-  const auth = getAuth()
-
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const redirectFrom = location?.state?.from?.pathname
 
   const singInHandle = async () => {
     if (email.value.trim() || pass.value.trim()) {
@@ -59,7 +62,7 @@ function Login() {
             dispatch(createUser({...user}))
           }
         })
-      navigate('/')
+      navigate(redirectFrom || '/')
       setLoading(false)
     } catch (e) {
       setLoading(false)

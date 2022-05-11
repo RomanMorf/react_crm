@@ -14,6 +14,14 @@
     background-color: $bg_secondary;
   }
 
+  &.expired {
+    background-color: rgb(251 116 116);
+  }
+
+  &.today {
+    background-color: rgb(251, 244, 116);
+  }
+
   button {
     cursor: pointer;
     background-color: transparent;
