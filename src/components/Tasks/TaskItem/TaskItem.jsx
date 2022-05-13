@@ -12,7 +12,7 @@ function TaskItem({task}) {
   const dateNow = dateFilter( Date.now() )
   const dateExpire = dateFilter( task.expireAt )
 
-  const dExp = dateExpire < dateNow
+  const dExp = task.expireAt < Date.now()
   const dToday = dateExpire === dateNow
   const tComp = task.completed
 
@@ -25,8 +25,12 @@ function TaskItem({task}) {
   }
 
   return (
-    <div className={`task ${tComp ?'completed':''} ${dExp && !tComp ?'expired':''} ${dToday && !tComp ?'today':''}`}>
-      <Checkbox checked={tComp} onChange={toggleTask}/>
+    <div 
+      id={task.id}
+      data-id={ task.id }
+      className={`task ${tComp ?'completed':''} ${dExp && !tComp ?'expired':''} ${dToday && !tComp ?'today':''}`}
+    >
+      <Checkbox checked={task.completed} onChange={toggleTask}/>
       <p>{task.text}</p>
       <p>Expire - {dateExpire}</p>
       <button onClick={deleteTask}>

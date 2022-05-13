@@ -7,17 +7,20 @@ import { getFromDatabase } from 'src/helpers/firebase/getFromDatabase';
 import { useInput } from 'src/hooks/useInput';
 import { addTask, setTasks } from 'src/store/taskSlice';
 import { sortByFunc } from 'src/helpers/sortByFunc';
+import { useContextMenu } from 'src/hooks/useContextMenu'
 
 import TaskList from 'src/components/Tasks/TaskList';
 import InputField from 'src/components/elements/InputField';
 import Button from 'src/components/elements/Button';
 import Select from 'react-select'
+import ContextMenu from 'src/components/ContextMenu/ContextMenu';
 
 function TasksPage() {
   const dispatch = useDispatch()
   const tasks = useSelector(state => state.tasks.tasks)
   const taskText = useInput('')
   const taskDate = useInput('')
+  const {anchorPoint, showContextMenu, targetId} = useContextMenu()
   const [filteredBy, setFilteredtBy] = useState('uncompleted')
   const [sortBy, setSortBy] = useState(false)
 
@@ -62,7 +65,7 @@ function TasksPage() {
         ctreatedAt: Date.now(),
         expireAt: new Date(taskDate.value).getTime()
       }
-
+      
       dispatch(addTask(newTask))
       taskText.cleareValue()
       await fetchTasks()
@@ -77,6 +80,7 @@ function TasksPage() {
 
   return (
     <div className='tasks'>
+      {showContextMenu && <ContextMenu anchorPoint={anchorPoint} targetId={targetId} />}
       <div className='tasks_input'>
         <InputField 
           placeholder='Enter task text' 
@@ -110,10 +114,11 @@ function TasksPage() {
       </div>
 
       <div className='tasks_list'>
-        { filteredTasks.length
+      <TaskList tasks={sortingTasks} /> 
+        {/* { filteredTasks.length
           ? <TaskList tasks={sortingTasks} /> 
-          : <p className='center'>Tasks list empty.</p>
-        }
+          : null
+        } */}
       </div>
     </div>
   )

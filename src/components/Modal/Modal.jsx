@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './style.scss';
 
-import Button from '../elements/Button';
+import Button from 'src/components/elements/Button';
 
 function Modal({
   textHeader,
@@ -10,7 +10,9 @@ function Modal({
   confirmBtn,
   onConfirm,
   onCancel,
-  children
+  children,
+  confirmBtnName,
+  cancelBtnName,
 }) {
 
   function closeModal(e) {
@@ -34,8 +36,16 @@ function Modal({
         { text && <div className="modal_main">{ text }</div>}
         
         { confirmBtn && <div className="modal_footer">
-          <Button onClick={ onConfirm } id="confirm" name='Confirm' />
-          <Button onClick={ onCancel } id="cancel" name='Cancel' />
+          <Button 
+            id="confirm" 
+            onClick={ onConfirm } 
+            name={ confirmBtnName ? confirmBtnName : 'Confirm' } 
+          />
+          <Button 
+            id="cancel" 
+            onClick={ onCancel ? onCancel : onCloseModal } 
+            name={ cancelBtnName ? cancelBtnName :'Cancel' } 
+          />
         </div>}
         
 
