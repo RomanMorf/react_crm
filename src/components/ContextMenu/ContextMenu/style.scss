@@ -10,9 +10,12 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
   }
 
   &_item {
+    padding: 15px;
+    // margin: 0 10px;
     cursor: pointer;
 
     &:hover {

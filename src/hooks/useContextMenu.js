@@ -1,9 +1,10 @@
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, useRef } from "react";
 
 const useContextMenu = (key) => {
   const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [targetData, setTargetData] = useState(null)
+  const wrapperEl = useRef(null)
 
   function searchDataAttrByKey (e, dataKey, cb) {
     const node = e.target
@@ -36,18 +37,23 @@ const useContextMenu = (key) => {
 
   const handleClick = useCallback(() => (showContextMenu ? setShowContextMenu(false) : null), [showContextMenu]);
 
-  function ContextMenuTrigger({children, id}) {
+  function ContextMenuTrigger({ children }) {
     useEffect(() => {
-      document.addEventListener("click", handleClick);
-      document.getElementById(`${id}`).addEventListener("contextmenu", handleContextMenu);
+      if (wrapperEl.current) {
+        document.addEventListener("click", handleClick);
+        wrapperEl.current.addEventListener("contextmenu", handleContextMenu);
+      }
+
       return () => {
-        document.removeEventListener("click", handleClick);
-        document.getElementById(`${id}`).removeEventListener("contextmenu", handleContextMenu);
+        if (wrapperEl.current) {
+          document.removeEventListener("click", handleClick);
+          wrapperEl.current.removeEventListener("contextmenu", handleContextMenu);
+        }
       };
     });
   
     return (
-      <div id={id} >
+      <div ref={wrapperEl} >
         { children }
       </div>
     )

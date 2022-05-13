@@ -5,7 +5,7 @@ import './style.scss';
 import Navigate from 'src/components/Navigate';
 import Button from 'src/components/elements/Button';
 import UserMenu from 'src/components/UserMenu';
-import MobileMenu from 'src/components/BurgerMenu';
+import BurgerMenu from 'src/components/BurgerMenu';
 
 
 function Header() {
@@ -13,29 +13,29 @@ function Header() {
 
   return (
     <>
-    <div className='header'>
-      <div className="container">
-        <div className='header_body'>
-          <div className='header_logo'>
-            Logo
+      <div className='header'>
+        <div className="container">
+          <div className='header_body'>
+            <div className="header_mobile">
+              <Button googleIcon={showMenu ? 'close' : 'menu'} onClick={() => setShowMenu(!showMenu)}/>
+            </div>
+            <div className='header_logo'>
+              Logo
+            </div>
+            <div className='header_user'>
+              <UserMenu />
           </div>
-          <div className='header_user'>
-            <UserMenu />
-        </div>
-        </div>
-        <div className="header_nav">
-          <Navigate />
-        </div>
-        <div className="header_mobile">
-          <Button googleIcon={showMenu ? 'close' : 'menu'} onClick={() => setShowMenu(!showMenu)}/>
+          </div>
+          <div className="header_nav">
+            <Navigate />
+          </div>
         </div>
       </div>
-    </div>
-    <MobileMenu 
-      menuOpen={showMenu} 
-      onCloseMenu={() => setShowMenu(false)}  
-      children={<Navigate />}
-    />
+      <BurgerMenu 
+        menuOpen={showMenu} 
+        onCloseMenu={() => setShowMenu(false)}  
+        children={<Navigate />}
+      />
     </>
   )
 }

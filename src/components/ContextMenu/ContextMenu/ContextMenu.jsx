@@ -1,24 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import ContextMenuItem from '../ContextMenuItem';
 import './style.scss';
 
 function ContextMenu({ anchorPoint, handleClick, menuList }) {
-  const {x, y} = anchorPoint
+  const [windowSize, setWindowSize] = useState(null)
+  const [menuParams, setMenuParams] = useState(null)
+  const [showCoords, setShowCoords] = useState({ x: -100, y: -100 })
+
+  const menuEl = useRef(null)
+
+  const calculateCoords = () => {
+    if ((anchorPoint.x + menuParams.offsetWidth) > windowSize.with) {
+      setShowCoords({
+        x: anchorPoint.x - menuParams.offsetWidth,
+        y: (windowSize.with < 768) ? anchorPoint.y - menuParams.offsetHeight - (window?.navigator?.platform !== 'Win32' ? 40 : 0) : anchorPoint.y,
+      })
+    }
+    else {
+      setShowCoords({
+        x: anchorPoint.x,
+        y: (windowSize.with < 768) ? anchorPoint.y - menuParams.offsetHeight - (window?.navigator?.platform !== 'Win32' ? 40 : 0) : anchorPoint.y,
+      })
+    }
+  }
+
+  useEffect(() => {
+    setWindowSize({
+      with: window.innerWidth,
+      heigth: window.innerHeight
+    })
+  }, []);
+
+  useEffect(() => {
+    if (menuEl.current) {
+      setMenuParams({
+        clientHeight: menuEl.current.clientHeight,
+        clientWidth: menuEl.current.clientWidth,
+        offsetHeight: menuEl.current.offsetHeight,
+        offsetWidth: menuEl.current.offsetWidth,
+        offsetTop: menuEl.current.offsetTop,
+        offsetLeft: menuEl.current.offsetLeft,
+        scrollHeight: menuEl.current.scrollHeight,
+        scrollLeft: menuEl.current.scrollLeft,
+      })
+    }
+  }, [windowSize]);
+
+  useEffect(() => {
+    if (windowSize) {
+      calculateCoords()
+    }
+  }, [windowSize]);
 
   return (
-    <div className='context-menu' style={{top: `${y}px`, left: `${x}px` }}>
-      <ul className='context-menu_list'>
-        {menuList && menuList.map((el, idx) => {
-          return (
-            <li 
-              className='context-menu_item' 
-              onClick={ () => handleClick(el.action) }
-              data-val={ el.action }
-              key={ idx } 
-            >{ el.text }</li>
-          )
-        })}
-      </ul>
-    </div>
+    <>
+      <div ref={ menuEl } className='context-menu' style={{top: `${showCoords.y}px`, left: `${showCoords.x}px` }}>
+        <ul className='context-menu_list'>
+          {menuList && menuList.map((item, idx) => {
+            return (
+              <ContextMenuItem
+                className='context-menu_item'
+                menuItem={ item }
+                onClick={ () => handleClick(item.action) }
+                key={ idx } 
+              />
+            )
+          })}
+        </ul>
+      </div>
+    </>
   )
 }
 

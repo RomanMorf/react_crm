@@ -19,6 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3px;
   
     max-width: 30px;
     max-height: 30px;
@@ -26,7 +27,7 @@
 
   &_text {
     padding: 10px;
-    background: $bg_primary;
+    background: $btn_bg_scondary;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -49,13 +50,12 @@
       justify-content: center;
       align-items: center;
       
-      max-width: 15px;
-      max-height: 15px;
+      max-width: 20px;
+      max-height: 20px;
     }
 
-    &_text {
-      padding: 3px;
+    &:hover {
+      box-shadow: $box_shadow_primary;
     }
-  
   }
 }
