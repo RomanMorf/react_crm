@@ -57,7 +57,7 @@ function TaskList({tasks}) {
         >
           <TaskEdit task={taskForEdit} handleChange={updateTask} handleCancel={closeModal} />
         </ModalComponent>}
-      <ContextMenuTrigger id='context-trigger'>
+      <ContextMenuTrigger>
         <div className='tasklist'>
 
           {showContextMenu && 

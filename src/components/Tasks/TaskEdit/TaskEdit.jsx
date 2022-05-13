@@ -16,13 +16,16 @@ function TaskEdit({task, handleChange, handleCancel}) {
   }
 
   return (
-    <div>
-      <h2>TaskEdit</h2>
-      <p><input type="text" value={editedTask.text} onChange={e =>  setEditedTask({...editedTask, text: e.target.value})} /></p>
-      <p><input type="date" value={getNumerickFullYear()} onChange={e => setEditedTask({...editedTask, expireAt: new Date(e.target.value).getTime()})}  /></p>
+    <div className='task-editor'>
+      <h2 className='task-editor_title'>Task editor</h2>
 
-      <Button onClick={() => handleChange(editedTask)} name='Save'/>
-      <Button onClick={handleCancel} name='Cancel'/>
+      <textarea className='task-editor_textarea'  cols="30" rows="10" value={editedTask.text} onChange={e =>  setEditedTask({...editedTask, text: e.target.value})}></textarea>
+      <p>Data - <input className='task-editor_datepicker' type="date" value={getNumerickFullYear()} onChange={e => setEditedTask({...editedTask, expireAt: new Date(e.target.value).getTime()})}  /></p>
+
+      <div className="task-editor_buttons">
+        <Button onClick={() => handleChange(editedTask)} name='Save'/>
+        <Button onClick={handleCancel} name='Cancel'/>
+      </div>
     </div>
   )
 }

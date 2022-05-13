@@ -29,22 +29,12 @@ function ContextMenu({ anchorPoint, handleClick, menuList }) {
       with: window.innerWidth,
       heigth: window.innerHeight
     })
-  }, []);
 
-  useEffect(() => {
-    if (menuEl.current) {
-      setMenuParams({
-        clientHeight: menuEl.current.clientHeight,
-        clientWidth: menuEl.current.clientWidth,
-        offsetHeight: menuEl.current.offsetHeight,
-        offsetWidth: menuEl.current.offsetWidth,
-        offsetTop: menuEl.current.offsetTop,
-        offsetLeft: menuEl.current.offsetLeft,
-        scrollHeight: menuEl.current.scrollHeight,
-        scrollLeft: menuEl.current.scrollLeft,
-      })
-    }
-  }, [windowSize]);
+    setMenuParams({
+      offsetHeight: menuEl.current.offsetHeight,
+      offsetWidth: menuEl.current.offsetWidth,
+    })
+  }, []);
 
   useEffect(() => {
     if (windowSize) {
@@ -54,7 +44,7 @@ function ContextMenu({ anchorPoint, handleClick, menuList }) {
 
   return (
     <>
-      <div ref={ menuEl } className='context-menu' style={{top: `${showCoords.y}px`, left: `${showCoords.x}px` }}>
+      <div ref={ menuEl } className='context-menu' style={{top: `${showCoords.y}px`, left: `${showCoords.x}px`, display: 'block' }}>
         <ul className='context-menu_list'>
           {menuList && menuList.map((item, idx) => {
             return (

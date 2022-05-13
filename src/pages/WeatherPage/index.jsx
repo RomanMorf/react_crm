@@ -14,23 +14,14 @@ function Weather() {
   const {loading, setLoading} = useLoading()
   const {coords, getLocation} = useLocation()
 
-  useEffect(async () => {
-    if (!coords) getLocation()
-
-    setLoading(true)
-
-    if (coords) {
-      const weather = await getWeatherByCoords(coords)
-      await setWeather(weather)
-    }
-
-    setLoading(false)
+  useEffect(() => {
+    refreshWeather()
   }, [coords]);
 
   const refreshWeather = async () => {
-    if (!coords) getLocation()
-
     setLoading(true)
+
+    if (!coords) await getLocation()
 
     if (coords) {
       const weather = await getWeatherByCoords(coords)
@@ -43,13 +34,14 @@ function Weather() {
   return (
     <div>
       <h1 className="center">Weather forecast page</h1>
+
       <Button googleIcon='refresh' onClick={refreshWeather} />
 
       { loading &&  <Loader /> }
 
-      {(weather && !loading) && <WeatherDailyMapper weather={ weather }/>} 
+      {weather ? <WeatherDailyMapper weather={ weather }/> : <Loader small />} 
 
-      {(weather && !loading) && <WeatherHourlyMapper weather={ weather } />}
+      {weather ? <WeatherHourlyMapper weather={ weather }/> : <Loader small />}
 
     </div>
   )

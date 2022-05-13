@@ -31,9 +31,9 @@ function TaskItem({task}) {
       className={`task ${tComp ?'completed':''} ${dExp && !tComp ?'expired':''} ${dToday && !tComp ?'today':''}`}
     >
       <Checkbox checked={task.completed} onChange={toggleTask}/>
-      <p>{task.text}</p>
-      <p>Expire - {dateExpire}</p>
-      <button onClick={deleteTask}>
+      <p className='task_text scroll'>{task.text}</p>
+      <div className='task_expire'>{dateExpire}</div>
+      <button onClick={deleteTask} className='mw768'>
         <span className="material-icons">delete</span>
       </button>
     </div>

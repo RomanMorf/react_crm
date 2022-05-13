@@ -11,7 +11,8 @@ const useContextMenu = (key) => {
 
     function findNodeData(node, dataKey) {
       if (  node.localName === "body" || 
-            node.localName === "html" ) {
+            node.localName === "html" ||
+            node.parentNode === null) {
         return
       }
 

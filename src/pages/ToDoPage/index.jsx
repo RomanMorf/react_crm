@@ -21,15 +21,16 @@ function ToDo() {
   const {toastSuccess} = useToast()
 
   const todos = useSelector(state => state.todos.todos)
+  
+  async function fetchTodos() {
+    const uid = getUid()
+    if (uid) {
+      const getTodos = await getFromDatabase(`users/${uid}/todos`)
+      if (getTodos) dispatch(setTodos(getTodos))
+    }
+  }
 
   useEffect(() => {
-    async function fetchTodos() {
-      const uid = getUid()
-      if (uid) {
-        const getTodos = await getFromDatabase(`users/${uid}/todos`)
-        if (getTodos) dispatch(setTodos(getTodos))
-      }
-    }
     fetchTodos()
     turnOffLoading()
   }, []);

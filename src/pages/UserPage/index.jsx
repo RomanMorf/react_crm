@@ -1,29 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserInfo } from 'src/store/userSlice'
-import { getFromDatabase } from 'src/helpers/firebase/getFromDatabase'
-import { getUid } from 'src/helpers/getUid';
-import { setToDatabase } from 'src/helpers/firebase/setToDatabase';
+import { getFromDatabase } from 'src/helpers/firebase/getFromDatabase';
 import { ModalComponent } from 'src/hooks/useModal';
+// import { fetchUserData } from 'src/helpers/fetchUserData';
+import { setToDatabase } from 'src/helpers/firebase/setToDatabase';
+import { setUserInfo } from 'src/store/userSlice';
+import { useLoading } from 'src/hooks/useLoading';
 import { useModal } from 'src/hooks/useModal';
+import { getUid } from 'src/helpers/getUid';
 
-import Button from 'src/components/elements/Button';
 import FormEditUser from 'src/components/FormEditUser';
+import Button from 'src/components/elements/Button';
+import Loader from 'src/components/Loader';
 
 function UserPage() {
   const dispatch = useDispatch()
-  const {showModal, setShowModal} = useModal()
-  const [editForm, setEditForm] = useState(false)
-  const [tempUserInfo, setTempUserInfo] = useState(null)
   const currentUser = useSelector(state => state.users.currentUser)
+  const [tempUserInfo, setTempUserInfo] = useState(null)
+  const {loading, setLoading, } = useLoading(false)
+  const [editForm, setEditForm] = useState(false)
+  const {showModal, setShowModal} = useModal()
   const uid = getUid()
 
-  useEffect( async () => {
-    if (!currentUser) {
-      const uid = getUid()
-      const user = await getFromDatabase(`users/${uid}/userInfo`)
-      if (user) dispatch(setUserInfo(user))
-    }
+
+  async function fetchUserData() {
+    const uid = await getUid()
+    const user = await getFromDatabase(`users/${uid}/userInfo`)
+    dispatch(setUserInfo(user))
+  }
+
+  useEffect(() => {
+    setLoading(true)
+
+    fetchUserData()
+
+    setLoading(false)
   }, []);
 
   const saveUserChanges = user => {
@@ -44,21 +55,25 @@ function UserPage() {
   }
 
   return (
+    <>
+    {loading && <Loader/>}
     <div className='user'>
-      <h1>Wellcome {currentUser.name}</h1>
+      {currentUser && <h1>Wellcome {currentUser.name}</h1>}
       <div className="user_body">
-        {!editForm && 
+
+        {(!editForm && !loading) &&  
         <>
           <Button name='Edit info' onClick={() => setEditForm(!editForm)}/>
-          <div className="user_info">
+          {currentUser && <div className="user_info">
             <p>Name - {currentUser.name}</p>
             <p>Surname - {currentUser.surname ? currentUser.surname : '...'}</p>
             <p>Nickname - {currentUser.nickName ? currentUser.nickName : '...'}</p>
             <p>Tel. number - {currentUser.tel ? currentUser.tel : '...'}</p>
             <p>Email - {currentUser.email}</p>
-          </div>
+          </div>}
         </>
         }
+
         {editForm &&  <FormEditUser 
             style={{maxWidth: '500px'}}
             title='Edit user info'
@@ -67,6 +82,7 @@ function UserPage() {
             handleCancel={ () => setEditForm(false) }
           />
         }
+
         {showModal && 
         <ModalComponent 
           text='Save user changes ?' 
@@ -76,8 +92,8 @@ function UserPage() {
           onCloseModal={cancelChanges} 
         />}
       </div>
-
     </div>
+    </>
   )
 }
 

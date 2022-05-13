@@ -27,4 +27,23 @@
     background-color: transparent;
     border: none;
   }
+
+  &_text {
+    max-height: 40vh;
+    overflow-y: scroll;
+    padding-right: 5px;
+  }
+
+  &_expire {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    border-left: 1px solid $hover_primary;
+  }
+}
+
+@media (max-width: 768px) {
+
 }

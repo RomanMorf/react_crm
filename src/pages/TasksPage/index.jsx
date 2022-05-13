@@ -24,8 +24,8 @@ function TasksPage() {
   const [filteredBy, setFilteredtBy] = useState('uncompleted')
   const [sortBy, setSortBy] = useState(false)
 
-  useEffect(async () => {
-    await fetchTasks()
+  useEffect(() => {
+    fetchTasks()
   }, []);
 
   async function fetchTasks() {
