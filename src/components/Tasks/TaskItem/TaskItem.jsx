@@ -4,8 +4,9 @@ import './style.scss'
 import { useDispatch } from 'react-redux';
 import { dateFilter } from 'src/helpers/dateFilter'
 import { removeTask, toggleTaskCompleted } from 'src/store/taskSlice';
-import Tooltip from 'src/components/Tooltip';
+
 import Checkbox from 'src/components/elements/Checkbox';
+import ReactTooltip from 'react-tooltip';
 
 function TaskItem({task}) {
   const dispatch = useDispatch()
@@ -25,25 +26,31 @@ function TaskItem({task}) {
   }
 
   return (
+    <>
+    <ReactTooltip />
     <div 
       id={task.id}
       data-id={ task.id }
-      className={`task ${tComp ?'completed':''}`}
+      className={`task ${tComp ?'completed':null}`}
     >
       <Checkbox checked={task.completed} onChange={toggleTask}/>
       <p className='task_text scroll'>{task.text}</p>
       <div className='task_expire'>
-        <Tooltip text={'Date expired'}>
         <span 
-        className={`task_expire-text ${tComp ?'completed':''} ${dExp && !tComp ?'expired':''} ${dToday && !tComp ?'today':''}`}>
+          data-tip="Expire date"
+          className={`task_expire-text 
+          ${tComp ?'completed':''} 
+          ${dExp && !tComp ?'expired':''} 
+          ${dToday && !tComp ?'today':''}`}
+        >
           {dateExpire}
         </span>
-        </Tooltip>
       </div>
       <button onClick={deleteTask} className='mw768'>
         <span className="material-icons">delete</span>
       </button>
     </div>
+    </>
   )
 }
 
