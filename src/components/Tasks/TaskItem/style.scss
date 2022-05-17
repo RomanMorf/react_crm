@@ -14,14 +14,6 @@
     background-color: $bg_secondary;
   }
 
-  &.expired {
-    background-color: rgb(251 116 116);
-  }
-
-  &.today {
-    background-color: rgb(251, 244, 116);
-  }
-
   button {
     cursor: pointer;
     background-color: transparent;
@@ -35,12 +27,31 @@
   }
 
   &_expire {
-    margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 5px;
     border-left: 1px solid $hover_primary;
+    margin-left: auto;
+
+    span {
+      border-radius: 10px;
+      padding: 5px;
+      text-align: center;
+      margin-left: 5px;
+      box-shadow: $box_shadow_primary;
+
+      &.completed {
+        background-color: $bg_secondary;
+      }
+    
+      &.expired {
+        background-color: rgb(251 116 116);
+      }
+    
+      &.today {
+        background-color: rgb(251, 244, 116);
+      }
+    }
   }
 }
 

@@ -39,9 +39,9 @@ function Weather() {
 
       { loading &&  <Loader /> }
 
-      {weather ? <WeatherDailyMapper weather={ weather }/> : <Loader small />} 
+      { !loading && <WeatherDailyMapper weather={ weather }/> } 
 
-      {weather ? <WeatherHourlyMapper weather={ weather }/> : <Loader small />}
+      { !loading && <WeatherHourlyMapper weather={ weather }/> }
 
     </div>
   )

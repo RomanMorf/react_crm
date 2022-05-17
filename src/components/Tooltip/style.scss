@@ -1,0 +1,30 @@
+@import 'src/assets/style/variables.scss';
+
+.tooltip {
+  position: relative;
+  
+  &:hover > .tooltip_text {
+    display: block;
+  }
+
+  .tooltip_text {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    background-color: black;
+    color: #fff;
+    display: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      bottom: -5px;
+      transform: rotate(45deg);
+      left: calc(50% - 7px);
+      background-color: black;
+      box-shadow: $box_shadow_secondary;
+    }
+  }
+}

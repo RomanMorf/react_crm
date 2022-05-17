@@ -1,11 +1,15 @@
+@import 'src/assets/style/variables.scss';
+
 .context-menu {
   position: absolute;
-  border: 1px solid black;
+  z-index: 10;
   top: 0;
   left: 0;
-  z-index: 10;
   background-color: #fff;
+  border-radius: 3px;
+  box-shadow: $box_shadow_secondary;
   display: none;
+  overflow: hidden;
 
   &_list {
     list-style: none;
