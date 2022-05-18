@@ -95,6 +95,12 @@ Your app is ready to be deployed!
 ## Tooltip component
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/tooltip.png?raw=true" alt="tooltip img">
 
+## Ready for mobile
+<p>Has adaptive interface for all devices</p>
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/mobile-0.png?raw=true" alt="mobile img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/mobile-1.png?raw=true" alt="mobile img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/mobile-2.png?raw=true" alt="mobile img">
+
 <p>Each page has Loader component for display loading process</p>
 <p>Animated menu links.</p>
 <p>And many-many other things ))</p>
