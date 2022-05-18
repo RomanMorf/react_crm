@@ -21,12 +21,14 @@ REACT_APP_FIREBASE_APPID=******************
 REACT_APP_FIREBASE_MEASUREMENTID=******************
 ```
 
-
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### Runs the app in the development mode
+```
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -39,13 +41,21 @@ You may also see any lint errors in the console.
 ```
 npm test
 ```
+
 ### Run your unit tests with coverage ( % )
 ```
 npm test:cover
 ```
 
+### Run build and deploy app to firebase hosting
+```
+npm run firebase
+```
 
-### `npm run build`
+### Builds the app for production
+```
+npm run build
+```
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -59,17 +69,17 @@ Your app is ready to be deployed!
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-1.png?raw=true" alt="login img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-2.png?raw=true" alt="login img">
 
-<p>Register window has validation</p>
+## Register window has validation
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-1.png?raw=true" alt="register img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-2.png?raw=true" alt="register img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-3.png?raw=true" alt="register img">
 
-<p>Todo page</p>
+## Todo page
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-0.png?raw=true" alt="todo img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-1.png?raw=true" alt="todo img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-2.png?raw=true" alt="todo img">
 
-<p>Task page</p>
+## Task page
 <p>Active soritng by data.</p>
 <p>Filter by "completed"</p>
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-0.png?raw=true" alt="task img">
@@ -81,7 +91,7 @@ Your app is ready to be deployed!
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-5.png?raw=true" alt="task img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-6.png?raw=true" alt="task img">
 
-<p>Tooltip component</p>
+## Tooltip component
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/tooltip.png?raw=true" alt="tooltip img">
 
 <p>Each page has Loader component for display loading process</p>
@@ -89,15 +99,15 @@ Your app is ready to be deployed!
 <p>And many-many other things ))</p>
 <p>Dowload and try :)</p>
 
-### Currently under development
+# Currently under development
 
-<p>Weather page</p>
+## Weather page
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-1.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-2.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-3.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-4.png?raw=true" alt="weather img">
 
-<p>Cabinet page</p>
+## Cabinet page
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-0.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-1.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-2.png?raw=true" alt="weather img">
