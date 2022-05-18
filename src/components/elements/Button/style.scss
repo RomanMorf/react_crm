@@ -32,10 +32,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
 
-    &::first-letter {
-      text-transform: capitalize;
-    }
+  &_name::first-letter {
+    text-transform: capitalize;
   }
 
   &:hover {

@@ -1,5 +1,5 @@
 .main {
   &_content {
-    min-height: 80vh;
+    min-height: calc(100vh - 155px);
   }
 }

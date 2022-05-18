@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style.scss';
-
 
 import Navigate from 'src/components/Navigate';
 import Button from 'src/components/elements/Button';
 import UserMenu from 'src/components/UserMenu';
 import BurgerMenu from 'src/components/BurgerMenu';
 
-
 function Header() {
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = React.useState(false)
 
   return (
     <>

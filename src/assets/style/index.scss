@@ -1,6 +1,6 @@
-@import url('./variables.scss');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-@import url('./form.scss');
+@import './variables.scss';
+@import './form.scss';
 
 * {
   box-sizing: border-box;
@@ -10,6 +10,20 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   min-width: 300px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.0);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $bg_primary;
+    border-radius: 2px;
+  }
 }
 
 button {
@@ -81,21 +95,9 @@ button {
   &::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     border-radius: 2px;
-    // margin-left: 2px;
-
-    // outline: 1px solid slategrey;
   }
 }
 
-
-
-@media (max-width: 1202px){
-
-}
-
-@media (max-width: 992px){
-
-}
 
 @media (max-width: 768px){
   .mw768 {

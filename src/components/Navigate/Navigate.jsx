@@ -10,28 +10,26 @@ function Navigate() {
 
   return (
     <nav className='unselectable'>
-      <ul className='nav_list'>
-        <AnimateSharedLayout>
-          {links.map((link, idx) => {
-            return (
-              <motion.li 
-                initial={{ color: "#000" }}
-                animate={{ "rgb(255, 0, 0)" : "#000" }}
-                className='nav_item' 
-                key={`key-${idx}`}
+      <AnimateSharedLayout>
+      <ul layout className='nav_list'>
+        {links.map((link, idx) => {
+          return (
+            <motion.li 
+              className='nav_item' 
+              key={`key-${idx}`}
+            >
+              <NavLink 
+                className="nav_link"
+                to={link.path}
+                activeclassname="active"
               >
-                <NavLink 
-                  className="nav_link"
-                  to={link.path}
-                  activeclassname="active"
-                >
-                  {link.name}
-                  {location.pathname === link.path && <ActiveLine />}
-                </NavLink>
-              </motion.li>
-            )})}
-          </AnimateSharedLayout>
+                {link.name}
+                {location.pathname === link.path && <ActiveLine />}
+              </NavLink>
+            </motion.li>
+          )})}
       </ul>
+      </AnimateSharedLayout>
     </nav>
   )
 }

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFromDatabase } from 'src/helpers/firebase/getFromDatabase';
-import { ModalComponent } from 'src/hooks/useModal';
-// import { fetchUserData } from 'src/helpers/fetchUserData';
 import { setToDatabase } from 'src/helpers/firebase/setToDatabase';
 import { setUserInfo } from 'src/store/userSlice';
 import { useLoading } from 'src/hooks/useLoading';
@@ -12,6 +10,7 @@ import { getUid } from 'src/helpers/getUid';
 import FormEditUser from 'src/components/FormEditUser';
 import Button from 'src/components/elements/Button';
 import Loader from 'src/components/Loader';
+import Modal from 'src/components/Modal';
 
 function UserPage() {
   const dispatch = useDispatch()
@@ -34,8 +33,7 @@ function UserPage() {
 
     fetchUserData()
 
-    // setLoading(false)
-    setTimeout(() =>     setLoading(false), 2000)
+    setLoading(false)
   }, []);
 
   const saveUserChanges = user => {
@@ -53,6 +51,7 @@ function UserPage() {
   const cancelChanges = () => {
     setTempUserInfo(null)
     setShowModal(false)
+    setEditForm(false)
   }
 
   return (
@@ -63,7 +62,7 @@ function UserPage() {
       {(currentUser && !loading) && <h1>Wellcome {currentUser.name}</h1>}
       <div className="user_body">
 
-        {(!editForm && !loading) &&  
+        {!loading &&  
         <>
           <Button name='Edit info' onClick={() => setEditForm(!editForm)}/>
           {currentUser && <div className="user_info">
@@ -76,18 +75,21 @@ function UserPage() {
         </>
         }
 
-        {editForm &&  <FormEditUser 
-            style={{maxWidth: '500px'}}
-            title='Edit user info'
-            formData={currentUser} 
-            handleSubmit={ user => saveUserChanges(user) } 
-            handleCancel={ () => setEditForm(false) }
-          />
-        }
+        {editForm && 
+        <Modal onCloseModal={cancelChanges}>
+          <FormEditUser 
+              style={{maxWidth: '500px'}}
+              title='Edit user info'
+              formData={currentUser} 
+              handleSubmit={ user => saveUserChanges(user) } 
+              handleCancel={ () => setEditForm(false) }
+            />
+        </Modal>}
+
 
         {showModal && 
-        <ModalComponent 
-          text='Save user changes ?' 
+        <Modal 
+          text='Save changes ?' 
           confirmBtn 
           onConfirm={confirmChanges} 
           onCancel={cancelChanges} 

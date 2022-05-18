@@ -91,6 +91,7 @@ function Login() {
         <div className="form_slot">
           <InputField 
             name='pass'
+            type='password'
             {...pass}
             placeholder='Enter your pass'
           />

@@ -12,7 +12,7 @@ function ToggleSwitch({
       <input 
         id={id} 
         type="checkbox" 
-        onChange={onChange} 
+        onChange={ onChange } 
         checked={ checked }
       />
       <span className={round ? "slider round" : "slider"}></span>

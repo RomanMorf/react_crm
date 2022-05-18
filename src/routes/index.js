@@ -1,8 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import TestPage from "src/pages/TestPage";
-
 import LoginPage from 'src/pages/LoginPage'
 import RegisterPage from "src/pages/RegisterPage";
 import HomePage from 'src/pages/HomePage'
@@ -57,10 +55,6 @@ function RoutesComponent() {
       </Route>
 
       <Route path="/landing" element={<LandingPage />} />
-
-      <Route path="/" element={<MainLayout />}>
-        <Route path="/test" element={<TestPage />} />
-      </Route>
 
       <Route path="/*" element={<NotFoundPage/>} />
     </Routes>

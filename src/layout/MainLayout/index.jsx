@@ -13,7 +13,7 @@ function MainLayout() {
     <>
       <Header />
         <div className="container">
-          <div className="main_content">
+          <div className="main_content scoll">
             <Outlet />
           </div>
         </div>
