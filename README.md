@@ -55,6 +55,47 @@ Your app is ready to be deployed!
 
 ### About Project
 
-<img src="/RomanMorf/react_crm/blob/context-menu/blob/login-1.png?raw=true" alt="login img">
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-1.png?raw=true" alt="login img">
 
+Login window
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-1.png?raw=true" alt="login img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-2.png?raw=true" alt="login img">
+
+Register window has validation
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-1.png?raw=true" alt="register img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-2.png?raw=true" alt="register img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-3.png?raw=true" alt="register img">
+
+Todo page
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-0.png?raw=true" alt="todo img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-1.png?raw=true" alt="todo img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-2.png?raw=true" alt="todo img">
+
+Task page
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-0.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-1.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-2.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-3.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-4.png?raw=true" alt="task img">
+Conterxt menu for edit tasks
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-5.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-6.png?raw=true" alt="task img">
+
+Tooltip component
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/tooltip.png?raw=true" alt="tooltip img">
+
+Each page has Loader component for display loading process
+
+Animated menu links.
+
+### Currently under development
+
+Weather page
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-1.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-2.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-3.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-4.png?raw=true" alt="weather img">
+
+Cabinet page
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-0.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-1.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-2.png?raw=true" alt="weather img">
