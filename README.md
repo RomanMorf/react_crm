@@ -77,6 +77,7 @@ Your app is ready to be deployed!
 ## Todo page
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-0.png?raw=true" alt="todo img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-1.png?raw=true" alt="todo img">
+<p>When allow to edit list - yuser can change position of todo items</p>
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-2.png?raw=true" alt="todo img">
 
 ## Task page
