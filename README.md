@@ -55,7 +55,6 @@ Your app is ready to be deployed!
 
 ### About Project
 
-
-<img src="https://github.com/RomanMorf/react_crm/tree/master/github/login-1.png" alt="login img">
-<img src="https://github.com/RomanMorf/react_crm/tree/master/github/login-2.png" alt="login img">
+<img src="/RomanMorf/react_crm/blob/context-menu/blob/login-1.png?raw=true" alt="login img">
+<img src="/RomanMorf/react_crm/blob/context-menu/blob/login-2.png" alt="login img">
 
