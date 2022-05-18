@@ -77,26 +77,27 @@ Your app is ready to be deployed!
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-2.png?raw=true" alt="task img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-3.png?raw=true" alt="task img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-4.png?raw=true" alt="task img">
-<p>Conterxt menu for edit tasks</p>
+<p>Context menu for edit tasks</p>
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-5.png?raw=true" alt="task img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-6.png?raw=true" alt="task img">
 
-Tooltip component
+<p>Tooltip component</p>
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/tooltip.png?raw=true" alt="tooltip img">
 
-Each page has Loader component for display loading process
-
-Animated menu links.
+<p>Each page has Loader component for display loading process</p>
+<p>Animated menu links.</p>
+<p>And many-many other things ))</p>
+<p>Dowload and try :)</p>
 
 ### Currently under development
 
-Weather page
+<p>Weather page</p>
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-1.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-2.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-3.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-4.png?raw=true" alt="weather img">
 
-Cabinet page
+<p>Cabinet page</p>
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-0.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-1.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-2.png?raw=true" alt="weather img">
