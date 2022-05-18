@@ -37,7 +37,7 @@ function Weather() {
 
       <Button googleIcon='refresh' onClick={refreshWeather} />
 
-      { loading &&  <Loader /> }
+      { loading &&  <Loader  /> }
 
       { !loading && <WeatherDailyMapper weather={ weather }/> } 
 

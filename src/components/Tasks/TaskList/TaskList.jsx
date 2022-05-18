@@ -3,12 +3,12 @@ import './style.scss';
 
 import ContextMenu from 'src/components/ContextMenu/ContextMenu';
 import TaskItem from 'src/components/Tasks/TaskItem';
+import TaskEdit from '../TaskEdit';
 
 import { useContextMenu } from 'src/hooks/useContextMenu'
 import { useDispatch } from 'react-redux';
 import { removeTask, updateTasks } from 'src/store/taskSlice';
 import { useModal, ModalComponent } from 'src/hooks/useModal';
-import TaskEdit from '../TaskEdit';
 
 
 function TaskList({tasks}) {
@@ -57,6 +57,7 @@ function TaskList({tasks}) {
         >
           <TaskEdit task={taskForEdit} handleChange={updateTask} handleCancel={closeModal} />
         </ModalComponent>}
+
       <ContextMenuTrigger>
         <div className='tasklist'>
 
@@ -66,11 +67,10 @@ function TaskList({tasks}) {
             anchorPoint={anchorPoint} 
             menuList={menuList} 
           />}
-
           {tasks.length 
-          ? tasks.map(task => <TaskItem key={task.id} task={task}/>)
-          : <p className='center'>Tasks list is epmty.</p>
-        }
+            ? tasks.map(task => <TaskItem key={task.id} task={task} tooltipRule={showContextMenu} />)
+            : <p className='center'>Tasks list is epmty.</p>
+          }
         </div>
       </ContextMenuTrigger>
     </>

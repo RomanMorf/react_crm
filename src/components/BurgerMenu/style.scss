@@ -12,6 +12,7 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.0);
 
+
     &.open {
       bottom: 0;
       transition: background-color ease 1s;
@@ -29,7 +30,7 @@
     top: -400px;
     right: 0px;
     box-shadow: $box_shadow_primary;
-
+    transition-delay: .5s;
 
     &.open {
       transition: all ease .3s;

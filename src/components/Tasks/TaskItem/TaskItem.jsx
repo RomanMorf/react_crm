@@ -8,7 +8,7 @@ import { removeTask, toggleTaskCompleted } from 'src/store/taskSlice';
 import Checkbox from 'src/components/elements/Checkbox';
 import ReactTooltip from 'react-tooltip';
 
-function TaskItem({task}) {
+function TaskItem({task, tooltipRule = false}) {
   const dispatch = useDispatch()
   const dateNow = dateFilter( Date.now() )
   const dateExpire = dateFilter( task.expireAt )
@@ -27,29 +27,29 @@ function TaskItem({task}) {
 
   return (
     <>
-    <ReactTooltip />
-    <div 
-      id={task.id}
-      data-id={ task.id }
-      className={`task ${tComp ?'completed':null}`}
-    >
-      <Checkbox checked={task.completed} onChange={toggleTask}/>
-      <p className='task_text scroll'>{task.text}</p>
-      <div className='task_expire'>
-        <span 
-          data-tip="Expire date"
-          className={`task_expire-text 
-          ${tComp ?'completed':''} 
-          ${dExp && !tComp ?'expired':''} 
-          ${dToday && !tComp ?'today':''}`}
+    {!tooltipRule && <ReactTooltip />}
+      <div 
+        data-id={ task.id }
+        className={`task ${tComp ?'completed':null}`}
+        key={task.id}
         >
-          {dateExpire}
-        </span>
+        <Checkbox checked={task.completed} onChange={toggleTask}/>
+        <p className='task_text scroll'>{task.text}</p>
+        <div className='task_expire'>
+          <span 
+            data-tip="Expire date"
+            className={`task_expire-text 
+            ${tComp ?'completed':''} 
+            ${dExp && !tComp ?'expired':''} 
+            ${dToday && !tComp ?'today':''}`}
+            >
+            {dateExpire}
+          </span>
+        </div>
+        <button onClick={deleteTask} className='mw768'>
+          <span className="material-icons">delete</span>
+        </button>
       </div>
-      <button onClick={deleteTask} className='mw768'>
-        <span className="material-icons">delete</span>
-      </button>
-    </div>
     </>
   )
 }

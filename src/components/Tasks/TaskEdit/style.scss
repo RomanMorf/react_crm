@@ -17,6 +17,9 @@
     padding: 5px;
     background-color: transparent;
     border-bottom: 1px solid $border_primary;
+    font-family: 'Roboto', sans-serif;
+    max-width: 600px;
+    max-height: 600px;
   }
 
   &_datepicker {

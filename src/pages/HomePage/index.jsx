@@ -29,7 +29,7 @@ function Home() {
   return (
     <div>
       <h1>Home page</h1>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       {user && 
       <>
         <h2>Wellcome {user.nickName ? user.nickName : `${user.name} ${user.surname}`}</h2> 

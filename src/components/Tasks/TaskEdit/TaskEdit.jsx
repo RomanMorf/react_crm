@@ -19,7 +19,7 @@ function TaskEdit({task, handleChange, handleCancel}) {
     <div className='task-editor'>
       <h2 className='task-editor_title'>Task editor</h2>
 
-      <textarea className='task-editor_textarea'  cols="30" rows="10" value={editedTask.text} onChange={e =>  setEditedTask({...editedTask, text: e.target.value})}></textarea>
+      <textarea className='task-editor_textarea scroll'  cols="30" rows="10" value={editedTask.text} onChange={e =>  setEditedTask({...editedTask, text: e.target.value})}></textarea>
       <p>Data - <input className='task-editor_datepicker' type="date" value={getNumerickFullYear()} onChange={e => setEditedTask({...editedTask, expireAt: new Date(e.target.value).getTime()})}  /></p>
 
       <div className="task-editor_buttons">

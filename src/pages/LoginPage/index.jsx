@@ -78,7 +78,7 @@ function Login() {
 
   return (
     <div className="login">
-      {loading && <Loader/>}
+      {loading && <Loader large />}
       <form className='form' onSubmit={preventDefault}>
         <h2>Login to your accaunt</h2>
         <div className='form_slot'>

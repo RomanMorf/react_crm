@@ -62,7 +62,7 @@ function Register() {
 
   return (
     <div className="register">
-      {loading && <Loader/>}
+      {loading && <Loader large />}
       <form className='form' onSubmit={formik.handleSubmit}>
         <h2>Register new accaunt</h2>
         <div className='form_slot'>

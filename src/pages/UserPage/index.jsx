@@ -34,7 +34,8 @@ function UserPage() {
 
     fetchUserData()
 
-    setLoading(false)
+    // setLoading(false)
+    setTimeout(() =>     setLoading(false), 2000)
   }, []);
 
   const saveUserChanges = user => {
@@ -56,9 +57,10 @@ function UserPage() {
 
   return (
     <>
-    {loading && <Loader/>}
     <div className='user'>
-      {currentUser && <h1>Wellcome {currentUser.name}</h1>}
+      {loading && <Loader />}
+
+      {(currentUser && !loading) && <h1>Wellcome {currentUser.name}</h1>}
       <div className="user_body">
 
         {(!editForm && !loading) &&  
