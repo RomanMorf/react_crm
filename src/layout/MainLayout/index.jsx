@@ -13,7 +13,9 @@ function MainLayout() {
     <>
       <Header />
         <div className="container">
-          <Outlet />
+          <div className="main_content scoll">
+            <Outlet />
+          </div>
         </div>
       <Footer />
     </>

@@ -23,11 +23,6 @@
 @media (max-width: 768px){
   .header {
   
-    &_body {
-      position: relative;
-      align-items: center;
-      justify-content: end;
-    }
 
     &_logo,
     &_nav {
@@ -36,9 +31,6 @@
 
     &_mobile {
       display: block;
-      position: absolute;
-      top: 5px;
-      left: 10px;
       z-index: 100;
       transition: all ease .3s;
     }

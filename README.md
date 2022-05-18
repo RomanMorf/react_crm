@@ -1,12 +1,34 @@
-# Getting Started with Create React App
+# Getting Started
+```
+git clone https://github.com/RomanMorf/react_crm.git
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project setup
+```
+npm install
+```
+
+```
+craeate .env file and fill fileds for firebase:
+
+REACT_APP_FIREBASE_APIKEY=******************
+REACT_APP_FIREBASE_AUTHDOMAIN=******************
+REACT_APP_FIREBASE_DATABASEURL=******************
+REACT_APP_FIREBASE_PROJECTID=******************
+REACT_APP_FIREBASE_STORAGEBUCKET=******************
+REACT_APP_FIREBASE_MESSAGINSENDERID=******************
+REACT_APP_FIREBASE_APPID=******************
+REACT_APP_FIREBASE_MEASUREMENTID=******************
+```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### Runs the app in the development mode
+```
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,12 +36,26 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Run your unit tests
+```
+npm test
+```
 
-### `npm run build`
+### Run your unit tests with coverage ( % )
+```
+npm test:cover
+```
+
+### Run build and deploy app to firebase hosting
+```
+npm run firebase
+```
+
+### Builds the app for production
+```
+npm run build
+```
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -27,44 +63,58 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# About Project
 
-### `npm run eject`
+## Login window
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-1.png?raw=true" alt="login img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-2.png?raw=true" alt="login img">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Register window has validation
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-1.png?raw=true" alt="register img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-2.png?raw=true" alt="register img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/register-3.png?raw=true" alt="register img">
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Todo page
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-0.png?raw=true" alt="todo img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-1.png?raw=true" alt="todo img">
+<p>When allow to edit list - yuser can change position of todo items</p>
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/todo-2.png?raw=true" alt="todo img">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Task page
+<p>Active soritng by data.</p>
+<p>Filter by "completed"</p>
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-0.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-1.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-2.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-3.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-4.png?raw=true" alt="task img">
+<p>Context menu for edit tasks</p>
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-5.png?raw=true" alt="task img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-6.png?raw=true" alt="task img">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tooltip component
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/tooltip.png?raw=true" alt="tooltip img">
 
-## Learn More
+## Ready for mobile
+<p>Has adaptive interface for all devices</p>
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/mobile-0.png?raw=true" alt="mobile img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/mobile-1.png?raw=true" alt="mobile img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/mobile-2.png?raw=true" alt="mobile img">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p>Each page has Loader component for display loading process</p>
+<p>Animated menu links.</p>
+<p>And many-many other things ))</p>
+<p>Dowload and try :)</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Currently under development
 
-### Code Splitting
+## Weather page
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-1.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-2.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-3.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-4.png?raw=true" alt="weather img">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Cabinet page
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-0.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-1.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-2.png?raw=true" alt="weather img">

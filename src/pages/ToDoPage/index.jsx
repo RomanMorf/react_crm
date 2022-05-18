@@ -21,15 +21,16 @@ function ToDo() {
   const {toastSuccess} = useToast()
 
   const todos = useSelector(state => state.todos.todos)
+  
+  async function fetchTodos() {
+    const uid = getUid()
+    if (uid) {
+      const getTodos = await getFromDatabase(`users/${uid}/todos`)
+      if (getTodos) dispatch(setTodos(getTodos))
+    }
+  }
 
   useEffect(() => {
-    async function fetchTodos() {
-      const uid = getUid()
-      if (uid) {
-        const getTodos = await getFromDatabase(`users/${uid}/todos`)
-        if (getTodos) dispatch(setTodos(getTodos))
-      }
-    }
     fetchTodos()
     turnOffLoading()
   }, []);
@@ -44,19 +45,19 @@ function ToDo() {
 
   return (
     <div className="todo">
-      {loading && <Loader/>}
       <div className='todo_input'>
         <InputField 
           value={text} 
           handleInput={setText}
           handleEnter={addTask}
           placeholder='Enter taskname'
-        />
+          />
         <div className='todo_btn'>
           <Button name="Add task" onClick={addTask}/>
         </div>
       </div>
 
+      {loading && <Loader />}
       { todos.length 
         ? <ToDoList todos={todos} /> 
         : <p className='center'>No todos yet. Create new todo</p>

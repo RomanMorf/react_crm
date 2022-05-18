@@ -14,17 +14,48 @@
     background-color: $bg_secondary;
   }
 
-  &.expired {
-    background-color: rgb(251 116 116);
-  }
-
-  &.today {
-    background-color: rgb(251, 244, 116);
-  }
-
   button {
     cursor: pointer;
     background-color: transparent;
     border: none;
   }
+
+  &_text {
+    max-height: 40vh;
+    overflow-y: scroll;
+    padding-right: 5px;
+  }
+
+  &_expire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid $hover_primary;
+    margin-left: auto;
+    cursor: default;
+
+    span {
+      border-radius: 10px;
+      padding: 5px;
+      text-align: center;
+      margin-left: 5px;
+      box-shadow: $box_shadow_primary;
+
+      &.completed {
+        background-color: $bg_secondary;
+      }
+    
+      &.expired {
+        background-color: rgb(251 116 116);
+      }
+    
+      &.today {
+        background-color: rgb(251, 244, 116);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
 }

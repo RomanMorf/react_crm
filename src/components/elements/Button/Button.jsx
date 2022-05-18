@@ -14,7 +14,7 @@ function Button({ name, type, id, onClick, className, img, disabled, googleIcon 
           <img src={img} alt="button logo" />
         </div>}
       <div className='button_text'>
-        {name}
+        <span className='button_name'>{name}</span>
         {googleIcon && 
           <span className="material-icons">
             {googleIcon}

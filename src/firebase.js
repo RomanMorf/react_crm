@@ -3,14 +3,14 @@ import { getDatabase } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyChjLdLQ9U0jEbdo0KgHKl6bMDjQe2KYeI",
-  authDomain: "react-crm-6b22e.firebaseapp.com",
-  databaseURL: "https://react-crm-6b22e-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "react-crm-6b22e",
-  storageBucket: "react-crm-6b22e.appspot.com",
-  messagingSenderId: "875015324086",
-  appId: "1:875015324086:web:90a9b353849a4cbdce0117",
-  measurementId: "G-XXCT96ZGP5"
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINSENDERID,
+  appId: process.env.REACT_APP_FIREBASE_APPID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
 };
 
 const firebase = initializeApp(firebaseConfig);
@@ -20,4 +20,3 @@ const fs = getFirestore(firebase);
 export default firebase
 
 export { firebase, fs, db }
-

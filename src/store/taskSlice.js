@@ -27,7 +27,7 @@ const taskslice = createSlice({
       if (uid) set(ref(db, `users/${uid}/tasks`), {...state.tasks})
     },
     updateTasks (state, action) {
-      state.tasks = action.payload.tasks
+      state.tasks = action.payload
       const uid = getUid()
       if (uid) set(ref(db, `users/${uid}/tasks`), {...state.tasks})
     },
