@@ -53,9 +53,9 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-### About Project
+# About Project
 
-<p>Login window</p>
+## Login window
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-1.png?raw=true" alt="login img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/login-2.png?raw=true" alt="login img">
 
