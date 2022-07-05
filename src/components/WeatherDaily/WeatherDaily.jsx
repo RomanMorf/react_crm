@@ -40,7 +40,7 @@ function WeatherDaily({weather}) {
             >
               <span>{(dateFilter(el.dt, 'date').split('/')[0])}/</span>
               <span>{(dateFilter(el.dt, 'date').split('/')[1])}/</span>
-              <span>{(dateFilter(el.dt, 'date').split('/')[2])}/</span>
+              <span>{(dateFilter(el.dt, 'date').split('/')[2])}</span>
             </div>
           )
         )}
