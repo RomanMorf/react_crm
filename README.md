@@ -94,10 +94,9 @@ Your app is ready to be deployed!
 
 ## Weather page
 <p>Weather widget</p>
-<img src="https://raw.githubusercontent.com/RomanMorf/react_crm/context-menu/blob/forecast_1.jpg" alt="Weather widget">
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/forecast_1.jpg?raw=true" alt="Weather widget">
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/forecast_2.jpg?raw=true" alt="Weather widget">
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/forecast_3.jpg?raw=true" alt="Weather widget">
+<img src="https://github.com/RomanMorf/react_crm/blob/master/blob/forecast_1.jpg?raw=true" alt="Weather widget">
+<img src="https://github.com/RomanMorf/react_crm/blob/master/blob/forecast_2.jpg?raw=true" alt="Weather widget">
+<img src="https://github.com/RomanMorf/react_crm/blob/master/blob/forecast_3.jpg?raw=true" alt="Weather widget">
 <p>Weather - without styles</p>
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-1.png?raw=true" alt="weather img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-2.png?raw=true" alt="weather img">
