@@ -92,6 +92,17 @@ Your app is ready to be deployed!
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-5.png?raw=true" alt="task img">
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/task-6.png?raw=true" alt="task img">
 
+## Weather page
+<p>Weather widget</p>
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/forecast_1.jpg?raw=true" alt="Weather widget">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/forecast_2.jpg?raw=true" alt="Weather widget">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/forecast_3.jpg?raw=true" alt="Weather widget">
+<p>Weather - without styles</p>
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-1.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-2.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-3.png?raw=true" alt="weather img">
+<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-4.png?raw=true" alt="weather img">
+
 ## Tooltip component
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/tooltip.png?raw=true" alt="tooltip img">
 
@@ -108,11 +119,6 @@ Your app is ready to be deployed!
 
 # Currently under development
 
-## Weather page
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-1.png?raw=true" alt="weather img">
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-2.png?raw=true" alt="weather img">
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-3.png?raw=true" alt="weather img">
-<img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/weather-4.png?raw=true" alt="weather img">
 
 ## Cabinet page
 <img src="https://github.com/RomanMorf/react_crm/blob/context-menu/blob/cabinet-0.png?raw=true" alt="weather img">

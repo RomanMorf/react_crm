@@ -8,6 +8,7 @@ import Button from 'src/components/elements/Button';
 import Loader from 'src/components/Loader';
 import WeatherDailyMapper from 'src/components/WeatherDailyMapper/';
 import WeatherHourlyMapper from 'src/components/WeatherHourlyMapper';
+import WeatherDaily from 'src/components/WeatherDaily';
 
 function Weather() {
   const [weather, setWeather] = useState(null)
@@ -38,6 +39,8 @@ function Weather() {
       <Button googleIcon='refresh' onClick={refreshWeather} />
 
       { loading &&  <Loader  /> }
+
+      { !loading && <WeatherDaily weather={ weather } />}
 
       { !loading && <WeatherDailyMapper weather={ weather }/> } 
 

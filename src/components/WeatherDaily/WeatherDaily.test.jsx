@@ -1,11 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import { tempConverter } from 'src/helpers/tempConverter'
-import { dateFilter } from 'src/helpers/dateFilter'
 
-import WeatherDailyMapper from './WeatherDailyMapper'
+import WeatherDaily from './WeatherDaily'
 
-describe('WeatherDailyMapper component', () => {
+describe('WeatherDaily component', () => {
   const weather = {
     daily: [
       {
@@ -50,55 +48,23 @@ describe('WeatherDailyMapper component', () => {
       }
     ],
     timezone: 'Europe/Kiev'
+
   }
 
-  it('WeatherDailyMapper render component', () => {
-    render(<WeatherDailyMapper weather={weather} />);
+  it('WeatherDaily render component', () => {
+    render(<WeatherDaily weather={weather} />);
   })
 
-  it('WeatherDailyMapper render 2 li elements', () => {
+  it('WeatherDaily correct key test', () => { 
     const { container } = render(
-      <WeatherDailyMapper weather={weather} />
-    );
-
-    const liElements = container.getElementsByTagName('li')
-
-    expect(liElements.length).toEqual(2)
-  })
-
-
-  it('WeatherDailyMapper correct key test', () => { 
-    const { container } = render(
-      <WeatherDailyMapper weather={weather} />
+      <WeatherDaily weather={weather} />
     );
 
     const weatherItem = weather.daily[0]
-    const item = container.getElementsByTagName('li')[0]
+    const item = container.getElementsByClassName('forecast-item')[0]
     const keys = Object.keys(item)
     const correntKey = item[keys[0]].key
-    expect(correntKey).toEqual(`key-${weatherItem.dt}`)
+    expect(correntKey).toEqual(`forecast-${weatherItem.dt}`)
   })
-
-  it('WeatherDailyMapper correct mapper test', () => { 
-    const { container } = render(
-      <WeatherDailyMapper weather={weather} />
-    );
-
-    const item = weather.daily[0]
-
-    expect(container.querySelectorAll('p')[0].textContent)
-      .toEqual(`${dateFilter(item.dt, 'datetime')}`)
-
-
-    expect(container.querySelectorAll('p')[2].textContent)
-      .toEqual(`${tempConverter(item.feels_like.morn)} C° - morning`)
-
-    expect(container.querySelectorAll('p')[3].textContent)
-      .toEqual(`${tempConverter(item.feels_like.day)} C° - day`)
-
-    expect(container.querySelectorAll('p')[4].textContent)
-      .toEqual(`${tempConverter(item.feels_like.eve)} C° - evening`)
-  })
-
 });
 
